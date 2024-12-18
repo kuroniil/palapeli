@@ -3,11 +3,11 @@ import Header from './components/Header'
 import Menu from './components/Menu'
 import Timer from './components/Timer'
 import { useState } from 'react'
-import { randomizeGrid } from './utils/gridUtils'
+import { randomizeGrid, defaultGrid } from './utils/gridUtils'
 
 function App() {
   const [gridSize, setGridSize] = useState(16)
-  const [grid, setGrid] = useState([])
+  const [grid, setGrid] = useState(defaultGrid)
   const [gridComplete, setGridComplete] = useState(false)
   const [startTime, setStartTime] = useState(Date.now())
   const [time, setTime] = useState('')

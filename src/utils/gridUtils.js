@@ -29,6 +29,7 @@ const randomizeGrid = (size) => {
 
         if (size % 2 === 0) {
             if ((emptyCell % 2 !== 0 && inversions % 2 !== 0) || (emptyCell % 2 === 0 && inversions % 2 === 0)) {
+                console.log(randomizedGrid)
                 return randomizedGrid
             }
         }
@@ -53,4 +54,9 @@ const formCorrectGrid = (size) => {
         return JSON.stringify(corrGrid)
     }
 
-export { randomizeGrid, formCorrectGrid }
+const defaultGrid = [['6', '7', '5', '9'],
+                    ['0', '8', '1', '13'],
+                    ['4', '3', '12', '11'],
+                    ['10', '14', '15', '2']]
+
+export { randomizeGrid, formCorrectGrid, defaultGrid }

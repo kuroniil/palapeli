@@ -1,35 +1,17 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
-import randomizeGrid from '../utils/gridUtils'
+import { formCorrectGrid } from '../utils/gridUtils'
 
-const Grid = () => {
-    const [gridSize, setGridSize] = useState(16)
-    const [grid, setGrid] = useState(randomizeGrid(gridSize))
-    const [gridComplete, setGridComplete] = useState(false)
-
-    const formCorrectGrid = (size) => {
-        let corrArr = [...Array(size).keys()].map(a => a + 1)
-        corrArr[size - 1] = 0
-        let corrGrid = []
-        let j = 0
-        for (let i = 1; i <= Math.sqrt(size); i++) {
-            corrGrid.push(corrArr.slice(j, Math.sqrt(size)*i))
-            j = i * Math.sqrt(size)
-        }
-        corrGrid = corrGrid.map(grid => grid.map(array => array.toString()))
-        return JSON.stringify(corrGrid)
-    }
-
+const Grid = ({ grid, setGrid, gridSize, gridComplete, setGridComplete }) => {
     const [correctGrid, setCorrectGrid] = useState(formCorrectGrid(gridSize))
 
     const checkGrid = (size) => {
-        formCorrectGrid(16)
+        formCorrectGrid(size)
         if (JSON.stringify(grid) === correctGrid) {
             setGridComplete(true)
         }
     }
-
     
-
     const updateGrid = (rowIndex, colIndex) => {
         const cellValue = grid[rowIndex][colIndex]
         const updatedGrid = grid.map(g => g)

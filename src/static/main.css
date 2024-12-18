@@ -27,13 +27,25 @@ body {
     justify-content: center;
 }
 
+.timer {
+    position: relative;
+    top: -1.5em;
+    left: 62%;
+    cursor: pointer;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-weight: bold;
+    transition: all 0.1s ease;
+}
+
 .menuicon {
     display: flex;
     justify-content: center;
     position: relative;
-    right: 17%;
-    height: 1.5em;
-    width: 3.5%;
+    right: 16%;
+    font-size: large;
+    top: 1%;
+    height: 2em;
+    width: 5%;
     padding: 0.1em;
     border-radius: 0.4em;
     margin: auto;

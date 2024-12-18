@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import MenuIcon from './MenuIcon'
 import MenuDetails from './MenuDetails' 
-import randomizeGrid from '../utils/gridUtils'
+import { randomizeGrid } from '../utils/gridUtils'
 
-const Menu = () => {
+const Menu = ({ setGrid, setGridComplete, setStartTime }) => {
     const [menuVisible, setMenuVisible] = useState(false)
     
     const handleMenuClick = () => {
@@ -13,7 +13,9 @@ const Menu = () => {
 
     const handleRestartClick = () => {
         handleMenuClick()
-        randomizeGrid(16)
+        setGridComplete(false)
+        setGrid(randomizeGrid(16))
+        setStartTime(Date.now())
     }
 
     return (

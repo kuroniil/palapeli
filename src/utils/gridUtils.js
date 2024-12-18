@@ -14,4 +14,17 @@ const randomizeGrid = (size) => {
         return randomizedGrid
     }
 
-export default randomizeGrid
+const formCorrectGrid = (size) => {
+        let corrArr = [...Array(size).keys()].map(a => a + 1)
+        corrArr[size - 1] = 0
+        let corrGrid = []
+        let j = 0
+        for (let i = 1; i <= Math.sqrt(size); i++) {
+            corrGrid.push(corrArr.slice(j, Math.sqrt(size)*i))
+            j = i * Math.sqrt(size)
+        }
+        corrGrid = corrGrid.map(grid => grid.map(array => array.toString()))
+        return JSON.stringify(corrGrid)
+    }
+
+export { randomizeGrid, formCorrectGrid }

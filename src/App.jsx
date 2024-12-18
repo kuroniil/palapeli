@@ -7,11 +7,10 @@ import { randomizeGrid } from './utils/gridUtils'
 
 function App() {
   const [gridSize, setGridSize] = useState(16)
-  const [grid, setGrid] = useState(randomizeGrid(gridSize))
+  const [grid, setGrid] = useState([])
   const [gridComplete, setGridComplete] = useState(false)
   const [startTime, setStartTime] = useState(Date.now())
   const [time, setTime] = useState('')
-
 
   return (
     <div>

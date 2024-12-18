@@ -14,7 +14,11 @@ const Menu = ({ setGrid, setGridComplete, setStartTime }) => {
     const handleRestartClick = () => {
         handleMenuClick()
         setGridComplete(false)
-        setGrid(randomizeGrid(16))
+        let gridBuilt = false
+        while (!gridBuilt) {
+            gridBuilt = randomizeGrid(16)
+        }
+        setGrid(gridBuilt)
         setStartTime(Date.now())
     }
 

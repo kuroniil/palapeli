@@ -7,11 +7,37 @@ const randomizeGrid = (size) => {
             [randomArray[currIndex], randomArray[randomIndex]] = [randomArray[randomIndex], randomArray[currIndex]]
         }
         const randomizedGrid = []
+        let emptyCell = -1
         for (let i = 1; i < Math.sqrt(size) + 1; i++) {
+            if (randomArray.slice(0, Math.sqrt(size)).includes('0')) {
+                emptyCell = i
+            }
             randomizedGrid.push(randomArray.slice(0, Math.sqrt(size)))
             randomArray = randomArray.slice(Math.sqrt(size))
         }
-        return randomizedGrid
+
+        let inversions = 0
+        const flattened = randomizedGrid.flat().map(f => parseInt(f))
+        flattened.filter(f => f !== 0)
+        for (let i = 0; i < flattened.length; i++) {
+            for (let j = i + 1; j < flattened.length; j++) {
+                if (flattened[i] > flattened[j]) {
+                    inversions++;
+                }
+            }
+        }
+
+        if (size % 2 === 0) {
+            if ((emptyCell % 2 !== 0 && inversions % 2 !== 0) || (emptyCell % 2 === 0 && inversions % 2 === 0)) {
+                return randomizedGrid
+            }
+        }
+        else if (size % 2 !== 0) {
+            if (inversions % 2 === 0) {
+                return randomizedGrid
+            }
+        }
+        return false
     }
 
 const formCorrectGrid = (size) => {

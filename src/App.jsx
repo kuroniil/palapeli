@@ -15,7 +15,8 @@ function App() {
   return (
     <div>
     <Header title="pala_peli" />
-    <Menu setGrid={setGrid} setGridComplete={setGridComplete} setStartTime={setStartTime}/>
+    <Menu setGrid={setGrid} setGridComplete={setGridComplete} 
+    setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize}/>
     <Timer time={time} setTime={setTime} startTime={startTime} />
     <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
     gridComplete={gridComplete} setGridComplete={setGridComplete} />

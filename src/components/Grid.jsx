@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { formCorrectGrid } from '../utils/gridUtils'
 
 const Grid = ({ grid, setGrid, gridSize, gridComplete, setGridComplete }) => {
     const [correctGrid, setCorrectGrid] = useState(formCorrectGrid(gridSize))
+
+    useEffect(() => {
+        setCorrectGrid(formCorrectGrid(gridSize))
+    }, [gridSize])
 
     const checkGrid = (size) => {
         formCorrectGrid(size)

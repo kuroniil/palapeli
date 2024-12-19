@@ -17,8 +17,8 @@ const randomizeGrid = (size) => {
         }
 
         let inversions = 0
-        const flattened = randomizedGrid.flat().map(f => parseInt(f))
-        flattened.filter(f => f !== 0)
+        let flattened = randomizedGrid.flat().map(f => parseInt(f))
+        flattened = flattened.filter(f => f !== 0)
         for (let i = 0; i < flattened.length; i++) {
             for (let j = i + 1; j < flattened.length; j++) {
                 if (flattened[i] > flattened[j]) {
@@ -26,10 +26,8 @@ const randomizeGrid = (size) => {
                 }
             }
         }
-
         if (size % 2 === 0) {
             if ((emptyCell % 2 !== 0 && inversions % 2 !== 0) || (emptyCell % 2 === 0 && inversions % 2 === 0)) {
-                console.log(randomizedGrid)
                 return randomizedGrid
             }
         }

@@ -14,9 +14,8 @@
 }  
 
 body {
-    background: linear-gradient(var(--background-dark) 2%, white 40%);
+    background: linear-gradient(var(--background-dark) 2em, white 50em);
     overflow: hidden;
-    position: relative;
 }
 
 .grid {
@@ -231,4 +230,31 @@ h1 {
     font-size: 400%;
     padding-bottom: 0;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+
+.grid-finished {
+    justify-content: center;
+    position: relative;
+    top: 0.6em;
+    right: 0.2em;
+    text-align: center;
+    width: 40%;
+    height: 70vh;
+    border-radius: 1em;
+    border: solid black 0.3em;
+    background-color: rgb(18, 201, 82);
+    margin: auto auto 30vh auto;
+    z-index: -1;
+}
+
+.grid-finished h2 {
+    font-size: 300%;
+    padding-bottom: 0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;   
+    color: var(--text-bright);
+}
+
+.grid-finished p {
+    font-size: 150%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;   
 }

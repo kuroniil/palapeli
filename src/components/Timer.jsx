@@ -1,10 +1,11 @@
+import { use } from "react"
 import { useEffect, useState } from "react"
 
 const Timer = ({ time, setTime, startTime }) => {
     useEffect(() => {
         const interval = setInterval(() => {
             setTime(Math.floor((Date.now() - startTime) / 1000))
-        }, 500)
+        }, 200)
     
         return () => clearInterval(interval)
     }, [startTime])

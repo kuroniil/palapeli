@@ -1,18 +1,22 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { formCorrectGrid } from '../utils/gridUtils'
+import GridFinished from "./GridFinished"
 
-const Grid = ({ grid, setGrid, gridSize, gridComplete, setGridComplete }) => {
+const Grid = ({ grid, setGrid, gridSize, setGridComplete, setFinishTime, time, setTimerVisible }) => {
     const [correctGrid, setCorrectGrid] = useState(formCorrectGrid(gridSize))
 
     useEffect(() => {
         setCorrectGrid(formCorrectGrid(gridSize))
+        setTimerVisible(true)
     }, [gridSize])
 
     const checkGrid = (size) => {
         formCorrectGrid(size)
         if (JSON.stringify(grid) === correctGrid) {
+            setFinishTime(time)
             setGridComplete(true)
+            setTimerVisible(false)
         }
     }
     
@@ -34,23 +38,21 @@ const Grid = ({ grid, setGrid, gridSize, gridComplete, setGridComplete }) => {
     }
     return (
         <div>
-         
-        <div className="grid">
-        {grid.map((row, rowIndex) => (
-            <div className="row" key={rowIndex}>
-                {row.map((cell, colIndex) => (
-                    cell !== '0'
-                    ?
-                    <div className="cell" key={colIndex} onClick={() => updateGrid(rowIndex, colIndex)}>
-                        {cell}
-                    </div>
-                    :
-                    <div className="emptyCell" key={colIndex}></div>
-                ))}
+            <div className="grid">
+            {grid.map((row, rowIndex) => (
+                <div className="row" key={rowIndex}>
+                    {row.map((cell, colIndex) => (
+                        cell !== '0'
+                        ?
+                        <div className="cell" key={colIndex} onClick={() => updateGrid(rowIndex, colIndex)}>
+                            {cell}
+                        </div>
+                        :
+                        <div className="emptyCell" key={colIndex}></div>
+                    ))}
+                </div>
+            ))}
             </div>
-        ))}
-        </div>
-        :
         </div>)
     
 }

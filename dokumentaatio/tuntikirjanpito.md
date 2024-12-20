@@ -10,4 +10,4 @@
 | 20.12.| 1    | Lisätty viesti ruudukon ratkaisusta ja refaktorointia |
 | yht.  | 27   | | 
 
-*Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseisenä päivänä tehty 3h.
+*Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseisetä kohtaa tehty 3h.

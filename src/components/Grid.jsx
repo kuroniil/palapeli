@@ -34,8 +34,7 @@ const Grid = ({ grid, setGrid, gridSize, gridComplete, setGridComplete }) => {
     }
     return (
         <div>
-        {!gridComplete 
-        ? 
+         
         <div className="grid">
         {grid.map((row, rowIndex) => (
             <div className="row" key={rowIndex}>
@@ -52,10 +51,7 @@ const Grid = ({ grid, setGrid, gridSize, gridComplete, setGridComplete }) => {
         ))}
         </div>
         :
-        <div>
-            koira
-        </div>
-        }</div>)
+        </div>)
     
 }
 

@@ -80,21 +80,39 @@ body {
     transition: all 0.1s ease;
 }
 
- .menu-details-wrapper.hidden {
+.guide-details-wrapper.hidden {
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
-  }
+}
   
-  .menu-details-wrapper.visible {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  .menu-details-wrapper {
+.guide-details-wrapper.visible {
+  position: relative;
+  z-index: 1001;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.guide-details-wrapper {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-details-wrapper.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-details-wrapper.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-details-wrapper {
     transition: transform 0.2s ease, opacity 0.2s ease;
-  }
+}
   
 .menu h1 {
     display: flex;
@@ -103,6 +121,21 @@ body {
     color: var(--text-bright);
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
     user-select: none;
+}
+
+.menu h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 200%;
+    margin: auto;
+    color: var(--text-bright);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    user-select: none;
+}
+
+.menu img {
+    margin: 0 auto  0 auto;
+    width: 40%;
 }
 
 .menu button {
@@ -146,16 +179,16 @@ body {
     pointer-events: none;
   }
   
-  .modes-details-wrapper.visible {
-    position: relative;
-    z-index: 1000;
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  .modes-details-wrapper {
-    transition: transform 0.2s ease, opacity 0.2s ease;
+.modes-details-wrapper.visible {
+  position: relative;
+  z-index: 1000;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modes-details-wrapper {
+  transition: transform 0.2s ease, opacity 0.2s ease;
   }
  
 

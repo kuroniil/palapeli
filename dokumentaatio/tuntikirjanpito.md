@@ -9,6 +9,7 @@
 | 20.12.| 2    | Lisätty ohje peliin |
 | 20.12.| 1    | Lisätty viesti ruudukon ratkaisusta ja refaktorointia |
 | 21.12.| 1    | Lisätty siirtolaskuri ja refaktorointia |
-| yht.  | 28   | | 
+| 21.12.| 4    | Aloitettu backend/tietokanta |
+| yht.  | 32   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseisetä kohtaa tehty 3h.

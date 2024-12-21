@@ -1,8 +1,11 @@
-const GridFinished = ({ finishTime }) => {
+const GridFinished = ({ finishTime, gridSize, totalMoves }) => {
+    const mode = `${Math.sqrt(gridSize)}x${Math.sqrt(gridSize)}`
+    
     return (
         <div className="grid-finished">
-            <h2>Grid finished</h2>
-            <p>your time: {finishTime} seconds</p>
+            <h2>{mode} Grid Completed</h2>
+            <p>Your time: {finishTime} seconds</p>
+            <p>Total moves made: {totalMoves}</p>
         </div>
     )
 }

@@ -14,18 +14,20 @@ function App() {
   const [time, setTime] = useState('')
   const [finishTime, setFinishTime] = useState('')
   const [timerVisible, setTimerVisible] = useState(true)
+  const [totalMoves, setTotalMoves] = useState(0)
 
   return (
     <div>
       <Header title="pala_peli" />
-      <Menu setGrid={setGrid} setGridComplete={setGridComplete} 
+      <Menu setGrid={setGrid} setGridComplete={setGridComplete} setTotalMoves={setTotalMoves}
       setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize}/>
       {timerVisible && <Timer time={time} setTime={setTime} startTime={startTime} />}
       {!gridComplete ?
       <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
       setGridComplete={setGridComplete} setFinishTime={setFinishTime} 
-      time={time} setTimerVisible={setTimerVisible} />
-      : <GridFinished finishTime={finishTime} />
+      time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
+      setTotalMoves={setTotalMoves} />
+      : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves} />
       }
     </div>
   )

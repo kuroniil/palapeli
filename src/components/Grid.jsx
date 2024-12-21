@@ -3,43 +3,46 @@ import { useEffect, useState } from "react"
 import { formCorrectGrid } from '../utils/gridUtils'
 import GridFinished from "./GridFinished"
 
-const Grid = ({ grid, setGrid, gridSize, setGridComplete, setFinishTime, time, setTimerVisible }) => {
-    const [correctGrid, setCorrectGrid] = useState(formCorrectGrid(gridSize))
+const Grid = (props) => {
+    const [correctGrid, setCorrectGrid] = useState(formCorrectGrid(props.gridSize))
 
     useEffect(() => {
-        setCorrectGrid(formCorrectGrid(gridSize))
-        setTimerVisible(true)
-    }, [gridSize])
+        setCorrectGrid(formCorrectGrid(props.gridSize))
+        props.setTimerVisible(true)
+    }, [props.gridSize])
 
     const checkGrid = (size) => {
         formCorrectGrid(size)
-        if (JSON.stringify(grid) === correctGrid) {
-            setFinishTime(time)
-            setGridComplete(true)
-            setTimerVisible(false)
+        if (JSON.stringify(props.grid) === correctGrid) {
+            props.setFinishTime(props.time)
+            props.setGridComplete(true)
+            props.setTimerVisible(false)
         }
     }
     
     const updateGrid = (rowIndex, colIndex) => {
-        const cellValue = grid[rowIndex][colIndex]
-        const updatedGrid = grid.map(g => g)
-        for (let i = 0; i < grid.length; i++) {
-            for (let j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] === '0') {
+        const cellValue = props.grid[rowIndex][colIndex]
+        const updatedGrid = props.grid.map(g => g)
+        for (let i = 0; i < props.grid.length; i++) {
+            for (let j = 0; j < props.grid[0].length; j++) {
+                if (props.grid[i][j] === '0') {
                     if ((Math.abs(rowIndex - i) == 1 && colIndex == j) || (Math.abs(colIndex - j) == 1 && rowIndex == i)) {
                         updatedGrid[i][j] = cellValue
                         updatedGrid[rowIndex][colIndex] = '0'
+                        const moves = props.totalMoves + 1
+                        props.setTotalMoves(moves)
                     }
                 }
             }
         }
-        setGrid(updatedGrid)
-        checkGrid(gridSize)
+        props.setGrid(updatedGrid)
+        checkGrid(props.gridSize)
+        
     }
     return (
         <div>
             <div className="grid">
-            {grid.map((row, rowIndex) => (
+            {props.grid.map((row, rowIndex) => (
                 <div className="row" key={rowIndex}>
                     {row.map((cell, colIndex) => (
                         cell !== '0'

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
 import MenuIcon from './MenuIcon'
 import MenuDetails from './MenuDetails' 
@@ -5,7 +6,7 @@ import ModesTab from './ModesTab'
 import Guide from './Guide'
 import { randomizeGrid } from '../utils/gridUtils'
 
-const Menu = ({ setGrid, setGridComplete, setStartTime, setGridSize, gridSize }) => {
+const Menu = (props) => {
     const [menuVisible, setMenuVisible] = useState(false)
     const [modesTabVisible, setModesTabVisible] = useState(false)
     const [guideVisible, setGuideVisible] = useState(false)
@@ -22,34 +23,35 @@ const Menu = ({ setGrid, setGridComplete, setStartTime, setGridSize, gridSize })
     }
 
     const handleThreeByThreeClick = () => {
-        setGridSize(9)
+        props.setGridSize(9)
         handleRestart(9)
     }
 
     const handleFourByFourClick = () => {
-        setGridSize(16)
+        props.setGridSize(16)
         handleRestart(16)
     }
 
     const handleFiveByFiveClick = () => {
-        setGridSize(25)
+        props.setGridSize(25)
         handleRestart(25)
         document.body.style.zoom = "95%"
         }
 
     const handleRestartClick = () => {
-        handleRestart(gridSize)
+        handleRestart(props.gridSize)
     }
 
     const handleRestart = (size) => {
         handleMenuClick()
-        setGridComplete(false)
+        props.setGridComplete(false)
+        props.setTotalMoves(0)
         let gridBuilt = false
         while (!gridBuilt) {
             gridBuilt = randomizeGrid(size)
         }
-        setGrid(gridBuilt)
-        setStartTime(Date.now())
+        props.setGrid(gridBuilt)
+        props.setStartTime(Date.now())
     }
 
     const handleExitClick = () => {

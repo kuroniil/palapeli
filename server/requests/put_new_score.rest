@@ -1,0 +1,9 @@
+PUT http://127.0.0.1:3001/api/scores/1
+content-type: application/json
+
+{
+    "id": "1",
+    "mode": "4x4",
+    "name": "Pekka",
+    "score": "15"
+}

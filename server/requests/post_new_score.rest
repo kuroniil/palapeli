@@ -1,0 +1,8 @@
+POST http://127.0.0.1:3001/api/scores
+content-type: application/json
+
+{
+    "mode": "3x3",
+    "name": "Jari",
+    "score": "15"
+}

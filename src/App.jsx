@@ -17,14 +17,15 @@ function App() {
   const [finishTime, setFinishTime] = useState('')
   const [timerVisible, setTimerVisible] = useState(true)
   const [totalMoves, setTotalMoves] = useState(0)
-  const [scores, setScores] = useState('')
+  const [scores, setScores] = useState([])
 
-  const url = "http://127.0.0.1/api/scores"
+  const url = "http://localhost:3001/api/scores"
 
   useEffect(() => {
     axios
       .get(url)
       .then(response => {
+        console.log(response.data)
         setScores(response.data)
       })
   }, [])

@@ -2,7 +2,7 @@ POST http://localhost:3001/api/scores
 content-type: application/json
 
 {
-    "mode": "3x3",
-    "name": "Jari",
-    "score": "15"
+    "mode": "5x5",
+    "name": "Jarmo",
+    "score": "9"
 }

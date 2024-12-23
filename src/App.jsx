@@ -18,28 +18,27 @@ function App() {
   const [timerVisible, setTimerVisible] = useState(true)
   const [totalMoves, setTotalMoves] = useState(0)
   const [scores, setScores] = useState([])
+  const [leaderboardMode, setLeaderboardMode] = useState('3x3')
 
   const url = "http://localhost:3001/api/scores"
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${url}/${leaderboardMode}`)
       .then(response => {
-        console.log(response.data)
         setScores(response.data)
       })
-  }, [])
+  }, [leaderboardMode])
 
 
   return (
     <div>
       <Header title="pala_peli" />
       <Menu setGrid={setGrid} setGridComplete={setGridComplete} setTotalMoves={setTotalMoves}
-      setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize}/>
+      setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize} />
       {timerVisible && <Timer time={time} setTime={setTime} startTime={startTime} />}
-      <Leaderboard scores={scores} />
-      {!gridComplete ?
-      <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
+      <Leaderboard scores={scores} leaderboardMode={leaderboardMode} setLeaderboardMode={setLeaderboardMode}/>
+      {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
       setGridComplete={setGridComplete} setFinishTime={setFinishTime} 
       time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
       setTotalMoves={setTotalMoves} />

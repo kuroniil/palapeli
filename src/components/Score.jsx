@@ -1,8 +1,10 @@
-const Score = ({ score }) => {
+const Score = ({ score, index }) => {
     return (
-        <div className="score">
-            {score}
-        </div>
+        <tr>
+            <td>{index + 1}.</td>
+            <td>{score.name}</td>
+            <td>{score.score} sec</td>
+        </tr>
     )
 }
 

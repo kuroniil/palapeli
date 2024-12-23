@@ -14,6 +14,7 @@ router.get('/:mode', async (request, response) => {
     const scoresByMode = await Score.findAll({
         where: {"mode": mode}
     })
+    scoresByMode.sort((first, second) => first.score - second.score)
     response.json(scoresByMode)
   })
 

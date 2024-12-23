@@ -35,7 +35,7 @@ const Menu = (props) => {
     const handleFiveByFiveClick = () => {
         props.setGridSize(25)
         handleRestart(25)
-        document.body.style.zoom = "95%"
+        ///document.body.style.zoom = "95%"
         }
 
     const handleRestartClick = () => {

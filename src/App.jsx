@@ -19,8 +19,14 @@ function App() {
   const [totalMoves, setTotalMoves] = useState(0)
   const [scores, setScores] = useState([])
   const [leaderboardMode, setLeaderboardMode] = useState('3x3')
+  const [LBModeTrigger, setLBModeTrigger] = useState(true)
 
   const url = "http://localhost:3001/api/scores"
+
+  const updateLeaderboardMode = (mode) => {
+    setLeaderboardMode(mode)
+    setLBModeTrigger(!LBModeTrigger)
+  }
 
   useEffect(() => {
     axios
@@ -28,7 +34,7 @@ function App() {
       .then(response => {
         setScores(response.data)
       })
-  }, [leaderboardMode])
+  }, [LBModeTrigger])
 
 
   return (
@@ -37,13 +43,13 @@ function App() {
       <Menu setGrid={setGrid} setGridComplete={setGridComplete} setTotalMoves={setTotalMoves}
       setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize} />
       {timerVisible && <Timer time={time} setTime={setTime} startTime={startTime} />}
-      <Leaderboard scores={scores} leaderboardMode={leaderboardMode} setLeaderboardMode={setLeaderboardMode}/>
+      <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}/>
       {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
       setGridComplete={setGridComplete} setFinishTime={setFinishTime} 
       time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
       setTotalMoves={setTotalMoves} />
       : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}
-      setLeaderboardMode={setLeaderboardMode} />
+      updateLeaderboardMode={updateLeaderboardMode} />
       }
     </div>
   )

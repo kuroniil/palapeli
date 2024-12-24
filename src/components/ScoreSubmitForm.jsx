@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 
 
-const ScoreSubmitForm = ({ mode, time, setLeaderboardMode }) => {
+const ScoreSubmitForm = ({ mode, time, updateLeaderboardMode }) => {
     const [name, setName] = useState('')
     
     const handleNameChange = (event) => {
@@ -18,8 +18,8 @@ const ScoreSubmitForm = ({ mode, time, setLeaderboardMode }) => {
         }
         axios
             .post('http://localhost:3001/api/scores', scoreObject)
-            .then(response => {
-                setLeaderboardMode(mode)
+            .then(response => {                
+                updateLeaderboardMode(mode)
                 setName('')
             })
     }

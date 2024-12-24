@@ -14,7 +14,7 @@ const GridFinished = (props) => {
                 Total Moves Made: {props.totalMoves}
             </div>
             <ScoreSubmitForm mode={mode} time={props.finishTime} totalMoves={props.totalMoves} 
-            setLeaderboardMode={props.setLeaderboardMode} />
+            updateLeaderboardMode={props.updateLeaderboardMode} />
         </div>
     )
 }

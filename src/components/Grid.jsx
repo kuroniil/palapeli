@@ -14,8 +14,8 @@ const Grid = (props) => {
     const checkGrid = (size) => {
         formCorrectGrid(size)
         if (JSON.stringify(props.grid) === correctGrid) {
+            props.setFinishTime(props.time)
             setTimeout(() => {
-                props.setFinishTime(props.time)
                 props.setGridComplete(true)
                 props.setTimerVisible(false)
             }, 200)

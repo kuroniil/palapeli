@@ -1,17 +1,17 @@
     import Score from "./Score"
 
-const Leaderboard = ({ scores, leaderboardMode, setLeaderboardMode }) => {
+const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode }) => {
     const handle3x3Click = () => {
-        setLeaderboardMode("3x3")
+        updateLeaderboardMode("3x3")
     }
     
     const handle4x4Click = () => {
-        setLeaderboardMode("4x4")
+        updateLeaderboardMode("4x4")
     }
 
     
     const handle5x5Click = () => {
-        setLeaderboardMode("5x5")
+        updateLeaderboardMode("5x5")
     }
 
     return (

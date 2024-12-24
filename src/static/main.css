@@ -352,8 +352,9 @@ h1 {
 .submit-form button {
     user-select: none;
     background-color: var(--background-light);
-    width: 7em;
+    width: 5em;
     padding: 0.5em;
+    height: 2.2em;
     border-radius: 0.2em;
     border: solid 0.1em black;
     color: var(--text-bright);

@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import ScoreSubmitForm from './ScoreSubmitForm'
 
 const GridFinished = (props) => {
+    const [submitted, setSubmitted] = useState(false)
     const mode = `${Math.sqrt(props.gridSize)}x${Math.sqrt(props.gridSize)}`
     
     return (
@@ -8,13 +10,14 @@ const GridFinished = (props) => {
             <h2>{mode} Grid Completed</h2>
             <p>Submit your score to get on the leaderboard</p>
             <div className="submit-form">
-                Your Time: {props.finishTime} seconds
+                Your Time: <span style={{ color: "white", textDecoration: "underline" }}>{props.finishTime} seconds</span>
             </div>
             <div className="submit-form">
-                Total Moves Made: {props.totalMoves}
+                Total Moves Made: <span style={{ color: "white", textDecoration: "underline" }}>{props.totalMoves}</span>
             </div>
             <ScoreSubmitForm mode={mode} time={props.finishTime} totalMoves={props.totalMoves} 
-            updateLeaderboardMode={props.updateLeaderboardMode} />
+            updateLeaderboardMode={props.updateLeaderboardMode} submitted={submitted} setSubmitted={setSubmitted} />
+            {submitted && <p>Score submitted!</p>}
         </div>
     )
 }

@@ -1,7 +1,8 @@
 import { useState } from "react"
+import axios from "axios"
 
 
-const ScoreSubmitForm = ({ mode, time, totalMoves }) => {
+const ScoreSubmitForm = ({ mode, time, setLeaderboardMode }) => {
     const [name, setName] = useState('')
     
     const handleNameChange = (event) => {
@@ -10,6 +11,17 @@ const ScoreSubmitForm = ({ mode, time, totalMoves }) => {
 
     const submitScore = (event) => {
         event.preventDefault()
+        const scoreObject = {
+            "mode": mode,
+            "score": time,
+            "name": name
+        }
+        axios
+            .post('http://localhost:3001/api/scores', scoreObject)
+            .then(response => {
+                setLeaderboardMode(mode)
+                setName('')
+            })
     }
     
     return (

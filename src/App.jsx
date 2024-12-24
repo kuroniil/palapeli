@@ -42,7 +42,8 @@ function App() {
       setGridComplete={setGridComplete} setFinishTime={setFinishTime} 
       time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
       setTotalMoves={setTotalMoves} />
-      : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves} />
+      : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}
+      setLeaderboardMode={setLeaderboardMode} />
       }
     </div>
   )

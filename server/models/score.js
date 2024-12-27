@@ -12,15 +12,25 @@ Score.init({
     },
     mode: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [3, 5]
+        }
     },
     name: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [1, 20]
+        }
+        
     },
     score: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [1, 6]
+        }
     }
 }, {
     sequelize, 

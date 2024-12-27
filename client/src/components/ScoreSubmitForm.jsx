@@ -1,4 +1,5 @@
 import { useState } from "react"
+import scoreService from '../services/scores'
 import axios from "axios"
 
 
@@ -17,8 +18,8 @@ const ScoreSubmitForm = ({ mode, time, updateLeaderboardMode, submitted, setSubm
             "name": name
         }
         if (!submitted) {
-            axios
-            .post('http://localhost:3001/api/scores', scoreObject)
+            scoreService
+            .create(scoreObject)
             .then(response => {                
                 updateLeaderboardMode(mode)
                 setName('')

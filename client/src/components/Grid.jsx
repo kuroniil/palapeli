@@ -43,7 +43,6 @@ const Grid = (props) => {
         
     }
     return (
-        <div>
             <div className="grid">
             {props.grid.map((row, rowIndex) => (
                 <div className="row" key={rowIndex}>
@@ -58,8 +57,7 @@ const Grid = (props) => {
                     ))}
                 </div>
             ))}
-            </div>
-        </div>)
+            </div>)
     
 }
 

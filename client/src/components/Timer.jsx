@@ -1,5 +1,4 @@
-import { use } from "react"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 const Timer = ({ time, setTime, startTime }) => {
     useEffect(() => {

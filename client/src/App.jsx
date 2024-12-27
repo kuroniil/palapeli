@@ -4,9 +4,10 @@ import Menu from './components/Menu'
 import Timer from './components/Timer'
 import Leaderboard from './components/Leaderboard'
 import GridFinished from './components/GridFinished'
+import MenuIcon from './components/MenuIcon'
 import { useEffect, useState } from 'react'
-import { defaultGrid } from './utils/gridUtils'
-import axios from 'axios'
+import { defaultGrid, gridFont } from './utils/gridUtils'
+import scoreService from './services/scores'
 
 function App() {
   const [gridSize, setGridSize] = useState(16)
@@ -20,8 +21,10 @@ function App() {
   const [scores, setScores] = useState([])
   const [leaderboardMode, setLeaderboardMode] = useState('3x3')
   const [LBModeTrigger, setLBModeTrigger] = useState(true)
-
-  const url = "http://localhost:3001/api/scores"
+  const [leaderboardVisible, setLeaderboardVisible] = useState(false)
+  const [menuVisible, setMenuVisible] = useState(false)
+  const [modesTabVisible, setModesTabVisible] = useState(false)
+  const [guideVisible, setGuideVisible] = useState(false)
 
   const updateLeaderboardMode = (mode) => {
     setLeaderboardMode(mode)
@@ -29,28 +32,50 @@ function App() {
   }
 
   useEffect(() => {
-    axios
-      .get(`${url}/${leaderboardMode}`)
+    if (gridSize === 25) {
+      gridFont(5)
+    } else {
+        gridFont(6)
+    }
+  }, [gridSize])
+  
+
+  useEffect(() => {
+    scoreService
+      .getByMode(leaderboardMode)
       .then(response => {
         setScores(response.data)
       })
   }, [LBModeTrigger])
 
+  const handleMenuClick = () => {
+    setModesTabVisible(false)
+    setGuideVisible(false)
+    const menuState = !menuVisible
+    setMenuVisible(menuState)
+  }
 
   return (
     <div>
       <Header title="pala_peli" />
+      <div className="main-buttons">
+        <MenuIcon onClick={handleMenuClick} />
+        <button onClick={() => setLeaderboardVisible(!leaderboardVisible)}>Leaderboard</button>
+        {timerVisible && <Timer time={time} setTime={setTime} startTime={startTime} />}
+      </div>
       <Menu setGrid={setGrid} setGridComplete={setGridComplete} setTotalMoves={setTotalMoves}
-      setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize} />
-      {timerVisible && <Timer time={time} setTime={setTime} startTime={startTime} />}
-      <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}/>
+        setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize} 
+        handleMenuClick={handleMenuClick} setGuideVisible={setGuideVisible} modesTabVisible={modesTabVisible}
+        guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible}/>
+      <div className={`leaderboard-wrapper ${leaderboardVisible ? "visible" : "hidden"}`}>
+          <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode} />
+      </div>
       {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
       setGridComplete={setGridComplete} setFinishTime={setFinishTime} 
       time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
       setTotalMoves={setTotalMoves} />
       : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}
-      updateLeaderboardMode={updateLeaderboardMode} />
-      }
+      updateLeaderboardMode={updateLeaderboardMode} />}
     </div>
   )
 }

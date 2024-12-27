@@ -14,42 +14,61 @@
 }  
 
 body {
+    display: flex;
+    justify-content: center;
     background: linear-gradient(var(--background-dark) 2em, white 50em);
     overflow: hidden;
 }
 
+.main-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .grid {
-    margin-top: 1em;
-    margin-bottom: 100vh;
+    position: relative;
+    bottom: 145vh;
+    z-index: 0;
 }
 
 .row {
     display: flex;
     justify-content: center;
+    font-size: calc(5vh + 3vw);
 }
 
-.timer {
-    position: relative;
-    top: -1.5em;
-    left: 62%;
-    cursor: pointer;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
-    font-weight: bold;
-    transition: all 0.1s ease;
-}
-
-.menuicon {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    right: 16%;
-    font-size: large;
-    top: 1%;
-    height: 2em;
-    width: 5%;
+.cell {
+    width: calc(5vh + 5vw);
+    text-align: center;
     padding: 0.1em;
+    border-radius: 0.01em;
+    border: solid black 0.03em;
+    background-color: var(--background);
+    cursor: pointer;
+    user-select: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+
+.cell:hover {
+    background-color: var(--background-very-light);
+}
+
+.emptyCell {
+    width: calc(5vh + 5vw);
+    border-radius: 0.01em;
+    border: solid black 0.03em;
+    text-align: center;
+    padding: 0.1em;
+    cursor: pointer;
+    user-select: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+
+.main-buttons button{
+    text-align: center;
+    padding: 0.2em;
+    font-size: large;
     border-radius: 0.4em;
-    margin: auto;
     border: solid black 0.15em;
     background-color: var(--background-light);
     cursor: pointer;
@@ -59,18 +78,40 @@ body {
     transition: all 0.1s ease;
 }
 
-.menuicon:hover {
+.timer {
+    text-align: end;
+    cursor: pointer;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-weight: bold;
+    transition: all 0.1s ease;
+}
+
+.menu-base {
+    height: 75vh;
+}
+
+.menuicon {
+    text-align: center;
+    padding: 0.2em;
+    font-size: large;
+    border-radius: 0.4em;
+    border: solid black 0.15em;
+    background-color: var(--background-light);
+    cursor: pointer;
+    user-select: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-weight: bold;
+    transition: all 0.1s ease;
+}
+
+.menuicon:hover, .main-buttons button:hover {
     background-color: aliceblue;
 }
 
 .menu {
     display: grid;
     justify-content: center;
-    position: fixed;
-    top: 1vh;
-    right: 30%;
-    width: 40%;
-    height: 71vh;
+    height: 100%;
     border-radius: 1em;
     border: solid black 0.3em;
     background-color: var(--background-dark);
@@ -79,47 +120,11 @@ body {
     transition: all 0.1s ease;
 }
 
-.guide-details-wrapper.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
-  
-.guide-details-wrapper.visible {
-    position: relative;
-    z-index: 1001;
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+.menu button:hover {
+    background-color: var(--background);
 }
 
-.guide-details-wrapper {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.menu-details-wrapper.hidden {
-    position: relative;
-    z-index: 10000;
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.menu-details-wrapper.visible {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.menu-details-wrapper {
-    position: relative;
-    z-index: 1000;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-  
 .menu h1 {
-    display: flex;
-    justify-content: center;
     font-size: 400%;
     color: var(--text-bright);
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
@@ -127,8 +132,6 @@ body {
 }
 
 .menu h2 {
-    display: flex;
-    justify-content: center;
     font-size: 200%;
     margin: auto;
     color: var(--text-bright);
@@ -153,13 +156,47 @@ body {
     cursor: pointer;
 }
 
+.menu-details-wrapper {
+    height: 100%;
+    z-index: 1000;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-details-wrapper.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.menu-details-wrapper.visible {
+    position: relative;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.guide-details-wrapper {
+    height: 100%;
+    position: relative;
+    bottom: 151vh;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.guide-details-wrapper.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+  
+.guide-details-wrapper.visible {
+    z-index: 1001;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+  
 .exit-modes {
     font-size: 350%;
-    position: absolute;
-    right: 0.1em;
-    top: 0.1em;
-    padding-left: 0.2em;
-    padding-right: 0.2em;
     margin: auto;
     border-radius: 0.15em;
     border: solid black;
@@ -176,6 +213,13 @@ body {
     background-color: var(--background);
 }
 
+.modes-details-wrapper {
+    position: relative;
+    height: 100%;
+    bottom: 76vh;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+} 
+
 .modes-details-wrapper.hidden {
     transform: translateY(-100%);
     opacity: 0;
@@ -183,54 +227,16 @@ body {
   }
   
 .modes-details-wrapper.visible {
-    position: relative;
     z-index: 1000;
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
 }
 
-.modes-details-wrapper {
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
- 
-
-button:hover {
-    background-color: var(--background);
-}
-
-.cell {
-    width: 8%;
-    font-size: 700%;
+.main-header {
+    color: var(--text-bright);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
     text-align: center;
-    padding: 0.1em;
-    border-radius: 0.01em;
-    border: solid black 0.03em;
-    background-color: var(--background);
-    cursor: pointer;
-    user-select: none;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
-}
-
-.cell:hover {
-    background-color: var(--background-very-light);
-}
-
-.emptyCell {
-    width: 8%;
-    border-radius: 0.01em;
-    border: solid black 0.03em;
-    font-size: 700%;
-    text-align: center;
-    padding: 0.1em;
-    cursor: pointer;
-    user-select: none;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
-}
-
-h1 {
-    display: flex;
-    justify-content: center;
     font-size: 400%;
     padding-bottom: 0;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
@@ -238,10 +244,8 @@ h1 {
 
 .grid-finished {
     position: relative;
-    top: 0.6em;
-    right: 0.2em;
-    width: 40%;
-    height: 70vh;
+    bottom: 150vh;
+    height: 75vh;
     border-radius: 1em;
     border: solid black 0.3em;
     background-color: rgb(18, 201, 82);
@@ -263,24 +267,49 @@ h1 {
     margin-bottom: 3.5em;
 }
 
+.leaderboard-wrapper {
+    height: 75vh;
+    position: relative;
+    bottom: 75vh;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    
+}
+
+.leaderboard-wrapper.visible {
+    pointer-events: auto;
+    transform: translateY(0);
+    z-index: 1000;
+    opacity: 1;
+}
+
+.leaderboard-wrapper.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
 .leaderboard {
-    position: absolute;
-    bottom: 4.2em;
-    margin-left: 5%;
     padding-left: 2em;
     padding-right: 2em;
-    height: 67.2vh;
-    border-radius: 0.5em;
-    border: solid black 0.15em;
+    height: 100%;
+    border-radius: 1em;
+    border: solid black 0.3em;
     background: var(--background-very-light);
 }
 
 .leaderboard h2 {
     text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
     font-size: 200%;
     padding-bottom: 0;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: var(--text-bright);
+}
+
+.leaderboard h3 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: var(--text-bright);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
 
 .leaderboard .buttons {
@@ -293,8 +322,8 @@ h1 {
     background-color: var(--background-light);
     width: 7em;
     padding: 0.5em;
-    border-radius: 0.2em;
-    border: solid 0.1em black   ;
+    border-radius: 1em;
+    border: solid 0.2em black   ;
     color: var(--text-bright);
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;    
     cursor: pointer;
@@ -305,18 +334,18 @@ h1 {
 }
 
 .leaderboard-table-container {
-    height: 46vh;
+    height: 70%;
     overflow-y: scroll;
     background-color: var(--background-light);
     border-radius: 0.2em;
-    border: solid black 0.15em;
+    border: solid black 0.2em;
 }
 
 .leaderboard table {
     padding: 1em;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     table-layout: fixed;
-    width: 17em;
+    width: 35em;
     font-size: large;
 }
 

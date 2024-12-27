@@ -7,19 +7,8 @@ import Guide from './Guide'
 import { randomizeGrid } from '../utils/gridUtils'
 
 const Menu = (props) => {
-    const [menuVisible, setMenuVisible] = useState(false)
-    const [modesTabVisible, setModesTabVisible] = useState(false)
-    const [guideVisible, setGuideVisible] = useState(false)
-
-    const handleMenuClick = () => {
-        setModesTabVisible(false)
-        setGuideVisible(false)
-        const menuState = !menuVisible
-        setMenuVisible(menuState)
-    }
-
     const handleGuideClick = () => {
-        setGuideVisible(true)
+        props.setGuideVisible(true)
     }
 
     const handleThreeByThreeClick = () => {
@@ -35,7 +24,6 @@ const Menu = (props) => {
     const handleFiveByFiveClick = () => {
         props.setGridSize(25)
         handleRestart(25)
-        ///document.body.style.zoom = "95%"
         }
 
     const handleRestartClick = () => {
@@ -43,7 +31,7 @@ const Menu = (props) => {
     }
 
     const handleRestart = (size) => {
-        handleMenuClick()
+        props.handleMenuClick()
         props.setGridComplete(false)
         props.setTotalMoves(0)
         let gridBuilt = false
@@ -55,27 +43,26 @@ const Menu = (props) => {
     }
 
     const handleExitClick = () => {
-        setModesTabVisible(false)
-        setGuideVisible(false)
+        props.setModesTabVisible(false)
+        props.setGuideVisible(false)
     }
 
     const handleModeClick = () => {
-        setModesTabVisible(true)
+        props.setModesTabVisible(true)
     }
 
     return (
-        <div>
-            <MenuIcon onClick={handleMenuClick} />
-            <div className={`menu-details-wrapper ${menuVisible ? 'visible' : 'hidden'}`}>
+        <div className="menu-base">
+            <div className={`menu-details-wrapper ${props.menuVisible ? 'visible' : 'hidden'}`}>
                 <MenuDetails handleRestartClick={handleRestartClick} handleModeClick={handleModeClick}
                 handleGuideClick={handleGuideClick} />
-                <div className={`modes-details-wrapper ${modesTabVisible ? 'visible' : 'hidden'}`}>
+                <div className={`modes-details-wrapper ${props.modesTabVisible ? 'visible' : 'hidden'}`}>
                     <ModesTab handleExitClick={handleExitClick} 
                     handleThreeByThreeClick={handleThreeByThreeClick}
                     handleFourByFourClick={handleFourByFourClick}
                     handleFiveByFiveClick={handleFiveByFiveClick}/>
                 </div>
-                <div className={`guide-details-wrapper ${guideVisible ? 'visible' : 'hidden'}`}>
+                <div className={`guide-details-wrapper ${props.guideVisible ? 'visible' : 'hidden'}`}>
                     <Guide handleExitClick={handleExitClick}/>
                 </div>
             </div>

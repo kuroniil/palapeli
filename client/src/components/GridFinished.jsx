@@ -25,7 +25,8 @@ const GridFinished = (props) => {
                 Total Moves Made: <span style={{ color: "white", textDecoration: "underline" }}>{props.totalMoves}</span>
             </div>
             <ScoreSubmitForm mode={mode} time={props.finishTime} totalMoves={props.totalMoves} 
-            updateLeaderboardMode={props.updateLeaderboardMode} submitted={submitted} setSubmitted={setSubmitted} />
+            updateLeaderboardMode={props.updateLeaderboardMode} submitted={submitted} setSubmitted={setSubmitted}
+            setHighlightId={props.setHighlightId} />
             {submitted && <p>Score submitted!</p>}
         </div>
     )

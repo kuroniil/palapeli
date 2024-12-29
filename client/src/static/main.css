@@ -367,7 +367,7 @@ body {
 }
 
 .leaderboard table {
-    padding: 1em;
+    border-spacing: 0;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     table-layout: fixed;
     width: 60em;
@@ -418,4 +418,15 @@ body {
 
 .submit-form button:hover {
     background-color: var(--background-very-light);
+}
+
+.score {
+    animation: blinker 2s linear infinite;
+    background-color: var(--background-very-light);
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0.5;
+    }
 }

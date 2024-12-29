@@ -1,6 +1,6 @@
     import Score from "./Score"
 
-const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode, setLeaderboardVisible }) => {
+const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode, setLeaderboardVisible, highlightId }) => {
     const handle3x3Click = () => {
         updateLeaderboardMode("3x3")
     }
@@ -34,7 +34,7 @@ const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode, setLeader
                     </thead>
                     <tbody>
                         {scores.map((score, index) => 
-                        <Score key={score.id} score={score} index={index} />)}
+                        <Score key={score.id} score={score} index={index} id={score.id} highlightId={highlightId} />)}
                     </tbody>
                 </table>
             </div>

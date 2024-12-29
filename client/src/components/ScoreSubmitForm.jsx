@@ -22,6 +22,7 @@ const ScoreSubmitForm = (props) => {
                 props.updateLeaderboardMode(props.mode)
                 setName('')
                 props.setSubmitted(true)
+                props.setHighlightId(parseInt(response.data.id))
             })
         }
     }
@@ -29,7 +30,7 @@ const ScoreSubmitForm = (props) => {
     return (
         <div className="submit-form">
             <form onSubmit={submitScore}>
-            Enter Nickname (9 characters or less)
+            Enter Nickname (20 characters or less)
             <br></br>
             <br></br>
                 <input required placeholder="nickname" value={name} onChange={handleNameChange}/>

@@ -26,6 +26,7 @@ function App() {
   const [menuVisible, setMenuVisible] = useState(false)
   const [modesTabVisible, setModesTabVisible] = useState(false)
   const [guideVisible, setGuideVisible] = useState(false)
+  const [highlightId, setHighlightId] = useState(-1)
 
   const updateLeaderboardMode = (mode) => {
     setLeaderboardMode(mode)
@@ -72,14 +73,15 @@ function App() {
         guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible}/>
       <div className={`leaderboard-wrapper ${leaderboardVisible ? "visible" : "hidden"}`}>
           <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}
-          setLeaderboardVisible={setLeaderboardVisible} />
+          setLeaderboardVisible={setLeaderboardVisible} highlightId={highlightId}/>
       </div>
       {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
       setGridComplete={setGridComplete} setFinishTime={setFinishTime} 
       time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
       setTotalMoves={setTotalMoves} />
       : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}
-      updateLeaderboardMode={updateLeaderboardMode} setLeaderboardVisible={setLeaderboardVisible} />}
+      updateLeaderboardMode={updateLeaderboardMode} setLeaderboardVisible={setLeaderboardVisible}
+      setHighlightId={setHighlightId} />}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import scoreService from '../services/scores'
 
-const ScoreSubmitForm = ({ mode, time, updateLeaderboardMode, submitted, setSubmitted }) => {
+const ScoreSubmitForm = (props) => {
     const [name, setName] = useState('')
 
     const handleNameChange = (event) => {
@@ -11,17 +11,17 @@ const ScoreSubmitForm = ({ mode, time, updateLeaderboardMode, submitted, setSubm
     const submitScore = (event) => {
         event.preventDefault()
         const scoreObject = {
-            "mode": mode,
-            "score": time,
+            "mode": props.mode,
+            "score": props.time,
             "name": name
         }
-        if (!submitted) {
+        if (!props.submitted) {
             scoreService
             .create(scoreObject)
             .then(response => {                
-                updateLeaderboardMode(mode)
+                props.updateLeaderboardMode(props.mode)
                 setName('')
-                setSubmitted(true)
+                props.setSubmitted(true)
             })
         }
     }

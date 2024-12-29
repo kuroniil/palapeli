@@ -1,10 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ScoreSubmitForm from './ScoreSubmitForm'
 
 const GridFinished = (props) => {
     const [submitted, setSubmitted] = useState(false)
     const mode = `${Math.sqrt(props.gridSize)}x${Math.sqrt(props.gridSize)}`
     
+    useEffect(() => {
+        if (submitted) {
+            setTimeout(() => {
+                props.setLeaderboardVisible(true)
+            }, 750)
+            
+        }
+    }, [submitted])
+
     return (
         <div className="grid-finished">
             <h2>{mode} Grid Completed</h2>

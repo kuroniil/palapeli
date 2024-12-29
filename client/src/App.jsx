@@ -5,6 +5,7 @@ import Timer from './components/Timer'
 import Leaderboard from './components/Leaderboard'
 import GridFinished from './components/GridFinished'
 import MenuIcon from './components/MenuIcon'
+import LeaderboardIcon from './components/LeaderboardIcon'
 import { useEffect, useState } from 'react'
 import { defaultGrid, gridFont } from './utils/gridUtils'
 import scoreService from './services/scores'
@@ -59,8 +60,10 @@ function App() {
     <div>
       <Header title="pala_peli" />
       <div className="main-buttons">
-        <MenuIcon onClick={handleMenuClick} />
-        <button onClick={() => setLeaderboardVisible(!leaderboardVisible)}>Leaderboard</button>
+        <MenuIcon handleMenuClick={handleMenuClick} leaderboardVisible={leaderboardVisible} 
+        setLeaderboardVisible={setLeaderboardVisible} menuVisible={menuVisible} />
+        <LeaderboardIcon setLeaderboardVisible={setLeaderboardVisible} handleMenuClick={handleMenuClick}
+        setMenuVisible={setMenuVisible} leaderboardVisible={leaderboardVisible} menuVisible={menuVisible} />
         {timerVisible && <Timer time={time} setTime={setTime} startTime={startTime} />}
       </div>
       <Menu setGrid={setGrid} setGridComplete={setGridComplete} setTotalMoves={setTotalMoves}
@@ -68,7 +71,8 @@ function App() {
         handleMenuClick={handleMenuClick} setGuideVisible={setGuideVisible} modesTabVisible={modesTabVisible}
         guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible}/>
       <div className={`leaderboard-wrapper ${leaderboardVisible ? "visible" : "hidden"}`}>
-          <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode} />
+          <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}
+          setLeaderboardVisible={setLeaderboardVisible} />
       </div>
       {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
       setGridComplete={setGridComplete} setFinishTime={setFinishTime} 

@@ -1,7 +1,5 @@
 import { useState } from "react"
 import scoreService from '../services/scores'
-import axios from "axios"
-
 
 const ScoreSubmitForm = ({ mode, time, updateLeaderboardMode, submitted, setSubmitted }) => {
     const [name, setName] = useState('')

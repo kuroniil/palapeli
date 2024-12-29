@@ -110,6 +110,7 @@ body {
 
 .menu {
     display: grid;
+    grid-template-columns: repeat(3, 0.5fr);
     justify-content: center;
     height: 100%;
     border-radius: 1em;
@@ -125,6 +126,8 @@ body {
 }
 
 .menu h1 {
+    grid-column: 2;
+    text-align: center;
     font-size: 400%;
     color: var(--text-bright);
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
@@ -132,6 +135,7 @@ body {
 }
 
 .menu h2 {
+    grid-column: 2;
     font-size: 200%;
     margin: auto;
     color: var(--text-bright);
@@ -140,11 +144,13 @@ body {
 }
 
 .menu img {
+    grid-column: 2;
     margin: 0 auto  0 auto;
-    width: 40%;
+    width: 70%;
 }
 
 .menu button {
+    grid-column: 2;
     user-select: none;
     margin-bottom: 3em;
     font-size: 200%;
@@ -194,10 +200,16 @@ body {
     opacity: 1;
     pointer-events: auto;
 }
-  
+
 .exit-modes {
+    position: relative;
+    right: 10%;
+    rotate: 90deg;
+    grid-column: 3;
+    grid-row: 1;
     font-size: 350%;
-    margin: auto;
+    align-self: start;
+    justify-self: end;
     border-radius: 0.15em;
     border: solid black;
     background-color: var(--background-light);
@@ -297,6 +309,19 @@ body {
     background: var(--background-very-light);
 }
 
+.exit-leaderboard {
+    position: absolute;
+    right: 3%;
+    font-size: 300%;
+    border-radius: 0.15em;
+    border: solid black 0.05em;
+    background-color: var(--background-light);
+    color:black;
+    cursor: pointer;
+    user-select: none;
+    rotate: 90deg;
+}
+
 .leaderboard h2 {
     text-align: center;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
@@ -329,7 +354,7 @@ body {
     cursor: pointer;
 }
 
-.leaderboard button:hover {
+.leaderboard button:hover, .exit-leaderboard:hover {
     background-color: var(--background-very-light);
 }
 
@@ -345,7 +370,7 @@ body {
     padding: 1em;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     table-layout: fixed;
-    width: 35em;
+    width: 60em;
     font-size: large;
 }
 

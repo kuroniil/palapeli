@@ -1,6 +1,6 @@
     import Score from "./Score"
 
-const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode }) => {
+const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode, setLeaderboardVisible }) => {
     const handle3x3Click = () => {
         updateLeaderboardMode("3x3")
     }
@@ -13,9 +13,9 @@ const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode }) => {
     const handle5x5Click = () => {
         updateLeaderboardMode("5x5")
     }
-
     return (
         <div className="leaderboard">
+            <div onClick={() => setLeaderboardVisible(false)} className="exit-leaderboard">×</div>
             <h2>Leaderboard</h2>
             <div className="buttons">
                 <button onClick={handle3x3Click}>3x3</button>

@@ -55,7 +55,7 @@ const Menu = (props) => {
         <div className="menu-base">
             <div className={`menu-details-wrapper ${props.menuVisible ? 'visible' : 'hidden'}`}>
                 <MenuDetails handleRestartClick={handleRestartClick} handleModeClick={handleModeClick}
-                handleGuideClick={handleGuideClick} />
+                handleGuideClick={handleGuideClick} handleMenuClick={props.handleMenuClick} />
                 <div className={`modes-details-wrapper ${props.modesTabVisible ? 'visible' : 'hidden'}`}>
                     <ModesTab handleExitClick={handleExitClick} 
                     handleThreeByThreeClick={handleThreeByThreeClick}

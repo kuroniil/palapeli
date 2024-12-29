@@ -1,11 +1,9 @@
-import ModesTab from './ModesTab'
-import { useState } from 'react'
-
-const MenuDetails = ({ handleRestartClick, handleModeClick, handleGuideClick }) => {
+const MenuDetails = ({ handleRestartClick, handleModeClick, handleGuideClick, handleMenuClick }) => {
 
 
     return (
         <div className="menu">
+            <div onClick={handleMenuClick} className="exit-modes">×</div>
             <h1>valikko</h1>
             <button onClick={handleRestartClick}>restart game</button>
             <button onClick={handleModeClick}>change mode</button>

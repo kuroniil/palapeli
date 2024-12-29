@@ -6,7 +6,7 @@ const ModesTab = ({ handleExitClick, handleThreeByThreeClick, handleFourByFourCl
             <button onClick={handleThreeByThreeClick}>3x3</button>
             <button onClick={handleFourByFourClick}>4x4</button>
             <button onClick={handleFiveByFiveClick}>5x5</button>
-            </div>
+        </div>
     )
 }
 

@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
-import MenuIcon from './MenuIcon'
 import MenuDetails from './MenuDetails' 
 import ModesTab from './ModesTab'
 import Guide from './Guide'
-import { randomizeGrid } from '../utils/gridUtils'
+import { randomizeGrid, findEmptyCell } from '../utils/gridUtils'
 
 const Menu = (props) => {
     const handleGuideClick = () => {
@@ -39,6 +37,7 @@ const Menu = (props) => {
             gridBuilt = randomizeGrid(size)
         }
         props.setGrid(gridBuilt)
+        props.setEmpty(findEmptyCell(gridBuilt, size))
         props.setStartTime(Date.now())
     }
 

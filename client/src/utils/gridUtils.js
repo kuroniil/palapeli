@@ -64,4 +64,11 @@ const gridFont = (fontSize) => {
     }
 }
 
-export { randomizeGrid, formCorrectGrid, gridFont, defaultGrid }
+const findEmptyCell = (grid, size) => {
+    const emptyCellIndex = grid.flat().findIndex((c => c === '0'))
+    const row = Math.floor(emptyCellIndex / Math.sqrt(size))
+    const column = emptyCellIndex % Math.sqrt(size)
+    return [row, column]
+}
+
+export { randomizeGrid, formCorrectGrid, gridFont, findEmptyCell, defaultGrid }

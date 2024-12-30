@@ -7,7 +7,7 @@ import GridFinished from './components/GridFinished'
 import MenuIcon from './components/MenuIcon'
 import LeaderboardIcon from './components/LeaderboardIcon'
 import { useEffect, useState } from 'react'
-import { defaultGrid, gridFont } from './utils/gridUtils'
+import { defaultGrid, gridFont, findEmptyCell } from './utils/gridUtils'
 import scoreService from './services/scores'
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
   const [modesTabVisible, setModesTabVisible] = useState(false)
   const [guideVisible, setGuideVisible] = useState(false)
   const [highlightId, setHighlightId] = useState(-1)
+  const [empty, setEmpty] = useState(findEmptyCell(grid, gridSize))
 
   const updateLeaderboardMode = (mode) => {
     setLeaderboardMode(mode)
@@ -39,7 +40,7 @@ function App() {
     } else {
         gridFont(6)
     }
-  }, [gridSize])
+  }, [gridSize, gridComplete])
   
 
   useEffect(() => {
@@ -70,13 +71,14 @@ function App() {
       <Menu setGrid={setGrid} setGridComplete={setGridComplete} setTotalMoves={setTotalMoves}
         setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize} 
         handleMenuClick={handleMenuClick} setGuideVisible={setGuideVisible} modesTabVisible={modesTabVisible}
-        guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible}/>
+        guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible} 
+        empty={empty} setEmpty={setEmpty} />
       <div className={`leaderboard-wrapper ${leaderboardVisible ? "visible" : "hidden"}`}>
           <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}
           setLeaderboardVisible={setLeaderboardVisible} highlightId={highlightId}/>
       </div>
-      {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize}
-      setGridComplete={setGridComplete} setFinishTime={setFinishTime} 
+      {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize} empty={empty}
+      setGridComplete={setGridComplete} setFinishTime={setFinishTime} setEmpty={setEmpty}
       time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
       setTotalMoves={setTotalMoves} />
       : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}

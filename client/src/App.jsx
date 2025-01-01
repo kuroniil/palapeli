@@ -83,7 +83,7 @@ function App() {
       setTotalMoves={setTotalMoves} />
       : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}
       updateLeaderboardMode={updateLeaderboardMode} setLeaderboardVisible={setLeaderboardVisible}
-      setHighlightId={setHighlightId} />}
+      setHighlightId={setHighlightId} highlightId={highlightId} />}
     </div>
   )
 }

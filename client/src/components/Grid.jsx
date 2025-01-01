@@ -30,7 +30,7 @@ const Grid = (props) => {
                     break
                 case "ArrowRight":
                     if (props.empty[1] - 1 >= 0 && props.grid[props.empty[0]][props.empty[1] - 1] !== '0') {
-                        updateGrid(props.empty[0], props.empty[1] - 1)    
+                        updateGrid(props.empty[0], props.empty[1] - 1)
                     }
                     break
                 default:
@@ -42,7 +42,7 @@ const Grid = (props) => {
         return () => {
             document.removeEventListener("keydown", handleKeyboardInput)
         }
-    }, [props.empty])
+    }, [props.empty, props.time])
 
     const checkGrid = (size) => {
         formCorrectGrid(size)
@@ -52,7 +52,6 @@ const Grid = (props) => {
                 props.setGridComplete(true)
                 props.setTimerVisible(false)
             }, 200)
-            
         }
     }
     

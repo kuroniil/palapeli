@@ -3,12 +3,15 @@ import ScoreSubmitForm from './ScoreSubmitForm'
 
 const GridFinished = (props) => {
     const [submitted, setSubmitted] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
     const mode = `${Math.sqrt(props.gridSize)}x${Math.sqrt(props.gridSize)}`
     
     useEffect(() => {
         if (submitted) {
             setTimeout(() => {
                 props.setLeaderboardVisible(true)
+                const element = document.getElementById(props.highlightId)
+                element.scrollIntoView({behavior: 'smooth', block: 'center'})
             }, 750)
             
         }
@@ -26,7 +29,7 @@ const GridFinished = (props) => {
             </div>
             <ScoreSubmitForm mode={mode} time={props.finishTime} totalMoves={props.totalMoves} 
             updateLeaderboardMode={props.updateLeaderboardMode} submitted={submitted} setSubmitted={setSubmitted}
-            setHighlightId={props.setHighlightId} />
+            setHighlightId={props.setHighlightId} setErrorMessage={setErrorMessage} errorMessage={errorMessage}/>
             {submitted && <p>Score submitted!</p>}
         </div>
     )

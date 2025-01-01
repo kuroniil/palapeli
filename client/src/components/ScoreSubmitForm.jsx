@@ -21,8 +21,12 @@ const ScoreSubmitForm = (props) => {
             .then(response => {                
                 props.updateLeaderboardMode(props.mode)
                 setName('')
+                props.setErrorMessage('')
                 props.setSubmitted(true)
                 props.setHighlightId(parseInt(response.data.id))
+            })
+            .catch(error => {
+                props.setErrorMessage("Name must be 20 characters or less.")
             })
         }
     }
@@ -35,6 +39,7 @@ const ScoreSubmitForm = (props) => {
             <br></br>
                 <input required placeholder="nickname" value={name} onChange={handleNameChange}/>
                 <button type="submit">submit</button>
+                {props.errorMessage && <span style={{marginLeft: "1em", color: "red"}}>{props.errorMessage}</span>}
             </form>
         </div>            
     )

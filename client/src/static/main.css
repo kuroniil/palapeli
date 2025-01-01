@@ -46,6 +46,7 @@ body {
     background-color: var(--background);
     cursor: pointer;
     user-select: none;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 

@@ -3,6 +3,7 @@ import MenuDetails from './MenuDetails'
 import ModesTab from './ModesTab'
 import Guide from './Guide'
 import { randomizeGrid, findEmptyCell } from '../utils/gridUtils'
+import timerService from '../services/timer'
 
 const Menu = (props) => {
     const handleGuideClick = () => {
@@ -29,6 +30,11 @@ const Menu = (props) => {
     }
 
     const handleRestart = (size) => {
+        timerService
+        .timerStart()
+        .then(response => {
+            props.setTimerId(response.data)
+        })
         props.handleMenuClick()
         props.setGridComplete(false)
         props.setTotalMoves(0)

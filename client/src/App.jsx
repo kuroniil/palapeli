@@ -28,6 +28,7 @@ function App() {
   const [guideVisible, setGuideVisible] = useState(false)
   const [highlightId, setHighlightId] = useState(-1)
   const [empty, setEmpty] = useState(findEmptyCell(grid, gridSize))
+  const [timerId, setTimerId] = useState(-1)
 
   const updateLeaderboardMode = (mode) => {
     setLeaderboardMode(mode)
@@ -38,8 +39,9 @@ function App() {
     if (gridSize === 25) {
       gridFont(5)
     } else {
-        gridFont(6)
+      gridFont(6)
     }
+
   }, [gridSize, gridComplete])
   
 
@@ -72,7 +74,7 @@ function App() {
         setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize} 
         handleMenuClick={handleMenuClick} setGuideVisible={setGuideVisible} modesTabVisible={modesTabVisible}
         guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible} 
-        empty={empty} setEmpty={setEmpty} />
+        empty={empty} setEmpty={setEmpty} setTimerId={setTimerId} />
       <div className={`leaderboard-wrapper ${leaderboardVisible ? "visible" : "hidden"}`}>
           <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}
           setLeaderboardVisible={setLeaderboardVisible} highlightId={highlightId}/>
@@ -80,7 +82,7 @@ function App() {
       {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize} empty={empty}
       setGridComplete={setGridComplete} setFinishTime={setFinishTime} setEmpty={setEmpty}
       time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
-      setTotalMoves={setTotalMoves} />
+      setTotalMoves={setTotalMoves} timerId={timerId} />
       : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}
       updateLeaderboardMode={updateLeaderboardMode} setLeaderboardVisible={setLeaderboardVisible}
       setHighlightId={setHighlightId} highlightId={highlightId} />}

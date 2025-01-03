@@ -1,5 +1,4 @@
 const router = require('express').Router()
-
 const  Score  = require('../models/score')
 
 Score.sync()
@@ -26,7 +25,6 @@ router.post('/', async (request, response) => {
         return response.status(400).json({ error })
     }
 })
-
 
 //router.get('/:mode/:id', (request, response) => {
 //    const mode = request.params.mode

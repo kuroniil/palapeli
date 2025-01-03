@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { formCorrectGrid } from '../utils/gridUtils'
+import timerService from '../services/timer'
 
 const Grid = (props) => {
     const [correctGrid, setCorrectGrid] = useState(formCorrectGrid(props.gridSize))
@@ -47,6 +48,11 @@ const Grid = (props) => {
     const checkGrid = (size) => {
         formCorrectGrid(size)
         if (JSON.stringify(props.grid) === correctGrid) {
+            timerService
+                .timerStop(props.timerId)
+                .then(response => {
+                    console.log(response.data)
+                })
             props.setFinishTime(props.time)
             setTimeout(() => {
                 props.setGridComplete(true)

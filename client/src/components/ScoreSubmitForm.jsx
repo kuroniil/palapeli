@@ -8,14 +8,14 @@ const ScoreSubmitForm = (props) => {
         setName(event.target.value)
     }
 
-    const submitScore = (event) => {
+    const submitScore = async (event) => {
         event.preventDefault()
-        const scoreObject = {
-            "mode": props.mode,
-            "score": props.time,
-            "name": name
-        }
         if (!props.submitted) {
+            const scoreObject = {
+                "mode": props.mode,
+                "score": props.time,
+                "name": name
+            }
             scoreService
             .create(scoreObject)
             .then(response => {                

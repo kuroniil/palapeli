@@ -26,7 +26,7 @@ Score.init({
         
     },
     score: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DECIMAL,
         allowNull: false,
         validate: {
             len: [1, 6]

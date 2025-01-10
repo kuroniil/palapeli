@@ -30,10 +30,16 @@ const Menu = (props) => {
     }
 
     const handleRestart = (size) => {
+        const oldTimerId = sessionStorage.getItem("timerId")
+        if (oldTimerId) {
+            timerService
+            .timerStop(oldTimerId)
+        }
         timerService
         .timerStart()
         .then(response => {
             props.setTimerId(response.data)
+            sessionStorage.setItem("timerId", response.data)
         })
         props.handleMenuClick()
         props.setGridComplete(false)

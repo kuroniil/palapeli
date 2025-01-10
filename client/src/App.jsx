@@ -9,6 +9,7 @@ import LeaderboardIcon from './components/LeaderboardIcon'
 import { useEffect, useState } from 'react'
 import { defaultGrid, gridFont, findEmptyCell } from './utils/gridUtils'
 import scoreService from './services/scores'
+import timerService from './services/timer'
 
 function App() {
   const [gridSize, setGridSize] = useState(16)
@@ -28,7 +29,7 @@ function App() {
   const [guideVisible, setGuideVisible] = useState(false)
   const [highlightId, setHighlightId] = useState(-1)
   const [empty, setEmpty] = useState(findEmptyCell(grid, gridSize))
-  const [timerId, setTimerId] = useState(-1)
+  const [timerId, setTimerId] = useState(null)
 
   const updateLeaderboardMode = (mode) => {
     setLeaderboardMode(mode)
@@ -44,6 +45,19 @@ function App() {
 
   }, [gridSize, gridComplete])
   
+  useEffect(() => {
+    const oldTimerId = sessionStorage.getItem("timerId")
+    if (oldTimerId) {
+      timerService
+        .timerStop(oldTimerId)
+    }
+    timerService
+      .timerStart()
+      .then(response => {
+          setTimerId(response.data)
+          sessionStorage.setItem("timerId", response.data)
+      })
+  }, [])
 
   useEffect(() => {
     scoreService

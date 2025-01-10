@@ -51,9 +51,8 @@ const Grid = (props) => {
             timerService
                 .timerStop(props.timerId)
                 .then(response => {
-                    console.log(response.data)
+                    props.setFinishTime(response.data)
                 })
-            props.setFinishTime(props.time)
             setTimeout(() => {
                 props.setGridComplete(true)
                 props.setTimerVisible(false)

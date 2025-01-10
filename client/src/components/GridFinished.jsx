@@ -29,7 +29,7 @@ const GridFinished = (props) => {
             </div>
             <ScoreSubmitForm mode={mode} time={props.finishTime} totalMoves={props.totalMoves} 
             updateLeaderboardMode={props.updateLeaderboardMode} submitted={submitted} setSubmitted={setSubmitted}
-            setHighlightId={props.setHighlightId} setErrorMessage={setErrorMessage} errorMessage={errorMessage}/>
+            setHighlightId={props.setHighlightId} setErrorMessage={setErrorMessage} errorMessage={errorMessage} />
             {submitted && <p>Score submitted!</p>}
         </div>
     )

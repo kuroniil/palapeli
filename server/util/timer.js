@@ -7,7 +7,7 @@ const timerStart = (id) => {
 const timerStop = (id) => {
     const finishTime = Date.now() - timers[id]
     delete timers[id]
-    return finishTime / 1000
+    return Math.round(finishTime / 100) / 10
 }
 
 module.exports = { timerStart, timerStop }

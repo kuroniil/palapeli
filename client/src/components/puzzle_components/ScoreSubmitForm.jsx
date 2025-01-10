@@ -1,5 +1,5 @@
 import { useState } from "react"
-import scoreService from '../services/scores'
+import scoreService from '../../services/scores'
 
 const ScoreSubmitForm = (props) => {
     const [name, setName] = useState('')

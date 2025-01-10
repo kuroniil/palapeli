@@ -2,8 +2,8 @@
 import MenuDetails from './MenuDetails' 
 import ModesTab from './ModesTab'
 import Guide from './Guide'
-import { randomizeGrid, findEmptyCell } from '../utils/gridUtils'
-import timerService from '../services/timer'
+import { randomizeGrid, findEmptyCell } from '../../utils/gridUtils'
+import timerService from '../../services/timer'
 
 const Menu = (props) => {
     const handleGuideClick = () => {

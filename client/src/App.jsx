@@ -7,11 +7,14 @@ function App() {
 
   return (
     <div>
-        <button onClick={() => setGameState(!gameState)}>jjjjjjjj</button>
           {gameState
           ? <PuzzleGame />
           : <Snake />
           }
+      <button style={{position: "absolute", top: "1px"}}
+      onClick={() => setGameState(!gameState)}>
+        Change Game
+      </button>
     </div>
   )
 }

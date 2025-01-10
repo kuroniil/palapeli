@@ -8,6 +8,7 @@
     --theme-lum: 60%;
 
     --background: hsl(var(--theme-hue), var(--theme-sat), var(--theme-lum));
+    --background-darker: hsl(var(--theme-hue), var(--theme-sat), calc(var(--theme-lum) - 18.5%));
     --background-dark: hsl(var(--theme-hue), var(--theme-sat), calc(var(--theme-lum) - 8.5%));
     --background-light: hsl(var(--theme-hue), var(--theme-sat), calc(var(--theme-lum) + 8.5%));
     --background-very-light: hsl(var(--theme-hue), var(--theme-sat), calc(var(--theme-lum) + 18.5%));
@@ -431,4 +432,45 @@ body {
     50% {
       opacity: 0.5;
     }
+}
+
+.snake {
+    position: relative;
+    top: 10em;
+    border: solid 0.3em black;
+    margin-bottom: 50vh;
+}
+
+.snake-grid {
+    
+}
+
+.snake-row {
+    display: flex;
+    justify-content: center;
+    font-size: 200%;
+}
+
+.snake-cell {
+    width: calc(1vh + 1vw);
+    height: calc(1vh + 1vw);
+    text-align: center;
+    padding: 0.1em;
+    background-color: var(--background-darker);
+    color: transparent;
+    cursor: pointer;
+    user-select: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+
+.snake-player {
+    width: calc(1vh + 1vw);
+    height: calc(1vh + 1vw);
+    text-align: center;
+    padding: 0.1em;
+    background-color: black;
+    color: transparent;
+    cursor: pointer;
+    user-select: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }

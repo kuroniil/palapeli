@@ -11,7 +11,7 @@ function App() {
           ? <PuzzleGame />
           : <Snake />
           }
-      <button style={{position: "absolute", top: "1px"}}
+      <button style={{position: "absolute", top: "50px"}}
       onClick={() => setGameState(!gameState)}>
         Change Game
       </button>

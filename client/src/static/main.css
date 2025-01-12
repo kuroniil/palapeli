@@ -458,7 +458,6 @@ body {
     padding: 0.1em;
     background-color: var(--background-darker);
     color: transparent;
-    cursor: pointer;
     user-select: none;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
@@ -470,7 +469,17 @@ body {
     padding: 0.1em;
     background-color: black;
     color: transparent;
-    cursor: pointer;
     user-select: none;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+
+.point {
+    width: calc(1vh + 1vw);
+    height: calc(1vh + 1vw);
+    text-align: center;
+    padding: 0.1em;
+    background-color: var(--background-darker);
+    user-select: none;
+    color: var(--text-bright);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

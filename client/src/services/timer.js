@@ -1,5 +1,5 @@
 import axios from "axios"
-const baseUrl = 'http://localhost:3001/api/timer'
+const baseUrl = '/api/timer'
 
 const timerStart = () => (
     axios.get(`${baseUrl}`)

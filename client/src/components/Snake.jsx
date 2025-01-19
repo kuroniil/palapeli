@@ -5,9 +5,12 @@ const Snake = () => {
     const [gridSize, setGridSize] = useState([20, 20])
     const [point, setPoint] = useState([Math.floor(Math.random()*gridSize[0]), Math.floor(Math.random()*gridSize[1])])
     defaultGrid[5][5] = 1
+    defaultGrid[4][5] = 1
+    defaultGrid[3][5] = 1
     defaultGrid[point[0]][point[1]] = 2
     const [snakeGrid, setSnakeGrid] = useState(defaultGrid)
     const [playerPosition, setPlayerPosition] = useState([5,5])
+    const [tailPosition, setTailPosition] = useState([[3,5], [4,5]])
     const [direction, setDirection] = useState('D')
     const [lastMovePos, setLastMovePos] = useState([5,5])
     const [pointCount, setPointCount] = useState(0)
@@ -22,8 +25,12 @@ const Snake = () => {
     
     const updateGrid = (oldPos, newPos, newVal) => {
         const updatedGrid = snakeGrid
-        updatedGrid[oldPos[0]][oldPos[1]] = 0
         updatedGrid[newPos[0]][newPos[1]] = newVal
+        updatedGrid[tailPosition[0][0]][tailPosition[0][1]] = 0
+        const spliced = tailPosition.splice(0, 1)
+        const newTail = tailPosition.filter(t => t !== spliced)
+        newTail.push(newPos)
+        setTailPosition(newTail)
         setSnakeGrid(updatedGrid)
     }
 

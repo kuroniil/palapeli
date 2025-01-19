@@ -11,7 +11,7 @@ const scoresRouter = require('./controllers/scores')
 const timersRouter = require('./controllers/timers')
 
 app.use(express.json())
-
+app.use(express.static('dist'))
 app.use(cors())
 
 app.use('/api/scores', scoresRouter)

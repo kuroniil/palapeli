@@ -10,30 +10,37 @@ const Snake = () => {
     defaultGrid[point[0]][point[1]] = 2
     const [snakeGrid, setSnakeGrid] = useState(defaultGrid)
     const [playerPosition, setPlayerPosition] = useState([5,5])
-    const [tailPosition, setTailPosition] = useState([[3,5], [4,5]])
+    const [tailPosition, setTailPosition] = useState([[3,5], [4,5], [5,5]])
     const [direction, setDirection] = useState('D')
     const [lastMovePos, setLastMovePos] = useState([5,5])
     const [pointCount, setPointCount] = useState(0)
+    const [tailUpdating, setTailUpdating] = useState(false)
 
     const collectPoint = () => {
         const newPointCount = pointCount + 1
         setPointCount(newPointCount)
         const newPoint = [Math.floor(Math.random()*gridSize[0]), Math.floor(Math.random()*gridSize[1])]
         setPoint(newPoint)
-        updateGrid(playerPosition, newPoint, 2)
+        updateGrid("pointCollect", newPoint, 2)
+        setTailUpdating(true)
     } 
     
-    const updateGrid = (oldPos, newPos, newVal) => {
+    const updateGrid = (event, newPos, newVal) => {
         const updatedGrid = snakeGrid
         updatedGrid[newPos[0]][newPos[1]] = newVal
-        updatedGrid[tailPosition[0][0]][tailPosition[0][1]] = 0
-        const spliced = tailPosition.splice(0, 1)
-        const newTail = tailPosition.filter(t => t !== spliced)
+        var newTail  = tailPosition
+        if (!tailUpdating) {
+            updatedGrid[tailPosition[0][0]][tailPosition[0][1]] = 0
+            const spliced = tailPosition.splice(0, 1)
+            newTail = tailPosition.filter(t => t !== spliced)
+        }
         newTail.push(newPos)
-        setTailPosition(newTail)
+        if (event === "playerMove") {
+            setTailPosition(newTail)
+            setTailUpdating(false)
+        }
         setSnakeGrid(updatedGrid)
     }
-
     const updatePlayerPosition = (direction) => {
         const oldPos = playerPosition
         var newPos = -1
@@ -68,7 +75,7 @@ const Snake = () => {
                 break
         }
         setPlayerPosition(newPos)
-        updateGrid(oldPos, newPos, 1)
+        updateGrid("playerMove", newPos, 1)
         if (newPos[0] === point[0] && newPos[1] === point[1]) {
             collectPoint()
         }

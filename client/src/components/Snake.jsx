@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import SnakeGrid from "./snake_components/SnakeGrid"
+import GameOver from "./snake_components/GameOver"
 
 const Snake = () => {
     const defaultGrid = Array.from( {length: 20 }, () => Array(20).fill(0))
@@ -15,11 +17,19 @@ const Snake = () => {
     const [lastMovePos, setLastMovePos] = useState([5,5])
     const [pointCount, setPointCount] = useState(0)
     const [tailUpdating, setTailUpdating] = useState(false)
+    const [gameOver, setGameOver] = useState(false)
 
     const collectPoint = () => {
         const newPointCount = pointCount + 1
         setPointCount(newPointCount)
-        const newPoint = [Math.floor(Math.random()*gridSize[0]), Math.floor(Math.random()*gridSize[1])]
+        
+        while (true) {
+            var newPosition = [Math.floor(Math.random()*gridSize[0]), Math.floor(Math.random()*gridSize[1])]
+            if (!isSnake(newPosition)) {
+                break
+            }
+        }
+        const newPoint = newPosition
         setPoint(newPoint)
         updateGrid("pointCollect", newPoint, 2)
         setTailUpdating(true)
@@ -75,11 +85,19 @@ const Snake = () => {
                 break
         }
         setPlayerPosition(newPos)
+        if (isSnake(newPos)) {
+            setGameOver(true)
+        }
+        
         updateGrid("playerMove", newPos, 1)
         if (newPos[0] === point[0] && newPos[1] === point[1]) {
             collectPoint()
         }
     }
+
+    const isSnake = (newPos) => (
+        tailPosition.some((pos) => pos[0] === newPos[0] && pos[1] === newPos[1])
+    )
 
     useEffect(() => {
         const handleKeyboardInput = (event) => {
@@ -129,29 +147,13 @@ const Snake = () => {
         return () => clearInterval(interval)
         }, [direction, playerPosition])
     
-    return (
+    return (  
         <div className="snake">
-            <div className="snake-grid">
-                {snakeGrid.map((row, rowIndex) => (
-                    <div className="snake-row" key={rowIndex}>
-                        {row.map((cell, colIndex) => (
-                            cell === 1
-                            ? <div className="snake-player" key={colIndex}>
-                                s
-                            </div>
-                            : cell === 2 
-                            ? <div className="point" key={colIndex}>
-                                ×
-                            </div>
-                            : <div className="snake-cell" key={colIndex}>
-                                {cell}
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
+            {gameOver
+                ? <GameOver pointCount={pointCount} />
+                : <SnakeGrid snakeGrid={snakeGrid} />
+            }
         </div>
     )
 }
-
 export default Snake

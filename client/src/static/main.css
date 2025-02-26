@@ -437,12 +437,15 @@ body {
 .snake {
     position: relative;
     top: 10em;
-    border: solid 0.3em black;
     margin-bottom: 50vh;
 }
 
 .snake-grid {
-    
+    border: solid 0.3em black;
+}
+
+.snake-score {
+    padding: 1em;
 }
 
 .snake-row {

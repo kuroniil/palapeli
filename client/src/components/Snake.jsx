@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import SnakeGrid from "./snake_components/SnakeGrid"
 import GameOver from "./snake_components/GameOver"
+import SnakeScore from "./snake_components/SnakeScore"
 
 const Snake = () => {
     const defaultGrid = Array.from( {length: 20 }, () => Array(20).fill(0))
@@ -151,7 +152,11 @@ const Snake = () => {
         <div className="snake">
             {gameOver
                 ? <GameOver pointCount={pointCount} />
-                : <SnakeGrid snakeGrid={snakeGrid} />
+                : 
+                <div>
+                  <SnakeScore pointCount={pointCount} />
+                  <SnakeGrid snakeGrid={snakeGrid} />
+                </div>
             }
         </div>
     )

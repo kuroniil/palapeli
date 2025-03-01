@@ -441,6 +441,9 @@ body {
 
 .snake-grid {
     border: solid 0.3em black;
+    border-radius: 0.7em;
+    position: relative;
+    bottom: 150vh;
 }
 
 .snake-score {
@@ -489,4 +492,8 @@ body {
     user-select: none;
     color: transparent;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.snake-leaderboard {
+    height: 75vh;
 }

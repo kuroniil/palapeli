@@ -2,6 +2,10 @@ import { useState, useEffect } from "react"
 import SnakeGrid from "./snake_components/SnakeGrid"
 import GameOver from "./snake_components/GameOver"
 import SnakeScore from "./snake_components/SnakeScore"
+import MenuButton from "./snake_components/MenuButton"
+import LeaderboardButton from "./snake_components/LeaderboardButton"
+import Menu from "./snake_components/Menu"
+import Leaderboard from "./snake_components/Leaderboard"
 
 const Snake = () => {
     const defaultGrid = Array.from( {length: 20 }, () => Array(20).fill(0))
@@ -19,6 +23,8 @@ const Snake = () => {
     const [pointCount, setPointCount] = useState(0)
     const [tailUpdating, setTailUpdating] = useState(false)
     const [gameOver, setGameOver] = useState(false)
+    const [menuVisible, setMenuVisible] = useState(false)
+    const [leaderboardVisible, setLeaderboardVisible] = useState(false)
 
     const collectPoint = () => {
         const newPointCount = pointCount + 1
@@ -157,15 +163,14 @@ const Snake = () => {
                 : 
                 <div>
                   <div className="main-buttons">
-                    <button>
-                        Menu
-                    </button>
-                    <button>
-                        Leaderboard
-                    </button>
+                    <MenuButton menuVisible={menuVisible} setMenuVisible={setMenuVisible}/>
+                    <LeaderboardButton leaderboardVisible={leaderboardVisible}
+                    setLeaderboardVisible={setLeaderboardVisible} />
                     <SnakeScore pointCount={pointCount} />                    
                 </div>
-                  <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} />
+                <Menu menuVisible={menuVisible} />
+                <Leaderboard leaderboardVisible={leaderboardVisible} setLeaderboardVisible={setLeaderboardVisible}/>
+                <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} />
                 </div>
             }
         </div>

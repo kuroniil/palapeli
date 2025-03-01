@@ -4,7 +4,7 @@ const MenuDetails = ({ handleRestartClick, handleModeClick, handleGuideClick, ha
     return (
         <div className="menu">
             <div onClick={handleMenuClick} className="exit-modes">×</div>
-            <h1>valikko</h1>
+            <h1>menu</h1>
             <button onClick={handleRestartClick}>restart game</button>
             <button onClick={handleModeClick}>change mode</button>
             <button onClick={handleGuideClick}>guide</button>

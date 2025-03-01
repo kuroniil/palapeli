@@ -436,7 +436,6 @@ body {
 
 .snake {
     position: relative;
-    top: 10em;
     margin-bottom: 50vh;
 }
 
@@ -445,7 +444,8 @@ body {
 }
 
 .snake-score {
-    padding: 1em;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-weight: bold;
 }
 
 .snake-row {
@@ -465,7 +465,7 @@ body {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 
-.snake-player {
+.snake-player, .snake-player-head {
     width: calc(1vh + 1vw);
     height: calc(1vh + 1vw);
     text-align: center;
@@ -476,13 +476,17 @@ body {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 
+.snake-player-head {
+    background: radial-gradient(circle, black 5%, white 10%, black 20%)
+}
+
 .point {
     width: calc(1vh + 1vw);
     height: calc(1vh + 1vw);
     text-align: center;
     padding: 0.1em;
-    background-color: var(--background-darker);
+    background: radial-gradient(var(--background-very-light) 30%, var(--background-darker) 21%);
     user-select: none;
-    color: var(--text-bright);
+    color: transparent;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

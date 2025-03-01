@@ -89,7 +89,6 @@ const Snake = () => {
         if (isSnake(newPos)) {
             setGameOver(true)
         }
-        
         updateGrid("playerMove", newPos, 1)
         if (newPos[0] === point[0] && newPos[1] === point[1]) {
             collectPoint()
@@ -149,13 +148,24 @@ const Snake = () => {
         }, [direction, playerPosition])
     
     return (  
-        <div className="snake">
+        <div className="snake">    
+            <h1 className="main-header">
+                mato_peli
+            </h1>
             {gameOver
                 ? <GameOver pointCount={pointCount} />
                 : 
                 <div>
-                  <SnakeScore pointCount={pointCount} />
-                  <SnakeGrid snakeGrid={snakeGrid} />
+                  <div className="main-buttons">
+                    <button>
+                        Menu
+                    </button>
+                    <button>
+                        Leaderboard
+                    </button>
+                    <SnakeScore pointCount={pointCount} />                    
+                </div>
+                  <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} />
                 </div>
             }
         </div>

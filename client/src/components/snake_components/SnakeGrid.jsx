@@ -10,11 +10,11 @@ const SnakeGrid = (props) => {
                         {cell}
                     </div>
                     : cell === 1 && props.playerPosition[0] === rowIndex && props.playerPosition[1] === colIndex
-                    ? <div className="snake-player-head" key={colIndex}>
+                    ? <div className={`${props.characterSkin}-head`} key={colIndex}>
                         s
                     </div>
                     : cell === 1
-                    ? <div className="snake-player" key={colIndex}>
+                    ? <div className={props.characterSkin} key={colIndex}>
                         s
                     </div>
                     : cell === 2 

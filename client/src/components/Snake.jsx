@@ -15,6 +15,7 @@ const Snake = () => {
     defaultGrid[4][5] = 1
     defaultGrid[3][5] = 1
     defaultGrid[point[0]][point[1]] = 2
+    const defaultPlayer = [[3,5], [4,5], [5,5]]
     const [snakeGrid, setSnakeGrid] = useState(defaultGrid)
     const [playerPosition, setPlayerPosition] = useState([5,5])
     const [tailPosition, setTailPosition] = useState([[3,5], [4,5], [5,5]])
@@ -25,6 +26,7 @@ const Snake = () => {
     const [gameOver, setGameOver] = useState(false)
     const [menuVisible, setMenuVisible] = useState(false)
     const [leaderboardVisible, setLeaderboardVisible] = useState(false)
+    const [characterSkin, setCharacterSkin] = useState("snake-player-default")
 
     const collectPoint = () => {
         const newPointCount = pointCount + 1
@@ -61,7 +63,7 @@ const Snake = () => {
     const updatePlayerPosition = (direction) => {
         const oldPos = playerPosition
         var newPos = -1
-        switch (direction) {
+        switch (direction) { 
             case "R":
                 if (oldPos[1] !== gridSize[1] - 1) {
                     newPos = [oldPos[0], oldPos[1] + 1]
@@ -168,9 +170,13 @@ const Snake = () => {
                     setLeaderboardVisible={setLeaderboardVisible} />
                     <SnakeScore pointCount={pointCount} />                    
                 </div>
-                <Menu menuVisible={menuVisible} />
+                <Menu menuVisible={menuVisible} setMenuVisible={setMenuVisible} 
+                defaultGrid={defaultGrid} defaultPlayer={defaultPlayer}
+                setTailPosition={setTailPosition} setSnakeGrid={setSnakeGrid}
+                setPointCount={setPointCount} setPlayerPosition={setPlayerPosition} 
+                setDirection={setDirection} setCharacterSkin={setCharacterSkin} />
                 <Leaderboard leaderboardVisible={leaderboardVisible} setLeaderboardVisible={setLeaderboardVisible}/>
-                <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} />
+                <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} characterSkin={characterSkin} />
                 </div>
             }
         </div>

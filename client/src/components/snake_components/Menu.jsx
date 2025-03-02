@@ -1,15 +1,35 @@
+import { useState } from "react"
+import CharactersMenu from "./CharactersMenu"
+
 const Menu = (props) => {
+    const [charactersMenuVisible, setCharactersMenuVisible] = useState(false)
+
+    const handleRestartClick = () => {
+        props.setPointCount(0)
+        props.setSnakeGrid(props.defaultGrid)
+        props.setTailPosition(props.defaultPlayer)
+        props.setPlayerPosition(props.defaultPlayer[props.defaultPlayer.length-1])
+        props.setMenuVisible(false)
+        props.setDirection('D')
+    }
+
+    const handleChangeCharacterClick = () => {
+        setCharactersMenuVisible(!charactersMenuVisible)
+    }
+    
     return (
         <div className="menu-base">
             <div className={`menu-details-wrapper ${props.menuVisible ? 'visible' : 'hidden'}`}>
                 <div className="menu">
                     <h1>Menu</h1>
-                    <button>restart game</button>
-                    <button>j</button>
+                    <button onClick={handleRestartClick}>restart game</button>
+                    <button onClick={handleChangeCharacterClick}>change character</button>
                     <button>j</button>
                 </div>
+                <CharactersMenu charactersMenuVisible={charactersMenuVisible} 
+                setCharactersMenuVisible={setCharactersMenuVisible} 
+                setCharacterSkin={props.setCharacterSkin} setMenuVisible={props.setMenuVisible}/>
             </div>
-            
         </div>
     )
 }

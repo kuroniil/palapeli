@@ -2,8 +2,6 @@ import { useState } from "react"
 import CharactersMenu from "./CharactersMenu"
 
 const Menu = (props) => {
-    const [charactersMenuVisible, setCharactersMenuVisible] = useState(false)
-
     const handleRestartClick = () => {
         props.setPointCount(0)
         props.setSnakeGrid(props.defaultGrid)
@@ -14,7 +12,7 @@ const Menu = (props) => {
     }
 
     const handleChangeCharacterClick = () => {
-        setCharactersMenuVisible(!charactersMenuVisible)
+        props.setCharactersMenuVisible(!props.charactersMenuVisible)
     }
     
     return (
@@ -26,8 +24,8 @@ const Menu = (props) => {
                     <button onClick={handleChangeCharacterClick}>change character</button>
                     <button>j</button>
                 </div>
-                <CharactersMenu charactersMenuVisible={charactersMenuVisible} 
-                setCharactersMenuVisible={setCharactersMenuVisible} 
+                <CharactersMenu charactersMenuVisible={props.charactersMenuVisible} 
+                setCharactersMenuVisible={props.setCharactersMenuVisible} 
                 setCharacterSkin={props.setCharacterSkin} setMenuVisible={props.setMenuVisible}/>
             </div>
         </div>

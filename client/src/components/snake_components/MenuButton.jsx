@@ -1,6 +1,7 @@
-const MenuButton = (props) => {
+const MenuButton = ({ handleMenuClick, setLeaderboardVisible }) => {
     const handleClick = () => {
-        props.setMenuVisible(!props.menuVisible)
+        handleMenuClick()
+        setLeaderboardVisible(false)
     }
     return (
         <button onClick={handleClick}>

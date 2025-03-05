@@ -27,6 +27,7 @@ const Snake = () => {
     const [menuVisible, setMenuVisible] = useState(false)
     const [leaderboardVisible, setLeaderboardVisible] = useState(false)
     const [characterSkin, setCharacterSkin] = useState("snake-player-default")
+    const [charactersMenuVisible, setCharactersMenuVisible] = useState(false)
 
     const collectPoint = () => {
         const newPointCount = pointCount + 1
@@ -155,6 +156,11 @@ const Snake = () => {
         return () => clearInterval(interval)
         }, [direction, playerPosition])
     
+    const handleMenuClick = () => {
+        setMenuVisible(!menuVisible)
+        setCharactersMenuVisible(false)
+    }
+
     return (  
         <div className="snake">    
             <h1 className="main-header">
@@ -165,16 +171,18 @@ const Snake = () => {
                 : 
                 <div>
                   <div className="main-buttons">
-                    <MenuButton menuVisible={menuVisible} setMenuVisible={setMenuVisible}/>
-                    <LeaderboardButton leaderboardVisible={leaderboardVisible}
-                    setLeaderboardVisible={setLeaderboardVisible} />
+                    <MenuButton handleMenuClick={handleMenuClick} setLeaderboardVisible={setLeaderboardVisible}/>
+                    <LeaderboardButton leaderboardVisible={leaderboardVisible} handleMenuClick={handleMenuClick}
+                    setLeaderboardVisible={setLeaderboardVisible} setMenuVisible={setMenuVisible} />
                     <SnakeScore pointCount={pointCount} />                    
                 </div>
                 <Menu menuVisible={menuVisible} setMenuVisible={setMenuVisible} 
                 defaultGrid={defaultGrid} defaultPlayer={defaultPlayer}
                 setTailPosition={setTailPosition} setSnakeGrid={setSnakeGrid}
                 setPointCount={setPointCount} setPlayerPosition={setPlayerPosition} 
-                setDirection={setDirection} setCharacterSkin={setCharacterSkin} />
+                setDirection={setDirection} setCharacterSkin={setCharacterSkin}
+                charactersMenuVisible={charactersMenuVisible}
+                setCharactersMenuVisible={setCharactersMenuVisible} />
                 <Leaderboard leaderboardVisible={leaderboardVisible} setLeaderboardVisible={setLeaderboardVisible}/>
                 <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} characterSkin={characterSkin} />
                 </div>

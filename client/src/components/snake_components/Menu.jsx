@@ -19,7 +19,7 @@ const Menu = (props) => {
         <div className="menu-base">
             <div className={`menu-details-wrapper ${props.menuVisible ? 'visible' : 'hidden'}`}>
                 <div className="menu">
-                    <h1>Menu</h1>
+                    <h1>menu</h1>
                     <button onClick={handleRestartClick}>restart game</button>
                     <button onClick={handleChangeCharacterClick}>change character</button>
                     <button>j</button>

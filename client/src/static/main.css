@@ -521,7 +521,12 @@ body {
 }
 
 .snake-leaderboard {
-    height: 75vh;
+    padding-left: 2em;
+    padding-right: 2em;
+    height: 100%;
+    border-radius: 1em;
+    border: solid black 0.3em;
+    background: var(--background-very-light);
 }
 
 .characters-wrapper {

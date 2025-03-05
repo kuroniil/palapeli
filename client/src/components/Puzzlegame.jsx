@@ -8,7 +8,7 @@ import MenuIcon from './puzzle_components/MenuIcon'
 import LeaderboardIcon from './puzzle_components/LeaderboardIcon'
 import { useEffect, useState } from 'react'
 import { defaultGrid, gridFont, findEmptyCell } from '../utils/gridUtils'
-import scoreService from '../services/scores'
+import scoreService from '../services/puzzlescores'
 import timerService from '../services/timer'
 
 const PuzzleGame = () => {
@@ -36,14 +36,6 @@ const PuzzleGame = () => {
     setLBModeTrigger(!LBModeTrigger)
   }
 
-  useEffect(() => {
-    if (gridSize === 25) {
-      gridFont(5)
-    } else {
-      gridFont(6)
-    }
-
-  }, [gridSize, gridComplete])
   
   useEffect(() => {
     const oldTimerId = sessionStorage.getItem("timerId")
@@ -73,6 +65,15 @@ const PuzzleGame = () => {
     const menuState = !menuVisible
     setMenuVisible(menuState)
   }
+  
+  useEffect(() => {
+    if (gridSize === 25) {
+      gridFont(5)
+    } else {
+      gridFont(6)
+    }
+
+  }, [gridSize, gridComplete])
 
   return (
     <div>

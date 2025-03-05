@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize')
 
 const { sequelize } = require('../util/db')
 
-class Score extends Model {}
+class PuzzleScore extends Model {}
 
-Score.init({
+PuzzleScore.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -36,7 +36,7 @@ Score.init({
     sequelize, 
     underscored: true,
     timestamps: false,
-    modelName: 'score'
+    modelName: 'puzzlescore'
 })
 
-module.exports = Score
+module.exports = PuzzleScore

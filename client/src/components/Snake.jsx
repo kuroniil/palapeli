@@ -28,6 +28,7 @@ const Snake = () => {
     const [leaderboardVisible, setLeaderboardVisible] = useState(false)
     const [characterSkin, setCharacterSkin] = useState("snake-player-default")
     const [charactersMenuVisible, setCharactersMenuVisible] = useState(false)
+    const [highlightId, setHighlightId] = useState(-1)
 
     const collectPoint = () => {
         const newPointCount = pointCount + 1
@@ -183,7 +184,8 @@ const Snake = () => {
                 setDirection={setDirection} setCharacterSkin={setCharacterSkin}
                 charactersMenuVisible={charactersMenuVisible}
                 setCharactersMenuVisible={setCharactersMenuVisible} />
-                <Leaderboard leaderboardVisible={leaderboardVisible} setLeaderboardVisible={setLeaderboardVisible}/>
+                <Leaderboard leaderboardVisible={leaderboardVisible} setLeaderboardVisible={setLeaderboardVisible}
+                highlightId={highlightId} />
                 <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} characterSkin={characterSkin} />
                 </div>
             }

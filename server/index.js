@@ -7,15 +7,18 @@ const app = express()
 const { PORT } = require('./util/config')
 const { connectToDatabase } = require('./util/db')
 
-const scoresRouter = require('./controllers/scores')
+const puzzleScoresRouter = require('./controllers/puzzlescores')
+const snakeScoresRouter = require('./controllers/snakescores')
 const timersRouter = require('./controllers/timers')
 
 app.use(express.json())
 app.use(express.static('dist'))
 app.use(cors())
 
-app.use('/api/scores', scoresRouter)
+app.use('/api/puzzlescores', puzzleScoresRouter)
+app.use('/api/snakescores', snakeScoresRouter)
 app.use('/api/timer', timersRouter)
+
 
 
 const start = async () => {

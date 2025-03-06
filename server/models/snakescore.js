@@ -26,7 +26,7 @@ SnakeScore.init({
         }
     },
     score: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
             len: [1, 6]

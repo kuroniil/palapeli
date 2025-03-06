@@ -5,6 +5,7 @@ import Score from "./Score"
 const Leaderboard = (props) => {
     const [leaderboardState, setLeaderboardState] = useState('all')
     const [scores, setScores] = useState([])
+    
     const handleClick = (event) => {
         switch (event.target.id) {
             case 'all':

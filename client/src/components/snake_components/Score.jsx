@@ -6,7 +6,7 @@ const Score = ({ score, index, id, highlightId }) => {
         <tr className={cName} id={id}>
             <td>{index + 1}.</td>
             <td>{score.name}</td>
-            <td>{score.score} sec</td>
+            <td>{score.score}</td>
             <td>{score.character}</td>
         </tr>
     )

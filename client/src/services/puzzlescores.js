@@ -1,12 +1,12 @@
 import axios from "axios"
-const baseUrl = 'http://localhost:3001/api/puzzlescores'
+import { puzzleScoresBaseUrl } from "../utils/constants"
 
 const getByMode = (mode) => (
-    axios.get(`${baseUrl}/${mode}`)
+    axios.get(`${puzzleScoresBaseUrl}/${mode}`)
 )
 
 const create = (scoreObject) => (
-    axios.post(baseUrl, scoreObject)
+    axios.post(puzzleScoresBaseUrl, scoreObject)
 )
 
 export default {

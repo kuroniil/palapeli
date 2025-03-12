@@ -1,16 +1,16 @@
 import axios from "axios"
-const baseUrl = 'http://localhost:3001/api/snakescores'
+import { snakeScoresBaseUrl } from "../utils/constants"
 
 const getAll = () => (
-    axios.get(baseUrl)
+    axios.get(snakeScoresBaseUrl)
 )
 
 const getByCharacter = (character) => (
-    axios.get(`${baseUrl}/${character}`)
+    axios.get(`${snakeScoresBaseUrl}/${character}`)
 )
 
 const create = (scoreObject) => (
-    axios.post(baseUrl, scoreObject)
+    axios.post(snakeScoresBaseUrl, scoreObject)
 )
 
 export default {

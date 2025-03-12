@@ -1,12 +1,12 @@
 import axios from "axios"
-const baseUrl = '/api/timer'
+import { timerBaseUrl } from "../utils/constants"
 
 const timerStart = () => (
-    axios.get(`${baseUrl}`)
+    axios.get(`${timerBaseUrl}`)
 )
 
 const timerStop = (id) => (
-    axios.get(`${baseUrl}/${id}`)
+    axios.get(`${timerBaseUrl}/${id}`)
 )
 
 export default {

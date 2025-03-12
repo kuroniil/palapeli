@@ -7,7 +7,7 @@ import LeaderboardButton from "./snake_components/LeaderboardButton"
 import Menu from "./snake_components/Menu"
 import Leaderboard from "./snake_components/Leaderboard"
 
-const Snake = () => {
+const Snake = ({ changeAppState }) => {
     const defaultGrid = Array.from( {length: 20 }, () => Array(20).fill(0))
     const [gridSize, setGridSize] = useState([20, 20])
     const [point, setPoint] = useState([Math.floor(Math.random()*gridSize[0]), Math.floor(Math.random()*gridSize[1])])
@@ -182,7 +182,7 @@ const Snake = () => {
                 setTailPosition={setTailPosition} setSnakeGrid={setSnakeGrid}
                 setPointCount={setPointCount} setPlayerPosition={setPlayerPosition} 
                 setDirection={setDirection} setCharacterSkin={setCharacterSkin}
-                charactersMenuVisible={charactersMenuVisible}
+                charactersMenuVisible={charactersMenuVisible} changeAppState={changeAppState}
                 setCharactersMenuVisible={setCharactersMenuVisible} />
                 <Leaderboard leaderboardVisible={leaderboardVisible} setLeaderboardVisible={setLeaderboardVisible}
                 highlightId={highlightId} />

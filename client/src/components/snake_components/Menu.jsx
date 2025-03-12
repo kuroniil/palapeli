@@ -22,7 +22,7 @@ const Menu = (props) => {
                     <h1>menu</h1>
                     <button onClick={handleRestartClick}>restart game</button>
                     <button onClick={handleChangeCharacterClick}>change character</button>
-                    <button>j</button>
+                    <button id="menu" onClick={props.changeAppState}>main menu</button>
                 </div>
                 <CharactersMenu charactersMenuVisible={props.charactersMenuVisible} 
                 setCharactersMenuVisible={props.setCharactersMenuVisible} 

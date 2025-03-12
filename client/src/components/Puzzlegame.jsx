@@ -11,7 +11,7 @@ import { defaultGrid, gridFont, findEmptyCell } from '../utils/gridUtils'
 import scoreService from '../services/puzzlescores'
 import timerService from '../services/timer'
 
-const PuzzleGame = () => {
+const PuzzleGame = ({ changeAppState }) => {
   const [gridSize, setGridSize] = useState(16)
   const [grid, setGrid] = useState(defaultGrid)
   const [gridComplete, setGridComplete] = useState(false)
@@ -68,7 +68,7 @@ const PuzzleGame = () => {
   
   useEffect(() => {
     if (gridSize === 25) {
-      gridFont(5)
+      gridFont(4.5)
     } else {
       gridFont(6)
     }
@@ -89,7 +89,7 @@ const PuzzleGame = () => {
         setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize} 
         handleMenuClick={handleMenuClick} setGuideVisible={setGuideVisible} modesTabVisible={modesTabVisible}
         guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible} 
-        empty={empty} setEmpty={setEmpty} setTimerId={setTimerId} />
+        empty={empty} setEmpty={setEmpty} setTimerId={setTimerId} changeAppState={changeAppState}/>
       <div className={`leaderboard-wrapper ${leaderboardVisible ? "visible" : "hidden"}`}>
           <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}
           setLeaderboardVisible={setLeaderboardVisible} highlightId={highlightId}/>

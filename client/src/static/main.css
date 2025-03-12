@@ -21,6 +21,41 @@ body {
     overflow: hidden;
 }
 
+.games {
+    width: 80%;
+    justify-self: center;
+}
+
+.main-menu {
+    height: 97vh;
+    margin-bottom: 10em;
+    width: 60vw;
+    text-align: center;
+    background-color: var(--background-dark);
+    padding-top: 0.5em;
+    border-radius: 1em;
+    border: solid 4px black;
+}
+
+.main-menu-container {
+    display: grid;
+    grid-template-rows: repeat(1,4);
+    width: 40vw;
+    margin-top: 5em;
+    height: 75vh;
+    justify-self: center;
+}
+
+.main-menu-container button {
+    color: white;
+    margin-bottom: 2em;
+    border: solid 3px black;
+    font-size: 200%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: var(--background-light);
+    border-radius: 1em;
+}
+
 .main-buttons {
     display: flex;
     justify-content: space-evenly;
@@ -52,7 +87,8 @@ body {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 
-.cell:hover {
+.cell:hover,
+.main-menu-container button:hover {
     background-color: var(--background-very-light);
 }
 
@@ -131,6 +167,7 @@ body {
 }
 
 .menu h1 {
+    margin-bottom: 0;
     grid-column: 2;
     text-align: center;
     font-size: 400%;
@@ -157,7 +194,7 @@ body {
 .menu button {
     grid-column: 2;
     user-select: none;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
     font-size: 200%;
     background-color: var(--background-light);
     border-radius: 1em;
@@ -462,8 +499,8 @@ body {
 }
 
 .snake-cell {
-    width: calc(0.98vh + 0.98vw);
-    height: calc(0.98vh + 0.98vw);
+    width: 0.9em;
+    height: 0.9em;
     text-align: center;
     padding: 0.1em;
     background-color: var(--background-darker);
@@ -478,8 +515,8 @@ body {
 .snake-player-green-head,
 .snake-player-orange,
 .snake-player-orange-head {
-    width: calc(0.98vh + 0.98vw);
-    height: calc(0.98vh + 0.98vw);
+    width: 0.9em;
+    height: 0.9em;
     text-align: center;
     padding: 0.1em;
     background-color: black;
@@ -510,8 +547,8 @@ body {
 }
 
 .point {
-    width: calc(0.98vh + 0.98vw);
-    height: calc(0.98vh + 0.98vw);
+    width: 0.9em;
+    height: 0.9em;
     text-align: center;
     padding: 0.1em;
     background: radial-gradient(var(--background-very-light) 30%, var(--background-darker) 21%);

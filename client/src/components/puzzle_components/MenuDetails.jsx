@@ -1,4 +1,4 @@
-const MenuDetails = ({ handleRestartClick, handleModeClick, handleGuideClick, handleMenuClick }) => {
+const MenuDetails = ({ handleRestartClick, handleModeClick, handleGuideClick, handleMenuClick, changeAppState }) => {
 
 
     return (
@@ -8,7 +8,7 @@ const MenuDetails = ({ handleRestartClick, handleModeClick, handleGuideClick, ha
             <button onClick={handleRestartClick}>restart game</button>
             <button onClick={handleModeClick}>change mode</button>
             <button onClick={handleGuideClick}>guide</button>
-            
+            <button onClick={changeAppState} id="menu">main menu</button>
         </div>    
     )
 }

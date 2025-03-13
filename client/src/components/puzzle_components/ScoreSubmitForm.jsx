@@ -26,7 +26,11 @@ const ScoreSubmitForm = (props) => {
                 props.setHighlightId(parseInt(response.data.id))
             })
             .catch(error => {
-                props.setErrorMessage("Name must be 20 characters or less.")
+                if (error.response.data.error.name === 'SequelizeValidationError') {
+                    props.setErrorMessage("Name must be 20 characters or less.")
+                } else {
+                    props.setErrorMessage("Unknown error submitting the score.")
+                }
             })
         }
     }

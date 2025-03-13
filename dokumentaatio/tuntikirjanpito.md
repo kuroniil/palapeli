@@ -32,6 +32,7 @@
 | 2.3.| 2    | Madon värin muuttaminen valikosta |
 | 5.3.| 3    | Matopeli leaderboard ja valikkologiikan korjaus ja alustava backend |
 | 12.3.| 3    | Päävalikon teko |
-| yht.  | 63.5   | | 
+| 13.3.| 3    | Backendin api testejä |
+| yht.  | 66.5   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

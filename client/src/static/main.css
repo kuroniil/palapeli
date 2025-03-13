@@ -411,7 +411,6 @@ body {
 .leaderboard table {
     border-spacing: 0;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    table-layout: fixed;
     width: 60em;
     font-size: large;
 }

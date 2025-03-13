@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/scores
+POST http://localhost:3001/api/snakescores
 content-type: application/json
 
 {
-    "mode": "5x5",
+    "character": "koira",
     "name": "Jarmo",
     "score": "9"
 }

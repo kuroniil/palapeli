@@ -3,6 +3,7 @@ import CharactersMenu from "./CharactersMenu"
 
 const Menu = (props) => {
     const handleRestartClick = () => {
+        props.setGameOver(false)
         props.setPointCount(0)
         props.setSnakeGrid(props.defaultGrid)
         props.setTailPosition(props.defaultPlayer)
@@ -23,6 +24,7 @@ const Menu = (props) => {
                     <button onClick={handleRestartClick}>restart game</button>
                     <button onClick={handleChangeCharacterClick}>change character</button>
                     <button id="menu" onClick={props.changeAppState}>main menu</button>
+                    <div onClick={props.handleMenuClick} className="exit-modes" style={{bottom: "4%", right: "14%"}}>×</div>
                 </div>
                 <CharactersMenu charactersMenuVisible={props.charactersMenuVisible} 
                 setCharactersMenuVisible={props.setCharactersMenuVisible} 

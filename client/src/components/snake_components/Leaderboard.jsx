@@ -3,39 +3,38 @@ import scoreService from '../../services/snakescores'
 import Score from "./Score"
 
 const Leaderboard = (props) => {
-    const [leaderboardState, setLeaderboardState] = useState('all')
     const [scores, setScores] = useState([])
     
     const handleClick = (event) => {
         switch (event.target.id) {
             case 'all':
-                setLeaderboardState('all')
+                props.setLeaderboardState('all')
                 break
             case 'default':
-                setLeaderboardState('default')
+                props.setLeaderboardState('default')
                 break
             case 'orange':
-                setLeaderboardState('orange')
+                props.setLeaderboardState('orange')
                 break
             case 'green':
-                setLeaderboardState('green')
+                props.setLeaderboardState('green')
                 break
         }
     }
 
     useEffect(() => {
-        leaderboardState === 'all'
+        props.leaderboardState === 'all'
         ? scoreService    
             .getAll()
             .then((response) => {
                 setScores(response.data)
             })
         : scoreService    
-            .getByCharacter(leaderboardState)
+            .getByCharacter(props.leaderboardState)
             .then((response) => {
                 setScores(response.data)
             })
-    }, [leaderboardState])
+    }, [props.leaderboardState])
     
     return (
         <div className={`leaderboard-wrapper ${props.leaderboardVisible ? 'visible' : 'hidden'}`}>
@@ -48,7 +47,7 @@ const Leaderboard = (props) => {
                     <button id="orange" onClick={handleClick}>orange</button>
                     <button id="green" onClick={handleClick}>green</button>
                 </div>
-                <h3>{leaderboardState === 'all' ? 'all' : `${leaderboardState} character`}</h3>
+                <h3>{props.leaderboardState === 'all' ? 'all' : `${props.leaderboardState} character`}</h3>
                 <div className="leaderboard-table-container">
                     <table>
                         <thead>

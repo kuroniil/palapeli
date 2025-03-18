@@ -8,7 +8,7 @@ const ScoreSubmitForm = (props) => {
         setName(event.target.value)
     }
 
-    const submitScore = async (event) => {
+    const submitScore = (event) => {
         event.preventDefault()
         if (!props.submitted) {
             const scoreObject = {
@@ -26,10 +26,9 @@ const ScoreSubmitForm = (props) => {
                 props.setHighlightId(parseInt(response.data.id))
             })
             .catch(error => {
+                props.setErrorMessage("Unknown error submitting the score.")
                 if (error.response.data.error.name === 'SequelizeValidationError') {
                     props.setErrorMessage("Name must be 20 characters or less.")
-                } else {
-                    props.setErrorMessage("Unknown error submitting the score.")
                 }
             })
         }
@@ -45,7 +44,7 @@ const ScoreSubmitForm = (props) => {
                 <button type="submit">submit</button>
                 {props.errorMessage && <span style={{marginLeft: "1em", color: "red"}}>{props.errorMessage}</span>}
             </form>
-        </div>            
+        </div>
     )
 }
 

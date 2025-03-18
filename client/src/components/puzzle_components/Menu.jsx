@@ -44,12 +44,9 @@ const Menu = (props) => {
         props.handleMenuClick()
         props.setGridComplete(false)
         props.setTotalMoves(0)
-        let gridBuilt = false
-        while (!gridBuilt) {
-            gridBuilt = randomizeGrid(size)
-        }
-        props.setGrid(gridBuilt)
-        props.setEmpty(findEmptyCell(gridBuilt, size))
+        const builtGrid = randomizeGrid(size)
+        props.setGrid(builtGrid)
+        props.setEmpty(findEmptyCell(builtGrid, size))
         props.setStartTime(Date.now())
     }
 

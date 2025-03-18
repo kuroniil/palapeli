@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/snakescores
+POST http://localhost:3001/api/puzzlescores
 content-type: application/json
 
 {
-    "character": "koira",
+    "mode": "3x3",
     "name": "Jarmo",
     "score": "9"
 }

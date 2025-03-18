@@ -18,7 +18,7 @@ const GridFinished = (props) => {
     }, [submitted])
 
     return (
-        <div className="grid-finished">
+        <div className="game-over">
             <h2>{mode} Grid Completed</h2>
             <p>Submit your score to get on the leaderboard</p>
             <div className="submit-form">

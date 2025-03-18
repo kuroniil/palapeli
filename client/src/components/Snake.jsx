@@ -29,6 +29,7 @@ const Snake = ({ changeAppState }) => {
     const [characterSkin, setCharacterSkin] = useState("snake-player-default")
     const [charactersMenuVisible, setCharactersMenuVisible] = useState(false)
     const [highlightId, setHighlightId] = useState(-1)
+    const [leaderboardState, setLeaderboardState] = useState('all')
 
     const collectPoint = () => {
         const newPointCount = pointCount + 1
@@ -164,31 +165,27 @@ const Snake = ({ changeAppState }) => {
 
     return (  
         <div className="snake">    
-            <h1 className="main-header">
-                mato_peli
-            </h1>
-            {gameOver
-                ? <GameOver pointCount={pointCount} />
-                : 
-                <div>
-                  <div className="main-buttons">
+            <h1 className="main-header">mato_peli</h1>
+            <div>
+                <div className="main-buttons">
                     <MenuButton handleMenuClick={handleMenuClick} setLeaderboardVisible={setLeaderboardVisible}/>
                     <LeaderboardButton leaderboardVisible={leaderboardVisible} handleMenuClick={handleMenuClick}
-                    setLeaderboardVisible={setLeaderboardVisible} setMenuVisible={setMenuVisible} />
+                      setLeaderboardVisible={setLeaderboardVisible} setMenuVisible={setMenuVisible} />
                     <SnakeScore pointCount={pointCount} />                    
                 </div>
                 <Menu menuVisible={menuVisible} setMenuVisible={setMenuVisible} 
-                defaultGrid={defaultGrid} defaultPlayer={defaultPlayer}
-                setTailPosition={setTailPosition} setSnakeGrid={setSnakeGrid}
-                setPointCount={setPointCount} setPlayerPosition={setPlayerPosition} 
-                setDirection={setDirection} setCharacterSkin={setCharacterSkin}
-                charactersMenuVisible={charactersMenuVisible} changeAppState={changeAppState}
-                setCharactersMenuVisible={setCharactersMenuVisible} />
+                  defaultGrid={defaultGrid} defaultPlayer={defaultPlayer} setGameOver={setGameOver}
+                  setTailPosition={setTailPosition} setSnakeGrid={setSnakeGrid}
+                  setPointCount={setPointCount} setPlayerPosition={setPlayerPosition} 
+                  setDirection={setDirection} setCharacterSkin={setCharacterSkin}
+                  charactersMenuVisible={charactersMenuVisible} changeAppState={changeAppState}
+                  setCharactersMenuVisible={setCharactersMenuVisible} handleMenuClick={handleMenuClick} />
                 <Leaderboard leaderboardVisible={leaderboardVisible} setLeaderboardVisible={setLeaderboardVisible}
-                highlightId={highlightId} />
-                <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} characterSkin={characterSkin} />
-                </div>
-            }
+                  highlightId={highlightId} leaderboardState={leaderboardState} setLeaderboardState={setLeaderboardState} />
+            </div>
+            {gameOver ? <GameOver pointCount={pointCount} characterSkin={characterSkin} setHighlightId={setHighlightId}
+                          setLeaderboardState={setLeaderboardState} setLeaderboardVisible={setLeaderboardVisible} />
+                      : <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} characterSkin={characterSkin} />}
         </div>
     )
 }

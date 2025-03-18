@@ -14,7 +14,7 @@ PuzzleScore.init({
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
-            len: [3, 5]
+            is: /^(3x3)|(4x4)|(5x5)$/
         }
     },
     name: {

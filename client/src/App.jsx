@@ -14,11 +14,11 @@ function App() {
     <div>
       {appState === "puzzle" ?
         <div className="games">
-          <PuzzleGame changeAppState={changeAppState}/>
+          <PuzzleGame appState={appState} changeAppState={changeAppState}/>
         </div>
       : appState === "snake" ?
       <div className="games">
-        <Snake changeAppState={changeAppState}/>
+        <Snake appState={appState} changeAppState={changeAppState}/>
       </div>
       : appState === "menu" ?
       <MainMenu changeAppState={changeAppState}/>

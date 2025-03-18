@@ -296,7 +296,7 @@ body {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 
-.grid-finished {
+.game-over {
     position: relative;
     bottom: 150vh;
     height: 75vh;
@@ -306,7 +306,7 @@ body {
     margin: auto auto 30vh auto;
 }
 
-.grid-finished h2 {
+.game-over h2 {
     text-align: center;
     font-size: 300%;
     padding-bottom: 0;
@@ -314,7 +314,7 @@ body {
     color: var(--text-bright);
 }
 
-.grid-finished p {
+.game-over p {
     text-align: center;
     font-size: 150%;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

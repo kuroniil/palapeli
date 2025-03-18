@@ -34,18 +34,25 @@ const Leaderboard = (props) => {
             .then((response) => {
                 setScores(response.data)
             })
-    }, [props.leaderboardState])
-    
+    }, [props.leaderboardState, props.leaderboardVisible])
+
     return (
         <div className={`leaderboard-wrapper ${props.leaderboardVisible ? 'visible' : 'hidden'}`}>
             <div className="leaderboard">
                 <div onClick={() => props.setLeaderboardVisible(false)} className="exit-leaderboard">×</div>
                 <h2>Leaderboard</h2>
                 <div className="buttons">
-                    <button id="all" onClick={handleClick}>all</button>
-                    <button id="default" onClick={handleClick}>default</button>
-                    <button id="orange" onClick={handleClick}>orange</button>
-                    <button id="green" onClick={handleClick}>green</button>
+                    <button className={props.leaderboardState === 'all' ? 'selected' : ''} id="all" onClick={handleClick}>
+                        all
+                    </button>
+                    <button className={props.leaderboardState === 'default' ? 'selected' : ''} id="default" onClick={handleClick}>
+                        default
+                    </button>
+                    <button className={props.leaderboardState === 'orange' ? 'selected' : ''} id="orange" onClick={handleClick}>
+                        orange</button>
+                    <button className={props.leaderboardState === 'green' ? 'selected' : ''} id="green" onClick={handleClick}>
+                        green
+                    </button>
                 </div>
                 <h3>{props.leaderboardState === 'all' ? 'all' : `${props.leaderboardState} character`}</h3>
                 <div className="leaderboard-table-container">

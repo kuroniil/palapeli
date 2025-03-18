@@ -384,6 +384,10 @@ body {
     justify-content: center;
 }
 
+.buttons .selected {
+    background-color: var(--background);
+}
+
 .leaderboard button {
     user-select: none;
     background-color: var(--background-light);

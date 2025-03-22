@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "test": "VITE_ENV=test vite",
     "preview": "vite preview"
   },
   "dependencies": {

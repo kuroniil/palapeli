@@ -35,6 +35,7 @@
 | 13.3.| 3    | Backendin api testejä |
 | 18.3.| 3    | Tuloksen lisääminen leaderboardille ja pelin päättymisruutu matopelille |
 | 18.3.| 2    | Backendin api testejä ajastimelle |
-| yht.  | 81.5   | | 
+| 22.3.| 3    | Playwrightin käyttöönotto, e2e testejä palapelille, koodin muokkausta jotta testit onnistuu |
+| yht.  | 84.5   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

@@ -1,4 +1,5 @@
 const randomizeGrid = (size) => {
+    console.log(import.meta.env.VITE_ENV)
     while (true) {
         let randomArray = [...Array(size).keys()].map(a => a.toString())
         let currIndex = randomArray.length
@@ -66,4 +67,30 @@ const findEmptyCell = (grid, size) => {
     return [row, column]
 }
 
-export { randomizeGrid, formCorrectGrid, gridFont, findEmptyCell }
+const testGrid = (gridSize) => {
+    switch (gridSize) {
+        case 9:
+            return [['1','2','3'],
+                    ['4','5','6'],
+                    ['7','0','8']]
+        case 16:
+            return [['1','2','3','4'],
+                    ['5','6','7','8'],
+                    ['9','10','11','12'],
+                    ['13','14','0','15']]
+        case 25:
+            return [['1','2','3','4','5'],
+                    ['6','7','8','9','10'],
+                    ['11','12','13','14','15'],
+                    ['16','17','18','19','20'],
+                    ['21','22','23','0','24']]
+    }
+}
+
+const initialGrid = (gridSize) => (
+    import.meta.env.VITE_ENV === 'test'
+    ? testGrid(gridSize)
+    : randomizeGrid(gridSize)
+)
+
+export { randomizeGrid, formCorrectGrid, gridFont, findEmptyCell, initialGrid }

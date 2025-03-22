@@ -7,13 +7,13 @@ import GridFinished from './puzzle_components/GridFinished'
 import MenuIcon from './puzzle_components/MenuIcon'
 import LeaderboardIcon from './puzzle_components/LeaderboardIcon'
 import { useEffect, useState } from 'react'
-import { gridFont, findEmptyCell, randomizeGrid } from '../utils/gridUtils'
+import { gridFont, findEmptyCell, initialGrid } from '../utils/gridUtils'
 import scoreService from '../services/puzzlescores'
 import timerService from '../services/timer'
 
 const PuzzleGame = ({ changeAppState }) => {
   const [gridSize, setGridSize] = useState(16)
-  const [grid, setGrid] = useState(randomizeGrid(gridSize))
+  const [grid, setGrid] = useState(initialGrid(gridSize))
   const [gridComplete, setGridComplete] = useState(false)
   const [startTime, setStartTime] = useState(Date.now())
   const [time, setTime] = useState('')

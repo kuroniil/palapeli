@@ -1,5 +1,4 @@
 const randomizeGrid = (size) => {
-    console.log(import.meta.env.VITE_ENV)
     while (true) {
         let randomArray = [...Array(size).keys()].map(a => a.toString())
         let currIndex = randomArray.length

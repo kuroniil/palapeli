@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PuzzleGame from './components/Puzzlegame'
 import Snake from './components/Snake'
 import MainMenu from './components/MainMenu'
+import Game2048 from './components/Game2048'
 
 function App() {
   const [appState, setAppState] = useState("menu")
@@ -21,7 +22,9 @@ function App() {
         <Snake appState={appState} changeAppState={changeAppState}/>
       </div>
       : appState === "menu" ?
-      <MainMenu changeAppState={changeAppState}/>
+        <MainMenu changeAppState={changeAppState}/>
+      : appState === "2048" ?
+        <Game2048 />
       : ""
       }
     </div>

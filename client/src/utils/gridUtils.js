@@ -55,7 +55,7 @@ const formCorrectGrid = (size) => {
 const gridFont = (fontSize) => {
     const cells = document.getElementsByClassName("row")
     for (const cell of cells) {
-        cell.style.fontSize = `${fontSize}vw`
+        cell.style.fontSize = `${fontSize}vh`
     }
 }
 

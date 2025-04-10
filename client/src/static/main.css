@@ -71,11 +71,11 @@ body {
 .row {
     display: flex;
     justify-content: center;
-    font-size: calc(5vh + 3vw);
+    font-size: 8vh;
 }
 
 .cell {
-    width: calc(5vh + 5vw);
+    width: 1.3em;
     text-align: center;
     padding: 0.1em;
     border-radius: 0.01em;
@@ -93,7 +93,7 @@ body {
 }
 
 .emptyCell {
-    width: calc(5vh + 5vw);
+    width: 1.3em;
     border-radius: 0.01em;
     border: solid black 0.03em;
     text-align: center;
@@ -615,16 +615,40 @@ body {
 }
 
 .game-row {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
-.game-cell {
+.game-cell, 
+.game-piece {
     font-family: Arial, Helvetica, sans-serif;
-  width: 3em;
-  font-size: calc(5vh);
-  text-align: center;
-  margin: 0.5%;
-  padding: 7%;
-  transition: transform 0.2s ease;
+    width: 3em;
+    font-size: calc(5vh);
+    text-align: center;
+    margin: 0.5%;
+    padding: 7%;
+    transition: transform 0.2s ease;
+}
+
+.game-piece {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: calc(5vh);
+    padding: 0;
+    width: 2.9em;
+    height: 2.8555em;
+    color: white;
+}
+
+.game-row2 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 572px;
+}
+
+.container {
+    position: relative;
 }

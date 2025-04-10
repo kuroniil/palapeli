@@ -67,9 +67,9 @@ const PuzzleGame = ({ changeAppState }) => {
   
   useEffect(() => {
     if (gridSize === 25) {
-      gridFont(4.5)
+      gridFont(9)
     } else {
-      gridFont(6)
+      gridFont(10)
     }
 
   }, [gridSize, gridComplete])

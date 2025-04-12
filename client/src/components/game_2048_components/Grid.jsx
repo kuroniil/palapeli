@@ -5,20 +5,45 @@ import { move } from "../../utils/gridLogic"
 const Grid = ({ gridSize }) => {
   const [grid, setGrid] = useState(startGrid)
   const [grid2, setGrid2] = useState([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]])
-  const [pieces, setPieces] = useState(startPieces)
+  const [newPiecePos, setNewPiecePos] = useState({x: 5, y: 5})
+  const [pieces, setPieces] = useState(JSON.parse(JSON.stringify(startPieces)))
 
   const handleClick = () => {
-    const newGrid = move(grid, "up")
+    const gridGeneration = move(grid, "up")
+    //console.log(gridGeneration.next().value)
+    //console.log(gridGeneration.next().value)
+
+    const newGrid = gridGeneration.next().value
+    const newGrid2 = gridGeneration.next().value
+
     const newPieces = []
-    for (const cell of newGrid.flat()) {
-      if (cell.value !== 0) {
-        const piece = pieces.find((p) => p.name === cell.name)
-        piece.x = cell.x
-        piece.y = cell.y
-        newPieces.push(piece)
-      }
+    const flatGrid = newGrid.flat()
+    for (const piece of pieces) {
+      const index = flatGrid.findIndex(p => p.name === piece.name)
+      const newPiece = {name: JSON.parse(JSON.stringify(piece.name))}
+      newPiece.y = Math.floor(index / 4)
+      newPiece.x = index % 4
+      newPiece.value = parseInt(JSON.parse(JSON.stringify(piece.value)))
+      newPieces.push(newPiece)
+    }    
+    setPieces(newPieces)
+    
+    const newPieces2 = []
+    console.log(newPieces)
+    console.log(newGrid2)
+
+    let flatGrid2 = JSON.parse(JSON.stringify(newGrid2.flat()
+      .filter(p => p.value !== 0 || newPieces.map(obj => obj.name).includes(p.name))))
+    for (const piece of newPieces) {
+      console.log(piece, flatGrid2)
+      const newPiece = JSON.parse(JSON.stringify(flatGrid2.find(p => p.name === piece.name)))
+      flatGrid2 = flatGrid2.filter(p => p.name !== piece.name)
+      newPieces2.push(newPiece)
     }
-    setPieces(newPieces.reverse())
+    setNewPiecePos({x: flatGrid2[0].x, y: flatGrid2[0].y})
+    //const gridNewPieceAdded = newGrid2[flatGrid2[0].y][flatGrid2[0].x].name
+    setPieces(newPieces2.concat({...flatGrid2[0], name: newGrid2[flatGrid2[0].y][flatGrid2[0].x].name}))
+    setGrid(newGrid2.map((_, i) => newGrid2.map(row => row[i])))
   }
 
   return (
@@ -46,9 +71,12 @@ const Grid = ({ gridSize }) => {
             style={{
               top: `${-0.05*piece.y}em`,
               left: `-0.01em`,
-              transform: `translateX(${3*piece.x}em) translateY(${3*piece.y}em)`,
+              transform: piece.x === newPiecePos.x && piece.y === newPiecePos.y ?
+              "scale(0.8)"
+              :`translateX(${3*piece.x}em) translateY(${3*piece.y}em)`,
               transition: 'transform 0.1s ease-out',
-              background: pieceColors[piece.value]["background"]
+              background: piece.value !== 0 ? pieceColors[piece.value]["background"] : "transparent",
+              color: pieceColors[piece.value]["color"]
             }}
             >
             {piece.value}

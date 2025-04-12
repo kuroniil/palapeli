@@ -8,6 +8,7 @@ const Game2048 = (props) => {
   return (
     <div>
       <Header title="2048_peli" />
+      <button id="menu" onClick={(t) => props.changeAppState(t)}>main menu</button>
       <Grid gridSize={gridSize} />
     </div>
   )

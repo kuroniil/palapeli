@@ -38,6 +38,7 @@
 | 22.3.| 3    | Playwrightin käyttöönotto, e2e testejä palapelille, koodin muokkausta jotta testit onnistuu |
 | 9.4.| 4    | Aloitettu 2048 peli. Konseptitodistus pelin animaatioille |
 | 10.4.| 8    | 2048 pelin kehitystä. Eri tapoja ja kokeiluja saada ruudukon animaatiot toimimaan järkevästi.  |
-| yht.  | 96.5   | | 
+| 12.4.| 4    | Jatkettu 2048 pelin palojen liikkumisen ja animaatioiden kehitystä |
+| yht.  | 100.5   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

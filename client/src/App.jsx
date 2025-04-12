@@ -24,7 +24,7 @@ function App() {
       : appState === "menu" ?
         <MainMenu changeAppState={changeAppState}/>
       : appState === "2048" ?
-        <Game2048 />
+        <Game2048 changeAppState={changeAppState}/>
       : ""
       }
     </div>

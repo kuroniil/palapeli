@@ -1,18 +1,16 @@
-function* move(grid, direction) {
+import { v1 } from "uuid"
+
+function move(grid, direction) {
   let updatedGrid
   if (direction == "up" || direction == "left") {
     updatedGrid = moveZerosRight(grid, direction)
   } else {
     updatedGrid = moveZerosLeft(grid, direction)
   }
-
-  // moveAnimation()
   const updatedGridCopy = JSON.parse(JSON.stringify(updatedGrid))
-
-  yield updatedGrid
   const collisionsGrid = check_collisions(updatedGridCopy, direction)
-  const finalGrid = addPiece(collisionsGrid)
-  return finalGrid.map((_, i) => finalGrid.map(row => row[i]))
+  const [finalGrid, addedPiece] = addPiece(collisionsGrid)
+  return [finalGrid.map((_, i) => finalGrid.map(row => row[i])), addedPiece]
 }
 
 function addPiece(grid) {
@@ -22,8 +20,9 @@ function addPiece(grid) {
   zeroIndices = zeroIndices.map(row => row.filter(cell => cell !== null)).flat()
   const value = Math.random() < 0.9 ? 2 : 4
   const newIndex = zeroIndices[Math.floor(Math.random()*zeroIndices.length)]
-  grid[newIndex.y][newIndex.x] = {...newIndex, value: value, name: grid[newIndex.y][newIndex.x].name}
-  return grid
+  const newId = v1()
+  grid[newIndex.y][newIndex.x] = {...newIndex, value: value, name: grid[newIndex.y][newIndex.x].name, id: newId}
+  return [grid, {...newIndex, value: value, name: grid[newIndex.y][newIndex.x].name, id: newId}]
 }
 
 function moveZerosRight(grid, direction) {

@@ -1,21 +1,16 @@
+import { v1 } from "uuid"
+
+const ids = Array.from({ length: 16 }).map(_ => v1()) 
 const startGrid = Array.from(
   { length: 4 }, (_, i) => Array.from({ length: 4 }, 
-    (_, j) => ({name: `piece-${i*4+j+1}`, y: i, x: j, value: 0}))
+    (_, j) => ({name: `piece-${i*4+j+1}`, y: i, x: j, value: 0, id: ids[i*4+j]}))
   )
-startGrid[1][3].value = 2  
 startGrid[2][3].value = 2
 startGrid[3][2].value = 2
-startGrid[1][2].value = 2
-startGrid[2][2].value = 2
-startGrid[0][2].value = 2
 
 const startPieces = [
-  {name: "piece-3", y: 0, x: 2, value: 2},
-  {name: "piece-7", y: 1, x: 2, value: 2},
-  {name: "piece-8", y: 1, x: 3, value: 2},
-  {name: "piece-11", y: 2, x: 2, value: 2},
-  {name: "piece-12", y: 2, x: 3, value: 2},
-  {name: "piece-15", y: 3, x: 2, value: 2},
+  {name: "piece-12", y: 2, x: 3, value: 2, id: ids[11]},
+  {name: "piece-15", y: 3, x: 2, value: 2, id: ids[14]},
 ]
 
 const pieceColors = {
@@ -34,6 +29,10 @@ const pieceColors = {
   },
   8: {
     background: "red",
+    color: "white"
+  },
+  16: {
+    background: "purple",
     color: "white"
   }
 }

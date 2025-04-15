@@ -1,54 +1,61 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { startGrid, pieceColors, startPieces } from "../../utils/game2048Utils"
 import { move } from "../../utils/gridLogic"
 
 const Grid = ({ gridSize }) => {
   const [grid, setGrid] = useState(startGrid)
   const [grid2, setGrid2] = useState([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]])
-  const [newPiecePos, setNewPiecePos] = useState({x: 5, y: 5})
+  const [newPieceName, setNewPieceName] = useState('')
   const [pieces, setPieces] = useState(JSON.parse(JSON.stringify(startPieces)))
+  const [scaled, setScaled] = useState(0.0)
 
-  const handleClick = () => {
-    const gridGeneration = move(grid, "up")
-    //console.log(gridGeneration.next().value)
-    //console.log(gridGeneration.next().value)
-
-    const newGrid = gridGeneration.next().value
-    const newGrid2 = gridGeneration.next().value
-
-    const newPieces = []
-    const flatGrid = newGrid.flat()
-    for (const piece of pieces) {
-      const index = flatGrid.findIndex(p => p.name === piece.name)
-      const newPiece = {name: JSON.parse(JSON.stringify(piece.name))}
-      newPiece.y = Math.floor(index / 4)
-      newPiece.x = index % 4
-      newPiece.value = parseInt(JSON.parse(JSON.stringify(piece.value)))
-      newPieces.push(newPiece)
-    }    
-    setPieces(newPieces)
-    
-    const newPieces2 = []
-    console.log(newPieces)
-    console.log(newGrid2)
-
-    let flatGrid2 = JSON.parse(JSON.stringify(newGrid2.flat()
-      .filter(p => p.value !== 0 || newPieces.map(obj => obj.name).includes(p.name))))
-    for (const piece of newPieces) {
-      console.log(piece, flatGrid2)
-      const newPiece = JSON.parse(JSON.stringify(flatGrid2.find(p => p.name === piece.name)))
-      flatGrid2 = flatGrid2.filter(p => p.name !== piece.name)
-      newPieces2.push(newPiece)
+  useEffect(() => {
+    const handleKeyboardInput = (event) => {
+        switch (event.key) {
+            case "ArrowUp":
+              moveUp()
+              break
+            case "ArrowDown":
+              break
+            case "ArrowLeft":
+              break
+            case "ArrowRight":
+              break
+            default:
+              break
+        }
     }
-    setNewPiecePos({x: flatGrid2[0].x, y: flatGrid2[0].y})
-    //const gridNewPieceAdded = newGrid2[flatGrid2[0].y][flatGrid2[0].x].name
-    setPieces(newPieces2.concat({...flatGrid2[0], name: newGrid2[flatGrid2[0].y][flatGrid2[0].x].name}))
-    setGrid(newGrid2.map((_, i) => newGrid2.map(row => row[i])))
+    document.addEventListener("keydown", handleKeyboardInput)
+
+    return () => {
+        document.removeEventListener("keydown", handleKeyboardInput)
+    }
+}, [grid, pieces, newPieceName, scaled])
+
+  const moveUp = () => {
+  setScaled(0.0)
+  const [updatedGrid, addedPiece] = move(grid, "up")
+  setNewPieceName(addedPiece.name)
+  const newPieces = []
+  let flatGrid = updatedGrid.flat()
+  
+  for (const piece of pieces) {
+      const newPiece = flatGrid.find(p => p.name === piece.name)
+      newPieces.push(newPiece)
+  }
+  if (!newPieces.map(p => p.name).includes(addedPiece.name)) newPieces.push(addedPiece)
+  
+  setPieces(newPieces)
+  setGrid(updatedGrid.map((_, i) => updatedGrid.map(row => row[i])))
+    
+    setTimeout(() => {
+      setScaled(1.0)
+    }, 10)
   }
 
   return (
     <div>
-      <button onClick={handleClick}>aaaaaaaaaaaa</button>
+    <button onClick={moveUp}>aaaaaaaaaaaa</button>
     <div className="container">
       <div className="grid-2048">
         {grid2.map((row, rowIndex) => (
@@ -64,19 +71,23 @@ const Grid = ({ gridSize }) => {
               </div>
             ))}
       </div>
-      {pieces.map((piece, index) => (
+      {pieces.map(piece => (
           <div 
-            key={index} 
+            key={`${piece.id}`} 
             className="game-piece"
             style={{
               top: `${-0.05*piece.y}em`,
-              left: `-0.01em`,
-              transform: piece.x === newPiecePos.x && piece.y === newPiecePos.y ?
-              "scale(0.8)"
-              :`translateX(${3*piece.x}em) translateY(${3*piece.y}em)`,
-              transition: 'transform 0.1s ease-out',
+              left: "-0.01em",
+              transform: 
+                piece.name === newPieceName
+                  ? `translateX(${3*piece.x}em) translateY(${3*piece.y}em) scale(${scaled})`
+                  : `translateX(${3*piece.x}em) translateY(${3*piece.y}em)`,
+              transition:
+                piece.name === newPieceName
+                  ? 'transform 0.05s ease'
+                  : 'transform 0.1s ease',
               background: piece.value !== 0 ? pieceColors[piece.value]["background"] : "transparent",
-              color: pieceColors[piece.value]["color"]
+              color: pieceColors[piece.value]["color"],
             }}
             >
             {piece.value}
@@ -88,6 +99,13 @@ const Grid = ({ gridSize }) => {
 }
 
 export default Grid
+
+
+//const index = flatGrid.findIndex(p => p.name === piece.name)
+      //const newPiece = {name: JSON.parse(JSON.stringify(piece.name))}
+      //newPiece.y = Math.floor(index / 4)
+      //newPiece.x = index % 4
+      //newPiece.value = parseInt(JSON.parse(JSON.stringify(piece.value)))
 
 //let currx = 103.9
 
@@ -129,3 +147,12 @@ export default Grid
 //  //}
 //  setGrid(newGrid)
 //}
+
+    //const newPieces = []
+    //const flatGrid = firstStage.flat()
+//
+    //for (const piece of pieces) {
+    //  const newPiece = JSON.parse(JSON.stringify(flatGrid.find(p => p.name === piece.name && p.name !== addedPiece.name)))
+    //  newPieces.push(newPiece)
+    //}    
+    //setPieces(newPieces)

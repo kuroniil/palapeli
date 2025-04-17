@@ -8,9 +8,9 @@ function move(grid, direction) {
     updatedGrid = moveZerosLeft(grid, direction)
   }
   const updatedGridCopy = JSON.parse(JSON.stringify(updatedGrid))
-  const collisionsGrid = check_collisions(updatedGridCopy, direction)
+  const collisionsGrid = checkCollisions(updatedGridCopy, direction)
   const [finalGrid, addedPiece] = addPiece(collisionsGrid)
-  return [finalGrid.map((_, i) => finalGrid.map(row => row[i])), addedPiece]
+  return [transposeGrid(finalGrid), addedPiece]
 }
 
 function addPiece(grid) {
@@ -21,43 +21,58 @@ function addPiece(grid) {
   const value = Math.random() < 0.9 ? 2 : 4
   const newIndex = zeroIndices[Math.floor(Math.random()*zeroIndices.length)]
   const newId = v1()
-  grid[newIndex.y][newIndex.x] = {...newIndex, value: value, name: grid[newIndex.y][newIndex.x].name, id: newId}
+  
+  grid[newIndex.y][newIndex.x] = {
+    ...newIndex,
+     value: value,
+      name: grid[newIndex.y][newIndex.x].name,
+      id: newId
+    }
   return [grid, {...newIndex, value: value, name: grid[newIndex.y][newIndex.x].name, id: newId}]
 }
 
 function moveZerosRight(grid, direction) {
   const updated = []
-  const gridCopy = JSON.parse(JSON.stringify(grid))
-  const gridTranspose = gridCopy.map((_, i) => gridCopy.map(row => row[i]))
+  if (direction === "up") grid = transposeGrid(grid)
   let i = 0
-  while (i < gridTranspose.length) {
+  while (i < grid.length) {
     let j = 0
     let swaps = grid.length - 1
-    while (j < gridTranspose[i].length) {
-      gridTranspose[i][j].y = j
-      if (gridTranspose[i][j].value === 0 && swaps > 0) {
-        gridTranspose[i].push(gridTranspose[i].splice(j, 1)[0])
+    while (j < grid[i].length) {
+      direction === "up" 
+        ? grid[i][j].y = j
+        : grid[i][j].x = j
+      if (grid[i][j].value === 0 && swaps > 0) {
+        grid[i].push(grid[i].splice(j, 1)[0])
         j--
         swaps--
       }
       j++
     }
-    updated.push(gridTranspose[i])
+    updated.push(grid[i])
     i++
   }
-  return updated.map((_, i) => updated.map(row => row[i]))
+  if (direction === "up") return transposeGrid(updated)
+  return updated
 }
 
-function check_collisions(grid, direction) {
+function transposeGrid(grid) {
+  return grid.map((_, i) => grid.map(row => row[i]))
+}
+
+function checkCollisions(grid, direction) {
   var gridUpdated = []
   if (direction == "up" || direction == "left") {
-    gridUpdated = check_left_collisions(grid, direction)
+    gridUpdated = checkLeftCollisions(grid, direction)
     return moveZerosRight(gridUpdated, direction)
+  } else {
+    gridUpdated = checkRightCollisions(grid, direction)
+    return moveZerosLeft(gridUpdated, direction)
   }
 }
 
-function check_left_collisions(grid, direction) {
-  if (direction == "up") grid = grid.map((_, i) => grid.map(row => row[i]))
+function checkLeftCollisions(grid, direction) {
+  if (direction == "up") grid = transposeGrid(grid)
   var newGrid = []
   for (let row of grid) {
     let i = 0
@@ -72,7 +87,52 @@ function check_left_collisions(grid, direction) {
     newGrid.push(row)
 
   }
-  return newGrid.map((_, i) => newGrid.map(row => row[i]))
+  if (direction == "up") return transposeGrid(newGrid)
+  return newGrid
+}
+
+function moveZerosLeft(grid, direction) {
+  const updated = []
+  if (direction === "down") grid = transposeGrid(grid)
+  let i = 0
+  while (i < grid.length) {
+    let j = grid.length - 1
+    let swaps = grid.length - 1
+    while (j > 0) {
+      direction === "down" 
+        ? grid[i][j].y = j
+        : grid[i][j].x = j
+      if (grid[i][j].value === 0 && swaps > 0) {
+        grid[i] = grid[i].toSpliced(0, 0, grid[i].splice(j, 1)[0])
+        j++
+        swaps--
+      }
+      j--
+    }
+    updated.push(grid[i])
+    i++
+  }
+  if (direction === "down") return transposeGrid(updated)
+  return updated
+}
+
+function checkRightCollisions(grid, direction) {
+  if (direction == "down") grid = transposeGrid(grid)
+    var newGrid = []
+    for (let row of grid) {
+      let i = grid.length - 1
+      while (i > 0) {
+        if (row[i].value === row[i - 1].value) {
+          row[i].value *= 2
+          row[i - 1].value = 0
+          i -= 1
+        }
+        i -= 1
+      }
+      newGrid.push(row)
+    }
+    if (direction == "down") return transposeGrid(newGrid)
+    return newGrid
 }
 
 export { move }

@@ -13,13 +13,16 @@ const Grid = ({ gridSize }) => {
     const handleKeyboardInput = (event) => {
         switch (event.key) {
             case "ArrowUp":
-              moveUp()
+              moveAnimations("up")
               break
             case "ArrowDown":
+              moveAnimations("down")
               break
             case "ArrowLeft":
+              moveAnimations("left")
               break
             case "ArrowRight":
+              moveAnimations("right")
               break
             default:
               break
@@ -32,30 +35,29 @@ const Grid = ({ gridSize }) => {
     }
 }, [grid, pieces, newPieceName, scaled])
 
-  const moveUp = () => {
-  setScaled(0.0)
-  const [updatedGrid, addedPiece] = move(grid, "up")
-  setNewPieceName(addedPiece.name)
-  const newPieces = []
-  let flatGrid = updatedGrid.flat()
-  
-  for (const piece of pieces) {
-      const newPiece = flatGrid.find(p => p.name === piece.name)
-      newPieces.push(newPiece)
-  }
-  if (!newPieces.map(p => p.name).includes(addedPiece.name)) newPieces.push(addedPiece)
-  
-  setPieces(newPieces)
-  setGrid(updatedGrid.map((_, i) => updatedGrid.map(row => row[i])))
+  const moveAnimations = (direction) => {
+    setScaled(0.0)
+    const [updatedGrid, addedPiece] = move(grid, direction)
+    setNewPieceName(addedPiece.name)
+    const newPieces = []
+    let flatGrid = updatedGrid.flat()
     
-    setTimeout(() => {
-      setScaled(1.0)
-    }, 10)
-  }
+    for (const piece of pieces) {
+        const newPiece = flatGrid.find(p => p.name === piece.name)
+        newPieces.push(newPiece)
+    }
+    if (!newPieces.map(p => p.name).includes(addedPiece.name)) newPieces.push(addedPiece)
+    
+    setPieces(newPieces)
+    setGrid(updatedGrid.map((_, i) => updatedGrid.map(row => row[i])))
+      
+      setTimeout(() => {
+        setScaled(1.0)
+      }, 10)
+    }
 
   return (
     <div>
-    <button onClick={moveUp}>aaaaaaaaaaaa</button>
     <div className="container">
       <div className="grid-2048">
         {grid2.map((row, rowIndex) => (

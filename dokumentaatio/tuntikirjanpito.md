@@ -40,6 +40,7 @@
 | 10.4.| 8    | 2048 pelin kehitystä. Eri tapoja ja kokeiluja saada ruudukon animaatiot toimimaan järkevästi.  |
 | 12.4.| 4    | Jatkettu 2048 pelin palojen liikkumisen ja animaatioiden kehitystä |
 | 15.4.| 2    | 2048 palan lisääminen ja liikkuminen ylöspäin toimivaksi |
-| yht.  | 102.5   | | 
+| 17.4.| 1.5    | 2048 Liikkuminen kaikkiin suuntiin toimivaksi |
+| yht.  | 104   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

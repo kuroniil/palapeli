@@ -17,24 +17,40 @@ const pieceColors = {
   0: {
       background: "#a2a38b",
       color: "transparent",
-      zIndex: -1
   },
   2: {
     background: "#f2ff00",
-    color: "white"
   },
   4: {
-    background: "orange",
-    color: "white"
+    background: "#f2d44e",
   },
   8: {
-    background: "red",
-    color: "white"
+    background: "#dbb302",
   },
   16: {
-    background: "purple",
-    color: "white"
-  }
+    background: "#c48000",
+  },
+  32: {
+    background: "#f7900a",
+  },
+  64: {
+    background: "#f7510a",
+  },
+  128: {
+    background: "#f7220a",
+  },
+  256: {
+    background: "#a13515",
+  },
+  512: {
+    background: "#a40af7",
+  },
+  1024: {
+    background: "#49089e",
+  },
+  2048: {
+    background: "#39c7cc",
+  },
 }
 
 

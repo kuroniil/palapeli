@@ -1,0 +1,32 @@
+import { pieceColors } from "../../utils/game2048Utils"
+
+const Pieces = ({ pieces, newPieceName, scaled }) => (
+  <>
+    {pieces.map(piece => (
+      <div 
+        key={`${piece.id}`} 
+        className="game-piece"
+        style={{
+          top: `${-0.07*piece.y}em`,
+          left: "-0.01em",
+          transform: 
+            piece.name === newPieceName
+              ? `translateX(${3*piece.x}em) translateY(${3*piece.y}em) scale(${scaled})`
+              : `translateX(${3*piece.x}em) translateY(${3*piece.y}em)`,
+          transition:
+            piece.name === newPieceName
+              ? 'transform 0.05s ease'
+              : 'transform 0.1s ease',
+          background: 
+            piece.value !== 0 
+              ? pieceColors[piece.value]["background"] 
+              : "transparent",
+          color: pieceColors[piece.value]["color"]
+        }}>
+        {piece.value}
+      </div>
+    ))}
+  </>
+)
+
+export default Pieces

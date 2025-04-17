@@ -26,7 +26,7 @@ const Snake = ({ changeAppState }) => {
     const [gameOver, setGameOver] = useState(false)
     const [menuVisible, setMenuVisible] = useState(false)
     const [leaderboardVisible, setLeaderboardVisible] = useState(false)
-    const [characterSkin, setCharacterSkin] = useState("snake-player-default")
+    const [characterSkin, setCharacterSkin] = useState("snake-player-green")
     const [charactersMenuVisible, setCharactersMenuVisible] = useState(false)
     const [highlightId, setHighlightId] = useState(-1)
     const [leaderboardState, setLeaderboardState] = useState('all')
@@ -183,9 +183,10 @@ const Snake = ({ changeAppState }) => {
                 <Leaderboard leaderboardVisible={leaderboardVisible} setLeaderboardVisible={setLeaderboardVisible}
                   highlightId={highlightId} leaderboardState={leaderboardState} setLeaderboardState={setLeaderboardState} />
             </div>
-            {gameOver ? <GameOver pointCount={pointCount} characterSkin={characterSkin} setHighlightId={setHighlightId}
-                          setLeaderboardState={setLeaderboardState} setLeaderboardVisible={setLeaderboardVisible} />
-                      : <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} characterSkin={characterSkin} />}
+            {gameOver 
+                ? <GameOver pointCount={pointCount} characterSkin={characterSkin} setHighlightId={setHighlightId}
+                    setLeaderboardState={setLeaderboardState} setLeaderboardVisible={setLeaderboardVisible} />
+                : <SnakeGrid snakeGrid={snakeGrid} playerPosition={playerPosition} characterSkin={characterSkin} />}
         </div>
     )
 }

@@ -8,9 +8,9 @@ function move(grid, direction) {
     updatedGrid = moveZerosLeft(grid, direction)
   }
   const updatedGridCopy = JSON.parse(JSON.stringify(updatedGrid))
-  const collisionsGrid = checkCollisions(updatedGridCopy, direction)
+  const [collisionsGrid, scoreIncrement] = checkCollisions(updatedGridCopy, direction)
   const [finalGrid, addedPiece] = addPiece(collisionsGrid)
-  return [transposeGrid(finalGrid), addedPiece]
+  return [transposeGrid(finalGrid), addedPiece, scoreIncrement]
 }
 
 function addPiece(grid) {
@@ -31,7 +31,7 @@ function addPiece(grid) {
   return [grid, {...newIndex, value: value, name: grid[newIndex.y][newIndex.x].name, id: newId}]
 }
 
-function moveZerosRight(grid, direction) {
+function moveZerosRight(grid, direction, scoreIncrement=null) {
   const updated = []
   if (direction === "up") grid = transposeGrid(grid)
   let i = 0
@@ -52,8 +52,13 @@ function moveZerosRight(grid, direction) {
     updated.push(grid[i])
     i++
   }
-  if (direction === "up") return transposeGrid(updated)
-  return updated
+  if (scoreIncrement !== null) {
+    if (direction === "up") return [transposeGrid(updated), scoreIncrement]
+      return [updated, scoreIncrement]
+  } else {
+    if (direction === "up") return transposeGrid(updated)
+      return updated
+  }
 }
 
 function transposeGrid(grid) {
@@ -62,16 +67,17 @@ function transposeGrid(grid) {
 
 function checkCollisions(grid, direction) {
   var gridUpdated = []
+  let scoreIncrement = 0
   if (direction == "up" || direction == "left") {
-    gridUpdated = checkLeftCollisions(grid, direction)
-    return moveZerosRight(gridUpdated, direction)
+    [gridUpdated, scoreIncrement] = checkLeftCollisions(grid, direction, scoreIncrement)
+    return moveZerosRight(gridUpdated, direction, scoreIncrement)
   } else {
-    gridUpdated = checkRightCollisions(grid, direction)
-    return moveZerosLeft(gridUpdated, direction)
+    [gridUpdated, scoreIncrement] = checkRightCollisions(grid, direction, scoreIncrement)
+    return moveZerosLeft(gridUpdated, direction, scoreIncrement)
   }
 }
 
-function checkLeftCollisions(grid, direction) {
+function checkLeftCollisions(grid, direction, scoreIncrement=null) {
   if (direction == "up") grid = transposeGrid(grid)
   var newGrid = []
   for (let row of grid) {
@@ -79,6 +85,7 @@ function checkLeftCollisions(grid, direction) {
     while (i < row.length - 1) {
       if (row[i].value === row[i + 1].value) {
         row[i].value *= 2
+        scoreIncrement += row[i].value
         row[i + 1].value = 0
         i += 1
       }
@@ -87,11 +94,11 @@ function checkLeftCollisions(grid, direction) {
     newGrid.push(row)
 
   }
-  if (direction == "up") return transposeGrid(newGrid)
-  return newGrid
+  if (direction == "up") return [transposeGrid(newGrid), scoreIncrement]
+  return [newGrid, scoreIncrement]
 }
 
-function moveZerosLeft(grid, direction) {
+function moveZerosLeft(grid, direction, scoreIncrement=null) {
   const updated = []
   if (direction === "down") grid = transposeGrid(grid)
   let i = 0
@@ -112,11 +119,16 @@ function moveZerosLeft(grid, direction) {
     updated.push(grid[i])
     i++
   }
-  if (direction === "down") return transposeGrid(updated)
-  return updated
+  if (scoreIncrement !== null) {
+    if (direction === "down") return [transposeGrid(updated), scoreIncrement]
+    return [updated, scoreIncrement]
+  } else {
+    if (direction === "down") return transposeGrid(updated)
+      return updated
+  }
 }
 
-function checkRightCollisions(grid, direction) {
+function checkRightCollisions(grid, direction, scoreIncrement=null) {
   if (direction == "down") grid = transposeGrid(grid)
     var newGrid = []
     for (let row of grid) {
@@ -124,6 +136,7 @@ function checkRightCollisions(grid, direction) {
       while (i > 0) {
         if (row[i].value === row[i - 1].value) {
           row[i].value *= 2
+          scoreIncrement += row[i].value
           row[i - 1].value = 0
           i -= 1
         }
@@ -131,8 +144,8 @@ function checkRightCollisions(grid, direction) {
       }
       newGrid.push(row)
     }
-    if (direction == "down") return transposeGrid(newGrid)
-    return newGrid
+    if (direction == "down") return [transposeGrid(newGrid), scoreIncrement]
+    return [newGrid, scoreIncrement]
 }
 
 export { move }

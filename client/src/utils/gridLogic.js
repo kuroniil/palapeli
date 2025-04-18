@@ -1,6 +1,7 @@
 import { v1 } from "uuid"
 
 function move(grid, direction) {
+  const gridBeforeMove = JSON.parse(JSON.stringify(grid))
   let updatedGrid
   if (direction == "up" || direction == "left") {
     updatedGrid = moveZerosRight(grid, direction)
@@ -9,8 +10,14 @@ function move(grid, direction) {
   }
   const updatedGridCopy = JSON.parse(JSON.stringify(updatedGrid))
   const [collisionsGrid, scoreIncrement] = checkCollisions(updatedGridCopy, direction)
-  const [finalGrid, addedPiece] = addPiece(collisionsGrid)
-  return [transposeGrid(finalGrid), addedPiece, scoreIncrement]
+  const gridChanged = !collisionsGrid.every(
+    (row, i) => row.every((cell, j) => cell.value === gridBeforeMove[i][j].value))
+  if (gridChanged) {
+    const [finalGrid, addedPiece] = addPiece(collisionsGrid)
+    return [transposeGrid(finalGrid), addedPiece, scoreIncrement, true, false]
+  }
+  const gameOver = checkGameOver(gridBeforeMove)
+  return [false, false, 0, false, gameOver]
 }
 
 function addPiece(grid) {
@@ -146,6 +153,29 @@ function checkRightCollisions(grid, direction, scoreIncrement=null) {
     }
     if (direction == "down") return [transposeGrid(newGrid), scoreIncrement]
     return [newGrid, scoreIncrement]
+}
+
+function checkGameOver(grid) {
+  const transposedGrid = transposeGrid(grid)
+  for (let row of grid) {
+    let i = 0
+    while (i < row.length - 1) {
+      if (row[i].value === row[i + 1].value) {
+        return false
+      }
+      i++
+    }
+  }
+  for (let col of transposedGrid) {
+    let i = 0
+    while (i < col.length - 1) {
+      if (col[i].value === col[i + 1].value) {
+        return false
+      }
+      i++
+    }
+  }
+  return true
 }
 
 export { move }

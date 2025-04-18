@@ -104,7 +104,7 @@ body {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 
-.main-buttons button{
+.main-buttons button {
     text-align: center;
     padding: 0.2em;
     font-size: large;
@@ -401,7 +401,9 @@ body {
     cursor: pointer;
 }
 
-.leaderboard button:hover, .exit-leaderboard:hover {
+.leaderboard button:hover,
+.exit-leaderboard:hover, 
+.game-2048 .main-buttons button:hover {
     background-color: var(--background-very-light);
 }
 
@@ -643,13 +645,10 @@ body {
     color: white;
 }
 
-.game-row2 {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    bottom: 572px;
-}
-
 .container {
     position: relative;
+}
+
+.game-2048 .main-buttons button {
+    background-color: #a2a38b;
 }

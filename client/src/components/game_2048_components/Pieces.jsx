@@ -15,11 +15,14 @@ const Pieces = ({ pieces, newPieceName, scaled }) => (
                 : `translateX(${3*piece.x}em) translateY(${3*piece.y}em)`,
           transition: 'transform 0.1s ease',
           background: 
-            piece.value !== 0 
-              ? pieceColors[piece.value]["background"] 
+            piece.value === "E"
+            ? piece.y === 2
+              ? "#a40af7"
+              : "#39c7cc"
+            : piece.value !== 0 
+              ? pieceColors[piece.value]["background"]
               : "transparent",
           color: pieceColors[piece.value]["color"],
-          transformStyle: 'preserve-3d',
         }}>
         {piece.value}
       </div>

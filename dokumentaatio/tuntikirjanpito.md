@@ -43,6 +43,7 @@
 | 17.4.| 1.5    | 2048 Liikkuminen kaikkiin suuntiin toimivaksi |
 | 17.4.| 2    | 2048 refaktorointi, tulos peliin ja ulkoasun kehitys |
 | 18.4.| 2    | 2048 pelin päättyminen ja päättymisanimaatio |
-| yht.  | 106   | | 
+| 26.4.| 3    | 2048 Tuloksen tallennusominaisuuden kehitys |
+| yht.  | 109   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

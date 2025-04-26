@@ -403,7 +403,8 @@ body {
 
 .leaderboard button:hover,
 .exit-leaderboard:hover, 
-.game-2048 .main-buttons button:hover {
+.game-2048 .main-buttons button:hover,
+.game-2048-icon-clickable:hover {
     background-color: var(--background-very-light);
 }
 
@@ -612,10 +613,6 @@ body {
     user-select: none;
 }
 
-.grid-2048 {
-    margin-bottom: 30vh;
-}
-
 .game-row {
     display: flex;
     justify-content: center;
@@ -649,6 +646,52 @@ body {
     position: relative;
 }
 
+.game-2048 {
+    margin-bottom: 30vh;
+}
+
 .game-2048 .main-buttons button {
     background-color: #a2a38b;
+}
+
+.game-2048-icon,
+.game-2048-icon-clickable {
+    font-family: Times New Roman;
+    font-weight: bold;
+    color: white;
+    background: brown;
+    padding: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: solid 2px black;
+    border-radius: 1em;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    text-align: center;
+    font-size: 120%;
+}
+
+.game-2048-icon-clickable {
+    background: purple;
+    cursor: pointer;
+}
+
+.game-2048-score-form.visible {
+    transform: translateY(-112%);
+    transition: 0.2s ease-in;
+    padding: 1em;
+}
+
+.game-2048-score-form.hidden {
+    transform: translateY(100%);
+    transition: 0.2s ease-in;
+}
+
+.game-2048-score-form {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background: green;
+    font-size: 170%;
+    border: solid 2px black;
+    border-radius: 0.5em;
 }

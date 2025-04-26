@@ -1,0 +1,39 @@
+services:
+  frontend:
+    build: ./client
+    working_dir: /usr/src/app/client
+    command: npm run dev
+    ports:
+      - 5173:5173
+    volumes:
+      - ./client:/usr/src/app/client
+      - frontend_node_modules:/usr/src/app/client/node_modules
+
+  backend:
+    build: ./server
+    command: npm run dev
+    ports:
+      - 3001:3001
+    volumes:
+      - ./server:/usr/src/app/server
+      - backend_node_modules:/usr/src/app/server/node_modules
+    depends_on:
+      - db
+    working_dir: /usr/src/app/server
+    environment:
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/peli
+      - DOCKER_ENV=true
+    restart: unless-stopped    
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=peli
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+
+
+volumes:
+  frontend_node_modules:
+  backend_node_modules:

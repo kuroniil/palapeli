@@ -1,7 +1,13 @@
 const Sequelize = require('sequelize')
-const { DATABASE_URL } = require('./config')
+const { DATABASE_URL, DOCKER_ENV } = require('./config')
 
-const sequelize = new Sequelize(DATABASE_URL)
+let sequelize
+DOCKER_ENV === 'true'
+  ? sequelize = new Sequelize(DATABASE_URL, {
+    host: 'db',
+    dialect: 'postgres'
+  })
+  : sequelize = new Sequelize(DATABASE_URL)
 
 const connectToDatabase = async () => {
   try {

@@ -31,9 +31,9 @@ function addPiece(grid) {
   
   grid[newIndex.y][newIndex.x] = {
     ...newIndex,
-     value: value,
-      name: grid[newIndex.y][newIndex.x].name,
-      id: newId
+    value: value,
+    name: grid[newIndex.y][newIndex.x].name,
+    id: newId
     }
   return [grid, {...newIndex, value: value, name: grid[newIndex.y][newIndex.x].name, id: newId}]
 }

@@ -622,7 +622,7 @@ body {
 .game-piece {
     font-family: Arial, Helvetica, sans-serif;
     width: 3em;
-    font-size: calc(4vh);
+    font-size: 4vh;
     text-align: center;
     margin: 0.5%;
     padding: 7%;
@@ -635,10 +635,11 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: calc(4vh);
+    font-size: 4vh;
     padding: 0;
     width: 2.9em;
     height: 2.85em;
+    margin: 0.5%;
     color: white;
 }
 
@@ -676,14 +677,15 @@ body {
 }
 
 .game-2048-score-form.visible {
-    transform: translateY(-112%);
-    transition: 0.2s ease-in;
+    transform: translateY(-111%);
+    transition: transform 0.2s ease-in;
     padding: 1em;
 }
 
 .game-2048-score-form.hidden {
     transform: translateY(100%);
-    transition: 0.2s ease-in;
+    transition: transform 0.2s ease-in;
+    user-select: none;
 }
 
 .game-2048-score-form {
@@ -692,6 +694,7 @@ body {
     justify-content: center;
     background: green;
     font-size: 170%;
-    border: solid 2px black;
-    border-radius: 0.5em;
+    border: solid 0.1em black;
+    border-radius: 0.3em;
+    height: 15em;
 }

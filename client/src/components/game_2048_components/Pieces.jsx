@@ -7,7 +7,7 @@ const Pieces = ({ pieces, newPieceName, scaled }) => (
         key={`${piece.id}`}
         className="game-piece"
         style={{
-          top: `${-0.07*piece.y}em`,
+          top: `${-0.064*piece.y}em`,
           left: "-0.01em",
           transform: 
               piece.name === newPieceName

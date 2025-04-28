@@ -1,24 +1,26 @@
 import { useState, useEffect } from "react"
+import { v1 } from "uuid"
 import { startGrid, startPieces, gameOverPieces } from "../../utils/game2048Utils"
 import { move } from "../../utils/gridLogic"
 import BaseGrid from "./BaseGrid"
 import Pieces from "./Pieces"
+import Leaderboard from "./Leaderboard"
 
-const Grid = ({ gridSize, currentScore, setCurrentScore, gameOver, setGameOver, setScoreFormVisible }) => {
+const Grid = (props) => {
   const [grid, setGrid] = useState(JSON.parse(JSON.stringify(startGrid)))
   const [newPieceName, setNewPieceName] = useState('')
   const [pieces, setPieces] = useState(JSON.parse(JSON.stringify(startPieces)))
   const [scaled, setScaled] = useState(0.0)
 
   useEffect(() => {
-    if (gameOver){
+    if (props.gameOver){
       handleGameOver()
     }
-  }, [gameOver])
+  }, [props.gameOver])
 
   useEffect(() => {
     const handleKeyboardInput = (event) => {
-      if (gameOver && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]
+      if (props.gameOver && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]
         .includes(event.key)) {
           return
         }
@@ -47,16 +49,16 @@ const Grid = ({ gridSize, currentScore, setCurrentScore, gameOver, setGameOver, 
     return () => {
         document.removeEventListener("keydown", handleKeyboardInput)
     }
-}, [grid, pieces, newPieceName, scaled, gameOver])
+}, [grid, pieces, newPieceName, scaled, props.gameOver])
 
   const moveAnimations = (direction) => {
     setScaled(0.0)
     const [updatedGrid, addedPiece, scoreIncrement, gridChanged, gameIsOver] = move(grid, direction)
-    setGameOver(gameIsOver)
+    props.setGameOver(gameIsOver)
     if (gridChanged) {
-      const updatedScore = currentScore + scoreIncrement
+      const updatedScore = props.currentScore + scoreIncrement
     
-      setCurrentScore(updatedScore)
+      props.setCurrentScore(updatedScore)
       setNewPieceName(addedPiece.name)
       const newPieces = []
       let flatGrid = updatedGrid.flat()
@@ -81,20 +83,20 @@ const Grid = ({ gridSize, currentScore, setCurrentScore, gameOver, setGameOver, 
   }
 
   const handleGameOver = () => {
-      pieces.forEach((piece, i) => {
+    pieces.forEach((piece, i) => {
         setScaled(0.0)
         const index = gameOverPieces.findIndex(p => p.x === piece.x && p.y === piece.y)
         setTimeout(() => {
           if (index !== -1) {
-            pieces.splice(i, 1, {...gameOverPieces[index]})
-            const newPieces = [...pieces]
+            pieces.splice(i, 1, {...gameOverPieces[index], id: v1()})
+            const newPieces = JSON.parse(JSON.stringify(pieces))
             setPieces(newPieces)
             setNewPieceName(gameOverPieces[index].name)
           } else {
-            pieces.splice(i, 1, {...piece, value: 0})
-            const newPieces = [...pieces]
+            pieces.splice(i, 1, {...piece, value: 0, id: v1()})
+            const newPieces = JSON.parse(JSON.stringify(pieces))
             setPieces(newPieces)
-            setNewPieceName(...pieces[i].name)
+            setNewPieceName(pieces[i].name)
           }
           setScaled(1.0)
         }, i*25)
@@ -104,15 +106,17 @@ const Grid = ({ gridSize, currentScore, setCurrentScore, gameOver, setGameOver, 
   const restartGame = () => {
     setGrid(JSON.parse(JSON.stringify(startGrid)))
     setPieces(JSON.parse(JSON.stringify(startPieces)))
-    setCurrentScore(0)
-    setGameOver(false)
-    setScoreFormVisible(false)
+    props.setCurrentScore(0)
+    props.setGameOver(false)
+    props.setScoreFormVisible(false)
+    props.setScoreSubmitted(false)
   }
 
   return (
     <div className="container">
-      <BaseGrid gridSize={gridSize}/>
+      <BaseGrid gridSize={props.gridSize}/>
       <Pieces pieces={pieces} newPieceName={newPieceName} scaled={scaled} />
+      <Leaderboard highlightId={props.highlightId} leaderboardVisible={props.leaderboardVisible} />
     </div>
   )
 }

@@ -45,6 +45,7 @@
 | 18.4.| 2    | 2048 pelin päättyminen ja päättymisanimaatio |
 | 26.4.| 3    | 2048 Tuloksen tallennusominaisuuden kehitys |
 | 28.4.| 2    | Leaderboardin kehitys 2048 pelille |
-| yht.  | 111   | | 
+| 29.4.| 2    | Leaderboardit sivun, jossa näkyy kaikkien eri pelien leaderboardit |
+| yht.  | 113   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

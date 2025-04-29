@@ -34,7 +34,7 @@ const Leaderboard = ({ leaderboardVisible, highlightId }) => {
                         </thead>
                         <tbody>
                         {scores.map((score, index) => 
-                        <LeaderboardScore key={score.id} score={score} index={index} id={score.id} character={score.character} highlightId={highlightId}/>)}
+                        <LeaderboardScore key={score.id} score={score} index={index} id={score.id} highlightId={highlightId}/>)}
                         </tbody>
                    </table>
                 </div>

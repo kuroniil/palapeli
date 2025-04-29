@@ -3,6 +3,7 @@ import PuzzleGame from './components/Puzzlegame'
 import Snake from './components/Snake'
 import MainMenu from './components/MainMenu'
 import Game2048 from './components/Game2048'
+import Leaderboards from './components/Leaderboards'
 
 function App() {
   const [appState, setAppState] = useState("menu")
@@ -25,7 +26,7 @@ function App() {
         <MainMenu changeAppState={changeAppState}/>
       : appState === "2048" ?
         <Game2048 changeAppState={changeAppState}/>
-      : ""
+      : <Leaderboards changeAppState={changeAppState}/>
       }
     </div>
   )

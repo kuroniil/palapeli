@@ -61,7 +61,7 @@ const Leaderboards = ({ changeAppState}) => {
         <div 
         id="menu"
         onClick={changeAppState} 
-        className="exit-leaderboard"
+        className="exit-button"
         >
           ×
         </div>

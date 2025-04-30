@@ -19,13 +19,14 @@ const CharactersMenu = ({ charactersMenuVisible, setCharactersMenuVisible, setCh
     
     return (
         <div className={`characters-wrapper ${charactersMenuVisible ? 'visible' : 'hidden'}`}>
+            <div onClick={() => setCharactersMenuVisible(false)} className="exit-button">×</div>
             <div className="menu">
                 <h1>change character</h1>
                 <button id="1" onClick={handleCharacterClick}>default</button>
                 <button id="2" onClick={handleCharacterClick}>orange</button>
                 <button id="3" onClick={handleCharacterClick}>green</button>
             </div>
-            <div onClick={() => setCharactersMenuVisible(false)} className="exit-characters">×</div>
+            
         </div>
     )
 }

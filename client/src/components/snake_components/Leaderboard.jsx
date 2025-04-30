@@ -39,7 +39,7 @@ const Leaderboard = (props) => {
     return (
         <div className={`leaderboard-wrapper ${props.leaderboardVisible ? 'visible' : 'hidden'}`}>
             <div className="leaderboard">
-                <div onClick={() => props.setLeaderboardVisible(false)} className="exit-leaderboard">×</div>
+                <div onClick={() => props.setLeaderboardVisible(false)} className="exit-button">×</div>
                 <h2>Leaderboard</h2>
                 <div className="buttons">
                     <button className={props.leaderboardState === 'all' ? 'selected' : ''} id="all" onClick={handleClick}>

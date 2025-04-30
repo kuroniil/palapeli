@@ -15,7 +15,7 @@ const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode, setLeader
     }
     return (
         <div className="leaderboard">
-            <div onClick={() => setLeaderboardVisible(false)} className="exit-leaderboard">×</div>
+            <div onClick={() => setLeaderboardVisible(false)} className="exit-button">×</div>
             <h2>Leaderboard</h2>
             <div className="buttons">
                 <button className={leaderboardMode === '3x3' ? 'selected' : ''} onClick={handle3x3Click}>

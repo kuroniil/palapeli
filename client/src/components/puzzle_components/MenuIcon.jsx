@@ -5,9 +5,7 @@ const MenuIcon = (props) => {
     }
 
     return (
-        <div className="menuicon" onClick={handleClick}>
-            Menu
-        </div>
+        <button onClick={handleClick}>Menu</button>
     )
 }
 

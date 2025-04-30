@@ -19,12 +19,12 @@ const Menu = (props) => {
     return (
         <div className="menu-base">
             <div className={`menu-details-wrapper ${props.menuVisible ? 'visible' : 'hidden'}`}>
+            <div onClick={props.handleMenuClick} className="exit-button">×</div>
                 <div className="menu">
                     <h1>menu</h1>
                     <button onClick={handleRestartClick}>restart game</button>
                     <button onClick={handleChangeCharacterClick}>change character</button>
                     <button id="menu" onClick={props.changeAppState}>main menu</button>
-                    <div onClick={props.handleMenuClick} className="exit-modes" style={{bottom: "4%", right: "14%"}}>×</div>
                 </div>
                 <CharactersMenu charactersMenuVisible={props.charactersMenuVisible} 
                 setCharactersMenuVisible={props.setCharactersMenuVisible} 

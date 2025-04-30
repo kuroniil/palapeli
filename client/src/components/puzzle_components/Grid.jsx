@@ -89,7 +89,7 @@ const Grid = (props) => {
                             ? <div className="cell" key={colIndex} onClick={() => updateGrid(rowIndex, colIndex)}>
                                 {cell}
                               </div>
-                            : <div className="emptyCell" key={colIndex}></div>
+                            : <div className="empty-cell" key={colIndex}></div>
                         ))}
                     </div>
                 ))}

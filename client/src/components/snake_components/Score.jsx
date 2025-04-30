@@ -1,15 +1,15 @@
 const Score = ({ score, index, id, highlightId }) => {
-    let cName = ""
-    id === highlightId ? cName = "score" : ""
+  let cName = ''
+  id === highlightId ? cName = 'score' : ''
 
-    return (
-        <tr className={cName} id={id}>
-            <td>{index + 1}.</td>
-            <td>{score.name}</td>
-            <td>{score.score}</td>
-            <td>{score.character}</td>
-        </tr>
-    )
+  return (
+    <tr className={cName} id={id}>
+      <td>{index + 1}.</td>
+      <td>{score.name}</td>
+      <td>{score.score}</td>
+      <td>{score.character}</td>
+    </tr>
+  )
 }
 
 export default Score

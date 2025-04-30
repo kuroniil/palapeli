@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import scoreService from "../../services/scores2048"
+import { useEffect, useState } from 'react'
+import scoreService from '../../services/scores2048'
 
 const ScoreSubmitForm = ({ score, submitted, setSubmitted, scoreFormVisible, setHighlightId }) => {
   const [submitMessage, setSubmitMessage] = useState('...')
@@ -16,7 +16,7 @@ const ScoreSubmitForm = ({ score, submitted, setSubmitted, scoreFormVisible, set
   const handleScoreSubmit = (event) => {
     event.preventDefault()
     if (!submitted) {
-      setScoreMessageColor("white")
+      setScoreMessageColor('white')
       const newScore = {
         name: name,
         score: score
@@ -27,7 +27,7 @@ const ScoreSubmitForm = ({ score, submitted, setSubmitted, scoreFormVisible, set
           .then(response => {
             setHighlightId(response.data.id)
           })
-        setSubmitMessage("Score submitted!")
+        setSubmitMessage('Score submitted!')
         setSubmitted(true)
         setName('')
       } catch (error) {
@@ -38,21 +38,21 @@ const ScoreSubmitForm = ({ score, submitted, setSubmitted, scoreFormVisible, set
 
   return (
     <div>
-      <h1 style={{color: "white"}}>Save Score</h1>
+      <h1 style={{ color: 'white' }}>Save Score</h1>
       <p>Your score:&nbsp;
-        <span style={{textDecoration: "underline"}}>{score}</span>
+        <span style={{ textDecoration: 'underline' }}>{score}</span>
       </p>
       <p>Save your score with a name</p>
       <form onSubmit={handleScoreSubmit}>
-        <input onChange={(t) => setName(t.target.value)} value={name} tabIndex={scoreFormVisible ? "1" : "-1"} />
+        <input onChange={(t) => setName(t.target.value)} value={name} tabIndex={scoreFormVisible ? '1' : '-1'} />
         &nbsp;
         <button className="game-2048-icon-clickable"
-        style={{fontSize: "45%"}}
-        tabIndex={scoreFormVisible ? "1" : "-1"}>
+          style={{ fontSize: '45%' }}
+          tabIndex={scoreFormVisible ? '1' : '-1'}>
           save
         </button>
       </form>
-      <p style={{color: scoreMessageColor, padding: "0.7em", userSelect: "none"}}>{submitMessage}</p>
+      <p style={{ color: scoreMessageColor, padding: '0.7em', userSelect: 'none' }}>{submitMessage}</p>
     </div>
   )
 }

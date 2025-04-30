@@ -14,7 +14,7 @@ const PuzzleButtons = ({ leaderboardState, setLeaderboardState }) => {
       <button className={leaderboardState === '5x5' ? 'selected' : ''} id="5x5" onClick={handleClick}>
           5x5
       </button>
-  </>
+    </>
   )
 }
 

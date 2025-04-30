@@ -35,9 +35,9 @@ const PuzzleGame = ({ changeAppState }) => {
     setLeaderboardMode(mode)
     setLBModeTrigger(!LBModeTrigger)
   }
-  
+
   useEffect(() => {
-    const oldTimerId = sessionStorage.getItem("timerId")
+    const oldTimerId = sessionStorage.getItem('timerId')
     if (oldTimerId) {
       timerService
         .timerStop(oldTimerId)
@@ -45,8 +45,8 @@ const PuzzleGame = ({ changeAppState }) => {
     timerService
       .timerStart()
       .then(response => {
-          setTimerId(response.data)
-          sessionStorage.setItem("timerId", response.data)
+        setTimerId(response.data)
+        sessionStorage.setItem('timerId', response.data)
       })
   }, [])
 
@@ -64,7 +64,7 @@ const PuzzleGame = ({ changeAppState }) => {
     const menuState = !menuVisible
     setMenuVisible(menuState)
   }
-  
+
   useEffect(() => {
     if (gridSize === 25) {
       gridFont(9)
@@ -78,28 +78,28 @@ const PuzzleGame = ({ changeAppState }) => {
     <div>
       <Header title="pala_peli" />
       <div className="main-buttons">
-        <MenuIcon handleMenuClick={handleMenuClick} leaderboardVisible={leaderboardVisible} 
-        setLeaderboardVisible={setLeaderboardVisible} menuVisible={menuVisible} />
+        <MenuIcon handleMenuClick={handleMenuClick} leaderboardVisible={leaderboardVisible}
+          setLeaderboardVisible={setLeaderboardVisible} menuVisible={menuVisible} />
         <LeaderboardIcon setLeaderboardVisible={setLeaderboardVisible} handleMenuClick={handleMenuClick}
-        setMenuVisible={setMenuVisible} leaderboardVisible={leaderboardVisible} menuVisible={menuVisible} />
+          setMenuVisible={setMenuVisible} leaderboardVisible={leaderboardVisible} menuVisible={menuVisible} />
         {timerVisible && <Timer time={time} setTime={setTime} startTime={startTime} />}
       </div>
       <Menu setGrid={setGrid} setGridComplete={setGridComplete} setTotalMoves={setTotalMoves}
-        setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize} 
+        setStartTime={setStartTime} setGridSize={setGridSize} gridSize={gridSize}
         handleMenuClick={handleMenuClick} setGuideVisible={setGuideVisible} modesTabVisible={modesTabVisible}
-        guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible} 
+        guideVisible={guideVisible} menuVisible={menuVisible} setModesTabVisible={setModesTabVisible}
         empty={empty} setEmpty={setEmpty} setTimerId={setTimerId} changeAppState={changeAppState}/>
-      <div className={`leaderboard-wrapper ${leaderboardVisible ? "visible" : "hidden"}`}>
-          <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}
+      <div className={`leaderboard-wrapper ${leaderboardVisible ? 'visible' : 'hidden'}`}>
+        <Leaderboard scores={scores} leaderboardMode={leaderboardMode} updateLeaderboardMode={updateLeaderboardMode}
           setLeaderboardVisible={setLeaderboardVisible} highlightId={highlightId}/>
       </div>
       {!gridComplete ? <Grid grid={grid} setGrid={setGrid} gridSize={gridSize} empty={empty}
-      setGridComplete={setGridComplete} setFinishTime={setFinishTime} setEmpty={setEmpty}
-      time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
-      setTotalMoves={setTotalMoves} timerId={timerId} />
-      : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}
-      updateLeaderboardMode={updateLeaderboardMode} setLeaderboardVisible={setLeaderboardVisible}
-      setHighlightId={setHighlightId} highlightId={highlightId} />}
+        setGridComplete={setGridComplete} setFinishTime={setFinishTime} setEmpty={setEmpty}
+        time={time} setTimerVisible={setTimerVisible} totalMoves={totalMoves}
+        setTotalMoves={setTotalMoves} timerId={timerId} />
+        : <GridFinished finishTime={finishTime} gridSize={gridSize} totalMoves={totalMoves}
+          updateLeaderboardMode={updateLeaderboardMode} setLeaderboardVisible={setLeaderboardVisible}
+          setHighlightId={setHighlightId} highlightId={highlightId} />}
     </div>
   )
 }

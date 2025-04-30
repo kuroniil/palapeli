@@ -6,7 +6,7 @@ import Game2048 from './components/Game2048'
 import Leaderboards from './components/Leaderboards'
 
 function App() {
-  const [appState, setAppState] = useState("menu")
+  const [appState, setAppState] = useState('menu')
 
   const changeAppState = (event) => {
     setAppState(event.target.id)
@@ -14,19 +14,19 @@ function App() {
 
   return (
     <div>
-      {appState === "puzzle" ?
+      {appState === 'puzzle' ?
         <div className="games">
           <PuzzleGame appState={appState} changeAppState={changeAppState}/>
         </div>
-      : appState === "snake" ?
-      <div className="games">
-        <Snake appState={appState} changeAppState={changeAppState}/>
-      </div>
-      : appState === "menu" ?
-        <MainMenu changeAppState={changeAppState}/>
-      : appState === "2048" ?
-        <Game2048 changeAppState={changeAppState}/>
-      : <Leaderboards changeAppState={changeAppState}/>
+        : appState === 'snake' ?
+          <div className="games">
+            <Snake appState={appState} changeAppState={changeAppState}/>
+          </div>
+          : appState === 'menu' ?
+            <MainMenu changeAppState={changeAppState}/>
+            : appState === '2048' ?
+              <Game2048 changeAppState={changeAppState}/>
+              : <Leaderboards changeAppState={changeAppState}/>
       }
     </div>
   )

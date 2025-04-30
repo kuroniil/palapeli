@@ -1,15 +1,15 @@
 const LeaderboardButton = (props) => {
-    const handleClick = () => {
-        props.handleMenuClick()
-        props.setLeaderboardVisible(!props.leaderboardVisible)
-        props.setMenuVisible(false)
-    }
-    
-    return (
-        <button onClick={handleClick}>
+  const handleClick = () => {
+    props.handleMenuClick()
+    props.setLeaderboardVisible(!props.leaderboardVisible)
+    props.setMenuVisible(false)
+  }
+
+  return (
+    <button onClick={handleClick}>
             Leaderboard
-        </button>
-    )
+    </button>
+  )
 }
 
 export default LeaderboardButton

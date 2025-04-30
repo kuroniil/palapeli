@@ -19,5 +19,5 @@ app.use('/api/scores2048', scores2048Router)
 
 
 module.exports = {
-    app
+  app
 }

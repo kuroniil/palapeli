@@ -16,7 +16,7 @@ const SnakeButtons = ({ leaderboardState, setLeaderboardState }) => {
       <button className={leaderboardState === 'green' ? 'selected' : ''} id="green" onClick={handleClick}>
           green
       </button>
-  </>
+    </>
   )
 }
 

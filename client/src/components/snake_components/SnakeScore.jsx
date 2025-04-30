@@ -1,7 +1,7 @@
 const SnakeScore = (props) => (
-    <div className="snake-score">
+  <div className="snake-score">
         Score: {props.pointCount}
-    </div>
+  </div>
 )
 
 export default SnakeScore

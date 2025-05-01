@@ -5,11 +5,10 @@ import { move } from '../../utils/gridLogic'
 import BaseGrid from './BaseGrid'
 import Pieces from './Pieces'
 import Leaderboard from './Leaderboard'
+import LoadGame from './LoadGame'
 
 const Grid = (props) => {
-  const [grid, setGrid] = useState(JSON.parse(JSON.stringify(startGrid)))
   const [newPieceName, setNewPieceName] = useState('')
-  const [pieces, setPieces] = useState(JSON.parse(JSON.stringify(startPieces)))
   const [scaled, setScaled] = useState(0.0)
 
   useEffect(() => {
@@ -24,6 +23,7 @@ const Grid = (props) => {
         .includes(event.key)) {
         return
       }
+      if (props.loadGameVisible) return
       switch (event.key) {
       case 'Escape':
         restartGame()
@@ -49,11 +49,11 @@ const Grid = (props) => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardInput)
     }
-  }, [grid, pieces, newPieceName, scaled, props.gameOver])
+  }, [props.grid, props.pieces, newPieceName, scaled, props.gameOver, props.loadGameVisible])
 
   const moveAnimations = (direction) => {
     setScaled(0.0)
-    const [updatedGrid, addedPiece, scoreIncrement, gridChanged, gameIsOver] = move(grid, direction)
+    const [updatedGrid, addedPiece, scoreIncrement, gridChanged, gameIsOver] = move(props.grid, direction)
     props.setGameOver(gameIsOver)
     if (gridChanged) {
       const updatedScore = props.currentScore + scoreIncrement
@@ -63,7 +63,7 @@ const Grid = (props) => {
       const newPieces = []
       let flatGrid = updatedGrid.flat()
 
-      for (const piece of pieces) {
+      for (const piece of props.pieces) {
         const newPiece = flatGrid.find(p => p.name === piece.name)
         newPieces.push(newPiece)
       }
@@ -71,8 +71,8 @@ const Grid = (props) => {
         newPieces.push(addedPiece)
       }
 
-      setPieces(newPieces)
-      setGrid(updatedGrid.map((_, i) => updatedGrid.map(row => row[i])))
+      props.setPieces(newPieces)
+      props.setGrid(updatedGrid.map((_, i) => updatedGrid.map(row => row[i])))
 
       setTimeout(() => {
         setScaled(1.0)
@@ -83,20 +83,20 @@ const Grid = (props) => {
   }
 
   const handleGameOver = () => {
-    pieces.forEach((piece, i) => {
+    props.pieces.forEach((piece, i) => {
       setScaled(0.0)
       const index = gameOverPieces.findIndex(p => p.x === piece.x && p.y === piece.y)
       setTimeout(() => {
         if (index !== -1) {
-          pieces.splice(i, 1, { ...gameOverPieces[index], id: v1() })
-          const newPieces = JSON.parse(JSON.stringify(pieces))
-          setPieces(newPieces)
+          props.pieces.splice(i, 1, { ...gameOverPieces[index], id: v1() })
+          const newPieces = JSON.parse(JSON.stringify(props.pieces))
+          props.setPieces(newPieces)
           setNewPieceName(gameOverPieces[index].name)
         } else {
-          pieces.splice(i, 1, { ...piece, value: 0, id: v1() })
-          const newPieces = JSON.parse(JSON.stringify(pieces))
-          setPieces(newPieces)
-          setNewPieceName(pieces[i].name)
+          props.pieces.splice(i, 1, { ...piece, value: 0, id: v1() })
+          const newPieces = JSON.parse(JSON.stringify(props.pieces))
+          props.setPieces(newPieces)
+          setNewPieceName(props.pieces[i].name)
         }
         setScaled(1.0)
       }, i*25)
@@ -104,19 +104,23 @@ const Grid = (props) => {
   }
 
   const restartGame = () => {
-    setGrid(JSON.parse(JSON.stringify(startGrid)))
-    setPieces(JSON.parse(JSON.stringify(startPieces)))
+    props.setGrid(JSON.parse(JSON.stringify(startGrid)))
+    props.setPieces(JSON.parse(JSON.stringify(startPieces)))
     props.setCurrentScore(0)
     props.setGameOver(false)
     props.setScoreFormVisible(false)
     props.setScoreSubmitted(false)
+    props.setLeaderboardVisible(false)
   }
 
   return (
     <div className="container">
       <BaseGrid gridSize={props.gridSize}/>
-      <Pieces pieces={pieces} newPieceName={newPieceName} scaled={scaled} />
+      <Pieces pieces={props.pieces} newPieceName={newPieceName} scaled={scaled} />
       <Leaderboard highlightId={props.highlightId} leaderboardVisible={props.leaderboardVisible} />
+      {props.loadGameVisible && <LoadGame
+        restartGame={restartGame} score={props.currentScore} setLoadGameVisible={props.setLoadGameVisible} />
+      }
     </div>
   )
 }

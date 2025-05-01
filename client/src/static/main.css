@@ -619,3 +619,11 @@ body {
     border-radius: 0.3em;
     height: 15em;
 }
+
+.notification {
+    text-align: center;
+    border: solid 2px black;
+    border-radius: 0.3em;
+    background: white;
+    padding: 0.5em
+}

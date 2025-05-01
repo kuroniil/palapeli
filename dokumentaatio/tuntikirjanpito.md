@@ -47,6 +47,7 @@
 | 28.4.| 2    | Leaderboardin kehitys 2048 pelille |
 | 29.4.| 2    | Leaderboardit sivun, jossa näkyy kaikkien eri pelien leaderboardit |
 | 30.4.| 2    | Refaktorointia ja eslint käyttöön front- ja backendissä |
-| yht.  | 115   | | 
+| 1.5.| 3    | Käynnistysohjeet ja README.md:n päivitys, 2048 pelin tallennus selaimen localStorageen |
+| yht.  | 118   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

@@ -6,16 +6,11 @@ import MenuButton from './snake_components/MenuButton'
 import LeaderboardButton from './snake_components/LeaderboardButton'
 import Menu from './snake_components/Menu'
 import Leaderboard from './snake_components/Leaderboard'
+import { defaultGrid, defaultPlayer } from '../utils/snakeUtils'
 
 const Snake = ({ changeAppState }) => {
-  const defaultGrid = Array.from( { length: 20 }, () => Array(20).fill(0))
   const [gridSize, setGridSize] = useState([20, 20])
-  const [point, setPoint] = useState([Math.floor(Math.random()*gridSize[0]), Math.floor(Math.random()*gridSize[1])])
-  defaultGrid[5][5] = 1
-  defaultGrid[4][5] = 1
-  defaultGrid[3][5] = 1
-  defaultGrid[point[0]][point[1]] = 2
-  const defaultPlayer = [[3,5], [4,5], [5,5]]
+  const [point, setPoint] = useState([10, 10])
   const [snakeGrid, setSnakeGrid] = useState(defaultGrid)
   const [playerPosition, setPlayerPosition] = useState([5,5])
   const [tailPosition, setTailPosition] = useState([[3,5], [4,5], [5,5]])

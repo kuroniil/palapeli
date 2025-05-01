@@ -8,4 +8,9 @@ const defaultPlayer = [[3,5], [4,5], [5,5]]
 
 defaultGrid[10][10] = 2
 
-export { defaultGrid, defaultPlayer }
+const copyArray = (arr) => {
+  let newArr = JSON.parse(JSON.stringify(arr))
+  return newArr.map((_, i) => newArr[i].map(pos => parseInt(pos)))
+}
+
+export { defaultGrid, defaultPlayer, copyArray }

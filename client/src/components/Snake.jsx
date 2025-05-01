@@ -6,12 +6,12 @@ import MenuButton from './snake_components/MenuButton'
 import LeaderboardButton from './snake_components/LeaderboardButton'
 import Menu from './snake_components/Menu'
 import Leaderboard from './snake_components/Leaderboard'
-import { defaultGrid, defaultPlayer } from '../utils/snakeUtils'
+import { defaultGrid, defaultPlayer, copyArray } from '../utils/snakeUtils'
 
 const Snake = ({ changeAppState }) => {
   const [gridSize, setGridSize] = useState([20, 20])
   const [point, setPoint] = useState([10, 10])
-  const [snakeGrid, setSnakeGrid] = useState(defaultGrid)
+  const [snakeGrid, setSnakeGrid] = useState(copyArray(defaultGrid))
   const [playerPosition, setPlayerPosition] = useState([5,5])
   const [tailPosition, setTailPosition] = useState([[3,5], [4,5], [5,5]])
   const [direction, setDirection] = useState('D')
@@ -168,7 +168,7 @@ const Snake = ({ changeAppState }) => {
             setLeaderboardVisible={setLeaderboardVisible} setMenuVisible={setMenuVisible} />
           <SnakeScore pointCount={pointCount} />
         </div>
-        <Menu menuVisible={menuVisible} setMenuVisible={setMenuVisible}
+        <Menu menuVisible={menuVisible} setMenuVisible={setMenuVisible} setPoint={setPoint}
           defaultGrid={defaultGrid} defaultPlayer={defaultPlayer} setGameOver={setGameOver}
           setTailPosition={setTailPosition} setSnakeGrid={setSnakeGrid}
           setPointCount={setPointCount} setPlayerPosition={setPlayerPosition}

@@ -101,6 +101,9 @@ const Grid = (props) => {
         setScaled(1.0)
       }, i*25)
     })
+    localStorage.removeItem('score')
+    localStorage.removeItem('grid')
+    localStorage.removeItem('pieces')
   }
 
   const restartGame = () => {

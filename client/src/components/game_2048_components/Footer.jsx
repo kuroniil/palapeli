@@ -10,7 +10,7 @@ const Footer = ({ setNotification, gameOver, handleScoreSaveClick, grid, pieces,
     }
     setTimeout(() => {
       setNotification('')
-    }, 1500)
+    }, 2000)
   }
   return (
     <div style={{ marginTop: '1em', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>

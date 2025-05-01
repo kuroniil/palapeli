@@ -1,13 +1,16 @@
-import { useState } from 'react'
 import CharactersMenu from './CharactersMenu'
+import { copyArray } from '../../utils/snakeUtils'
 
 const Menu = (props) => {
   const handleRestartClick = () => {
+    const defaultGrid = copyArray(props.defaultGrid)
+    const defaultPlayer = copyArray(props.defaultPlayer)
     props.setGameOver(false)
     props.setPointCount(0)
-    props.setSnakeGrid(props.defaultGrid)
-    props.setTailPosition(props.defaultPlayer)
-    props.setPlayerPosition(props.defaultPlayer[props.defaultPlayer.length-1])
+    props.setPoint([10, 10])
+    props.setSnakeGrid(defaultGrid)
+    props.setTailPosition(defaultPlayer)
+    props.setPlayerPosition(defaultPlayer[defaultPlayer.length-1])
     props.setMenuVisible(false)
     props.setDirection('D')
   }

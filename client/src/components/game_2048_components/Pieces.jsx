@@ -7,12 +7,12 @@ const Pieces = ({ pieces, newPieceName, scaled }) => (
         key={`${piece.id}`}
         className="game-piece"
         style={{
-          top: `${-0.064*piece.y}em`,
-          left: '-0.01em',
+          top: `${-0.094*piece.y}vh`,
+          left: `${-0.019*piece.x}vh`,
           transform:
               piece.name === newPieceName
-                ? `translateX(${3*piece.x}em) translateY(${3*piece.y}em) scale(${scaled})`
-                : `translateX(${3*piece.x}em) translateY(${3*piece.y}em)`,
+                ? `translateX(${12*piece.x}vh) translateY(${3.15*piece.y}em) scale(${scaled})`
+                : `translateX(${12*piece.x}vh) translateY(${3.15*piece.y}em)`,
           transition: 'transform 0.1s ease',
           background:
             piece.value === 'E'

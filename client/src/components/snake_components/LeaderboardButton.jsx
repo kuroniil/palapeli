@@ -7,7 +7,7 @@ const LeaderboardButton = (props) => {
 
   return (
     <button onClick={handleClick}>
-            Leaderboard
+      Leaderboard
     </button>
   )
 }

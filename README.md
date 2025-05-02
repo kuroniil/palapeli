@@ -25,7 +25,13 @@ Sovelluksen Docker-compose käyttää Postgres-imagea, sekä front- ja backendin
 
 ### Käynnistys manuaalisesti
 
-Luo ensin hakemiston ```server/``` juureen .env tiedosto, jossa on määritelty ympäristönmuuttuja ```DATABASE_URL``` Postgres tietokannalle esimerkiksi seuraavasti
+Luo ensin esimerkiksi palapeli niminen tietokanta komennolla:
+
+```bash
+createdb palapeli
+```
+
+Luo sitten hakemiston ```server/``` juureen .env tiedosto, jossa on määritelty ympäristönmuuttuja ```DATABASE_URL``` Postgres tietokannalle esimerkiksi seuraavasti
 
 ```bash
 DATABASE_URL=postgres:///palapeli

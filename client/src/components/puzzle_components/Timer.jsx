@@ -9,7 +9,7 @@ const Timer = ({ time, setTime, startTime }) => {
     return () => clearInterval(interval)
   }, [startTime])
   return (
-    <div className="timer">Aika: {time != 0 ? time : 0} sekuntia</div>
+    <div className="timer">Aika: {time !== 0 ? time : 0} sekuntia</div>
   )
 }
 

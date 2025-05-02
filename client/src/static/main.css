@@ -2,12 +2,12 @@
     --theme-hue: 240deg;
     --theme-sat: 70%;
     --theme-lum: 60%;
-
     --background: hsl(var(--theme-hue), var(--theme-sat), var(--theme-lum));
     --background-darker: hsl(var(--theme-hue), var(--theme-sat), calc(var(--theme-lum) - 18.5%));
     --background-dark: hsl(var(--theme-hue), var(--theme-sat), calc(var(--theme-lum) - 8.5%));
     --background-light: hsl(var(--theme-hue), var(--theme-sat), calc(var(--theme-lum) + 8.5%));
     --background-very-light: hsl(var(--theme-hue), var(--theme-sat), calc(var(--theme-lum) + 18.5%));
+    --main-font: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }  
 
 body {
@@ -47,7 +47,7 @@ body {
     margin-bottom: 2em;
     border: solid 3px black;
     font-size: 200%;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: var(--main-font);
     background-color: var(--background-light);
     border-radius: 1em;
 }
@@ -75,7 +75,7 @@ body {
     cursor: pointer;
     user-select: none;
     text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-family: var(--main-font);
 }
 
 .cell:hover,
@@ -103,7 +103,7 @@ body {
     background-color: var(--background-light);
     cursor: pointer;
     user-select: none;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-family: var(--main-font);
     font-weight: bold;
     transition: all 0.1s ease;
 }
@@ -111,7 +111,7 @@ body {
 .timer {
     text-align: end;
     cursor: pointer;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-family: var(--main-font);
     font-weight: bold;
     transition: all 0.1s ease;
 }
@@ -148,7 +148,7 @@ body {
     text-align: center;
     font-size: 400%;
     color: #FFF;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-family: var(--main-font);
     user-select: none;
 }
 
@@ -157,7 +157,7 @@ body {
     font-size: 200%;
     margin: auto;
     color: #FFF;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-family: var(--main-font);
     user-select: none;
 }
 
@@ -176,7 +176,7 @@ body {
     border-radius: 1em;
     border: solid 0.1em black   ;
     color: #FFF;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;    
+    font-family: var(--main-font);
     cursor: pointer;
 }
 
@@ -245,7 +245,7 @@ body {
     text-align: center;
     font-size: 400%;
     padding-bottom: 0;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-family: var(--main-font);
 }
 
 .game-over {
@@ -262,14 +262,14 @@ body {
     text-align: center;
     font-size: 300%;
     padding-bottom: 0;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;   
+    font-family: var(--main-font);   
     color: #FFF;
 }
 
 .game-over p {
     text-align: center;
     font-size: 150%;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: var(--main-font);
     margin-bottom: 3.5em;
 }
 
@@ -320,12 +320,12 @@ body {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
     font-size: 200%;
     padding-bottom: 0;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: var(--main-font);
     color: #FFF;
 }
 
 .leaderboard h3 {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: var(--main-font);
     color: #FFF;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
@@ -347,7 +347,7 @@ body {
     border-radius: 1em;
     border: solid 0.2em black   ;
     color: #FFF;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;    
+    font-family: var(--main-font);
     cursor: pointer;
 }
 
@@ -368,7 +368,7 @@ body {
 
 .leaderboard table {
     border-spacing: 0;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: var(--main-font);
     width: 60em;
     font-size: large;
 }
@@ -391,7 +391,7 @@ body {
     padding: 1em 0 1em 1em;
     border-radius: 0.5em;
     border: solid black 0.01em;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;   
+    font-family: var(--main-font);
     background-color: rgb(33, 231, 76)
 }
 
@@ -410,7 +410,7 @@ body {
     border-radius: 0.2em;
     border: solid 0.1em black;
     color: #FFF;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;    
+    font-family: var(--main-font);;    
     cursor: pointer;   
 }
 
@@ -444,7 +444,7 @@ body {
 }
 
 .snake-score {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-family: var(--main-font);
     font-weight: bold;
 }
 
@@ -462,7 +462,7 @@ body {
     background-color: var(--background-darker);
     color: transparent;
     user-select: none;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    font-family: var(--main-font);
 }
 
 .snake-player-default, 
@@ -549,6 +549,7 @@ body {
     margin: 0.5%;
     transition: transform 0.2s ease;
     user-select: none;
+    border-radius: 0.1em;
 }
 
 .game-piece {
@@ -558,8 +559,8 @@ body {
     position: absolute;
     font-size: 4vh;
     padding: 0;
-    width: 2.90em;
-    height: 3em;
+    width: 2.9em;
+    height: 3.03em;
     margin: 0.5%;
     color: white;
 }
@@ -599,18 +600,21 @@ body {
 }
 
 .game-2048-score-form.visible {
-    transform: translateY(-111%);
+    transform: translateY(0%);
     transition: transform 0.2s ease-in;
-    padding: 1em;
 }
 
 .game-2048-score-form.hidden {
-    transform: translateY(100%);
+    transform: translateY(200%);
     transition: transform 0.2s ease-in;
     user-select: none;
 }
 
 .game-2048-score-form {
+    position: absolute;
+    top: 0em;
+    width: 99%;
+    height: 100%;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -618,7 +622,6 @@ body {
     font-size: 170%;
     border: solid 0.1em black;
     border-radius: 0.3em;
-    height: 15em;
 }
 
 .notification {

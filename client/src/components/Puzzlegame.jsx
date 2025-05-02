@@ -77,7 +77,7 @@ const PuzzleGame = ({ changeAppState }) => {
   return (
     <div>
       <Header title="pala_peli" />
-      <div className="main-buttons">
+      <div className="main-buttons" style={{ marginBottom: '2em' }}>
         <MenuIcon handleMenuClick={handleMenuClick} leaderboardVisible={leaderboardVisible}
           setLeaderboardVisible={setLeaderboardVisible} menuVisible={menuVisible} />
         <LeaderboardIcon setLeaderboardVisible={setLeaderboardVisible} handleMenuClick={handleMenuClick}

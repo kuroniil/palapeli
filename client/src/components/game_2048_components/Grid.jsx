@@ -6,6 +6,7 @@ import BaseGrid from './BaseGrid'
 import Pieces from './Pieces'
 import Leaderboard from './Leaderboard'
 import LoadGame from './LoadGame'
+import ScoreSubmitForm from './ScoreSubmitForm'
 
 const Grid = (props) => {
   const [newPieceName, setNewPieceName] = useState('')
@@ -124,6 +125,10 @@ const Grid = (props) => {
       {props.loadGameVisible && <LoadGame
         restartGame={restartGame} score={props.currentScore} setLoadGameVisible={props.setLoadGameVisible} />
       }
+      <div className={`game-2048-score-form ${props.scoreFormVisible ? 'visible' : 'hidden'}`}>
+        <ScoreSubmitForm score={props.currentScore} submitted={props.scoreSubmitted} setSubmitted={props.setScoreSubmitted}
+          scoreFormVisible={props.scoreFormVisible} setHighlightId={props.setHighlightId} />
+      </div>
     </div>
   )
 }

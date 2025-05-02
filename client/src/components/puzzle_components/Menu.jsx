@@ -10,19 +10,10 @@ const Menu = (props) => {
     props.setGuideVisible(true)
   }
 
-  const handleThreeByThreeClick = () => {
-    props.setGridSize(9)
-    handleRestart(9)
-  }
-
-  const handleFourByFourClick = () => {
-    props.setGridSize(16)
-    handleRestart(16)
-  }
-
-  const handleFiveByFiveClick = () => {
-    props.setGridSize(25)
-    handleRestart(25)
+  const handleModeClick = (event) => {
+    const gridSize = parseInt(event.target.id)
+    props.setGridSize(gridSize)
+    handleRestart(gridSize)
   }
 
   const handleRestartClick = () => {
@@ -55,21 +46,20 @@ const Menu = (props) => {
     props.setGuideVisible(false)
   }
 
-  const handleModeClick = () => {
+  const handleModesClick = () => {
     props.setModesTabVisible(true)
   }
 
   return (
     <div className="menu-base">
       <div className={`menu-details-wrapper ${props.menuVisible ? 'visible' : 'hidden'}`}>
-        <MenuDetails handleRestartClick={handleRestartClick} handleModeClick={handleModeClick}
+        <MenuDetails handleRestartClick={handleRestartClick} handleModesClick={handleModesClick}
           handleGuideClick={handleGuideClick} handleMenuClick={props.handleMenuClick}
           changeAppState={props.changeAppState} />
         <div className={`modes-details-wrapper ${props.modesTabVisible ? 'visible' : 'hidden'}`}>
-          <ModesTab handleExitClick={handleExitClick}
-            handleThreeByThreeClick={handleThreeByThreeClick}
-            handleFourByFourClick={handleFourByFourClick}
-            handleFiveByFiveClick={handleFiveByFiveClick}/>
+          <ModesTab
+            handleExitClick={handleExitClick}
+            handleModeClick={handleModeClick} />
         </div>
         <div className={`guide-details-wrapper ${props.guideVisible ? 'visible' : 'hidden'}`}>
           <Guide handleExitClick={handleExitClick}/>

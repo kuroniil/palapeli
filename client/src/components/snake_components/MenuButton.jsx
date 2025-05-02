@@ -5,7 +5,7 @@ const MenuButton = ({ handleMenuClick, setLeaderboardVisible }) => {
   }
   return (
     <button onClick={handleClick}>
-            Menu
+      Menu
     </button>
   )
 }

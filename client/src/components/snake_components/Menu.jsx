@@ -31,7 +31,8 @@ const Menu = (props) => {
         </div>
         <CharactersMenu charactersMenuVisible={props.charactersMenuVisible}
           setCharactersMenuVisible={props.setCharactersMenuVisible}
-          setCharacterSkin={props.setCharacterSkin} setMenuVisible={props.setMenuVisible}/>
+          setCharacterSkin={props.setCharacterSkin} setMenuVisible={props.setMenuVisible}
+          setNotification={props.setNotification} />
       </div>
     </div>
   )

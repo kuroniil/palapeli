@@ -1,18 +1,10 @@
-const CharactersMenu = ({ charactersMenuVisible, setCharactersMenuVisible, setCharacterSkin, setMenuVisible }) => {
+const CharactersMenu = ({ charactersMenuVisible, setCharactersMenuVisible, setCharacterSkin, setMenuVisible, setNotification }) => {
   const handleCharacterClick = (event) => {
-    switch (event.target.id) {
-    case '1':
-      setCharacterSkin('snake-player-default')
-      break
-    case '2':
-      setCharacterSkin('snake-player-orange')
-      break
-    case '3':
-      setCharacterSkin('snake-player-green')
-      break
-    default:
-      break
-    }
+    setCharacterSkin(`snake-player-${event.target.id}`)
+    setNotification(`Character changed to ${event.target.id}`)
+    setTimeout(() => {
+      setNotification('')
+    }, 1500)
     setCharactersMenuVisible(false)
     setMenuVisible(false)
   }
@@ -22,9 +14,9 @@ const CharactersMenu = ({ charactersMenuVisible, setCharactersMenuVisible, setCh
       <div onClick={() => setCharactersMenuVisible(false)} className="exit-button">×</div>
       <div className="menu">
         <h1>change character</h1>
-        <button id="1" onClick={handleCharacterClick}>default</button>
-        <button id="2" onClick={handleCharacterClick}>orange</button>
-        <button id="3" onClick={handleCharacterClick}>green</button>
+        <button id="default" onClick={handleCharacterClick}>default</button>
+        <button id="orange" onClick={handleCharacterClick}>orange</button>
+        <button id="green" onClick={handleCharacterClick}>green</button>
       </div>
 
     </div>

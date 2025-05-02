@@ -12,10 +12,10 @@ const GameOver = (props) => {
       <h2>Game over</h2>
       <p>Submit your score to get on the leaderboard</p>
       <div className="submit-form">
-                Your Score: <span style={{ color: 'white', textDecoration: ' underline' }}>{props.pointCount} points</span>
+        Your Score: <span style={{ color: 'white', textDecoration: ' underline' }}>{props.pointCount} points</span>
       </div>
       <div className="submit-form">
-                Your character: <span style={{ color: 'white', textDecoration: 'underline' }}>{character}</span>
+        Your character: <span style={{ color: 'white', textDecoration: 'underline' }}>{character}</span>
       </div>
       <div className="submit-form">
         <ScoreSubmitForm setErrorMessage={setErrorMessage} errorMessage={errorMessage}

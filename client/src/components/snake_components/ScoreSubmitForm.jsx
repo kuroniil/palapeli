@@ -24,7 +24,7 @@ const ScoreSubmitForm = (props) => {
           props.setSubmitted(true)
           props.setHighlightId(parseInt(response.data.id))
           props.setLeaderboardState(props.character)
-          setTimeout(() => {props.setLeaderboardVisible(true)}, [500])
+          setTimeout(() => {props.setLeaderboardVisible(true)}, 500)
         })
         .catch(error => {
           props.setErrorMessage('Unknown error submitting the score.')
@@ -37,7 +37,7 @@ const ScoreSubmitForm = (props) => {
 
   return (
     <form onSubmit={submitScore}>
-            Enter Nickname (20 characters or less)
+      Enter Nickname (20 characters or less)
       <br></br>
       <br></br>
       <input required placeholder="nickname" onChange={handleNameChange} value={name} />

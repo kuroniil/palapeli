@@ -19,13 +19,13 @@ const Leaderboard = ({ scores, leaderboardMode, updateLeaderboardMode, setLeader
       <h2>Leaderboard</h2>
       <div className="buttons">
         <button className={leaderboardMode === '3x3' ? 'selected' : ''} onClick={handle3x3Click}>
-                    3x3
+          3x3
         </button>
         <button className={leaderboardMode === '4x4' ? 'selected' : ''} onClick={handle4x4Click}>
-                    4x4
+          4x4
         </button>
         <button className={leaderboardMode === '5x5' ? 'selected' : ''} onClick={handle5x5Click}>
-                    5x5
+          5x5
         </button>
       </div>
       <h3>Mode: {leaderboardMode}</h3>

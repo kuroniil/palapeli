@@ -43,15 +43,15 @@ const Leaderboard = (props) => {
         <h2>Leaderboard</h2>
         <div className="buttons">
           <button className={props.leaderboardState === 'all' ? 'selected' : ''} id="all" onClick={handleClick}>
-                        all
+            all
           </button>
           <button className={props.leaderboardState === 'default' ? 'selected' : ''} id="default" onClick={handleClick}>
-                        default
+            default
           </button>
           <button className={props.leaderboardState === 'orange' ? 'selected' : ''} id="orange" onClick={handleClick}>
-                        orange</button>
+            orange</button>
           <button className={props.leaderboardState === 'green' ? 'selected' : ''} id="green" onClick={handleClick}>
-                        green
+            green
           </button>
         </div>
         <h3>{props.leaderboardState === 'all' ? 'all' : `${props.leaderboardState} character`}</h3>

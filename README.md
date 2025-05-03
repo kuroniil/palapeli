@@ -53,4 +53,44 @@ npm run dev
 
 erikseen hakemistoissa ```client/``` ja ```server/```.
 
+## Testit
+
+Sovelluksella on API-testejä, sekä joitain end to end -testejä. 
+
+### API-testit
+
+Sovelluksen API testit voi suorittaa siirtymällä hakemistoon ```server/``` ja ajamalla komennon:
+
+```bash
+npm run test
+```
+
+Tällöin ympäristönmuuttuja ```TEST_DATABASE_URL``` tulee olla määritelty oikein;
+
+Paikallista Postgresiä käyttäessä muuttujan arvo voi olla muotoa:
+
+```bash
+TEST_DATABASE_URL=postgres:///testiTietokannanNimi
+```
+
+Dockeria käyttäessä sen tulee olla muotoa:
+
+```bash
+TEST_DATABASE_URL=postgres://kayttaja:salasana@localhost:5433/test
+```
+
+### End to end testit
+
+End to end testejä varten sovelluksen frontend tulee käynnistää komennolla ```npm run test``` tai Docker-composella esimerkiksi komennolla:
+
+```bash
+VITE_ENV=test docker-compose up
+```
+
+Tämän jälkeen sovelluksen Playwright testit voi ajaa sovelluksen juuresta löytyvästä hakemistosta ```tests/``` komennolla:
+
+```bash
+npm run test
+```
+
 <a href="https://github.com/kuroniil/palapeli/blob/master/dokumentaatio/tuntikirjanpito.md">Tuntikirjanpito</a>

@@ -23,10 +23,14 @@ body {
 }
 
 .main-menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     height: 97vh;
     margin-bottom: 10em;
-    width: 60vw;
-    text-align: center;
+    padding-left: 10em;
+    padding-right: 10em;
     background-color: var(--background-dark);
     padding-top: 0.5em;
     border-radius: 1em;
@@ -35,11 +39,11 @@ body {
 
 .main-menu-container {
     display: grid;
-    grid-template-rows: repeat(1,4);
-    width: 40vw;
+    width: 80%;
+    grid-template-rows: repeat(4, 1fr);
     margin-top: 5em;
+    width: 120%;
     height: 75vh;
-    justify-self: center;
 }
 
 .main-menu-container button {

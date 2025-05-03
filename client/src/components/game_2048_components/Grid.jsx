@@ -127,7 +127,8 @@ const Grid = (props) => {
       }
       <div className={`game-2048-score-form ${props.scoreFormVisible ? 'visible' : 'hidden'}`}>
         <ScoreSubmitForm score={props.currentScore} submitted={props.scoreSubmitted} setSubmitted={props.setScoreSubmitted}
-          scoreFormVisible={props.scoreFormVisible} setHighlightId={props.setHighlightId} />
+          scoreFormVisible={props.scoreFormVisible} setHighlightId={props.setHighlightId}
+          setLeaderboardVisible={props.setLeaderboardVisible}/>
       </div>
     </div>
   )

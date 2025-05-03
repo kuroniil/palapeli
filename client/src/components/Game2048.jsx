@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { startGrid, startPieces } from '../utils/game2048Utils'
 import Grid from './game_2048_components/Grid'
 import Score from './game_2048_components/Score'
-import ScoreSubmitForm from './game_2048_components/ScoreSubmitForm'
 import Footer from './game_2048_components/Footer'
 
 const Game2048 = (props) => {
@@ -19,6 +18,7 @@ const Game2048 = (props) => {
 
   const handleScoreSaveClick = () => {
     setScoreFormVisible(!scoreFormVisible)
+    if (leaderboardVisible && !scoreFormVisible) setLeaderboardVisible(false)
   }
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const Game2048 = (props) => {
         setScoreSubmitted={setScoreSubmitted} leaderboardVisible={leaderboardVisible} highlightId={highlightId}
         setLeaderboardVisible={setLeaderboardVisible} grid={grid} setGrid={setGrid} pieces={pieces}
         setPieces={setPieces} loadGameVisible={loadGameVisible} setLoadGameVisible={setLoadGameVisible}
-        submitted={scoreSubmitted} scoreFormVisible={scoreFormVisible} setHighlightId={setHighlightId} />
+        scoreSubmitted={scoreSubmitted} scoreFormVisible={scoreFormVisible} setHighlightId={setHighlightId} />
       <Footer setNotification={props.setNotification} handleScoreSaveClick={handleScoreSaveClick}
         grid={grid} pieces={pieces} gameOver={gameOver} score={currentScore} />
     </div>

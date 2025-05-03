@@ -50,6 +50,7 @@
 | 1.5.| 3    | Käynnistysohjeet ja README.md:n päivitys, 2048 pelin tallennus selaimen localStorageen |
 | 1.5.| 1    | 2048 ulkoasun parannus ja bugien korjailu |
 | 1.5.| 1.5    | refaktorointi ja parannuksia ulkoasuun |
-| yht.  | 120.5   | | 
+| 3.5.| 1.5    | Main menun ulkoasun kehitystä |
+| yht.  | 122   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

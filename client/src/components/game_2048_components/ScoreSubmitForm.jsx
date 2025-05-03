@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import scoreService from '../../services/scores2048'
 
-const ScoreSubmitForm = ({ score, submitted, setSubmitted, scoreFormVisible, setHighlightId }) => {
+const ScoreSubmitForm = ({ score, submitted, setSubmitted, scoreFormVisible, setHighlightId, setLeaderboardVisible }) => {
   const [submitMessage, setSubmitMessage] = useState('...')
   const [scoreMessageColor, setScoreMessageColor] = useState('transparent')
   const [name, setName] = useState('')
@@ -30,6 +30,7 @@ const ScoreSubmitForm = ({ score, submitted, setSubmitted, scoreFormVisible, set
         setSubmitMessage('Score submitted!')
         setSubmitted(true)
         setName('')
+        setTimeout(() => {setLeaderboardVisible(true)}, 500)
       } catch (error) {
         setSubmitMessage('Submitting score failed')
       }

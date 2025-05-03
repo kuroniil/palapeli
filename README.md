@@ -21,7 +21,7 @@ Nyt sovelluksen voi käynnistää komennolla:
 docker-compose up
 ```
 
-Sovelluksen Docker-compose käyttää Postgres-imagea, sekä front- ja backendin Dockerfilestä löytyviä node alpine imageja.
+Sovelluksen docker-compose.yml käyttää Postgres-imagea, sekä front- ja backendin Dockerfilestä löytyviä node alpine imageja.
 
 ### Käynnistys manuaalisesti
 

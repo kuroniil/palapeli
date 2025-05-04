@@ -17,10 +17,14 @@ describe('Puzzle game', () => {
         await expect(mainHeader).toBeVisible()
     })
 
-    test('Solving a puzzle game', async ({ page }) => {
+    test('Solving a puzzle game and saving the score', async ({ page }) => {
         await page.getByRole('button', { name: 'puzzle' }).click()
         await page.getByText('15').click()
-        const puzzleSolvedAlert = page.getByText("4x4 Grid Completed")
+        const puzzleSolvedAlert = page.getByText('4x4 Grid Completed')
         await expect(puzzleSolvedAlert).toBeVisible()
+        await page.getByRole('textbox').first().fill('testi')
+        await page.getByRole('button', { name: 'submit' }).click()
+        const scoreSubmittedAlert = page.getByText('Score submitted!')
+        await expect(scoreSubmittedAlert).toBeVisible()
     })
 })

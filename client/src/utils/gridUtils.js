@@ -5,7 +5,9 @@ const randomizeGrid = (size) => {
     while (currIndex !== 0) {
       let randomIndex = Math.floor(Math.random()*currIndex)
       currIndex --
-      [randomArray[currIndex], randomArray[randomIndex]] = [randomArray[randomIndex], randomArray[currIndex]]
+      let temp = randomArray[currIndex]
+      randomArray[currIndex] = randomArray[randomIndex]
+      randomArray[randomIndex] = temp
     }
     const randomizedGrid = []
     let emptyCell = -1

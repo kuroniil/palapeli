@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-undef
-const serverUrl = process.env.NODE_ENV === 'production' ? 'https://palapeli.onrender.com' : 'http://localhost:3001'
+const serverUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
 
 const apiBaseUrl = `${serverUrl}/api`
 

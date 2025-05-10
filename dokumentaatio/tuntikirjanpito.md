@@ -52,6 +52,7 @@
 | 1.5.| 1.5    | refaktorointi ja parannuksia ulkoasuun |
 | 3.5.| 1.5    | Main menun ulkoasun kehitystä |
 | 3.5.| 1    | Testit toimivaksi Dockerin kanssa ja README.md:n päivitys |
-| yht.  | 123   | | 
+| 4.5.| 2    | Tuotantoversion ongelmien korjausta |
+| yht.  | 125   | | 
 
 *Ensimmäinen versio luotu jo ennen 18.12 ja työstetty noin 10h, ennen kuin päätin tehdä sovelluksesta fullstack-sovelluksen ja otin gitin käyttöön. Kyseistä kohtaa tehty 3h.

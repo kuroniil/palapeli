@@ -2,6 +2,8 @@
 
 Sovellus on kokoelma kolmesta yksinkertaisesta pelistä, sekä leaderboardeista, joiden avulla käyttäjät pystyvät tarkastelemaan ja tallentamaan pelien tuloksiaan. Sovelluksen pelejä ovat 15-puzzle, matopeli ja 2048-peli. 
 
+<a href="https://palapeli.onrender.com">Linkki sovellukseen</a>
+
 ## Käynnistysohjeet
 
 Sovelluksen voi käynnistää paikallisesti Docker-composella tai käynnistämällä erikseen frontendin, backendin ja Postgresin.

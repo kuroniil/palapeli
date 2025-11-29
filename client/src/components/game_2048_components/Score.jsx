@@ -4,6 +4,6 @@ const Score = ({ currentScore }) => (
     <br></br>
     {currentScore}
   </div>
-)
+);
 
-export default Score
+export default Score;

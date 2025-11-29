@@ -1,9 +1,9 @@
-import { pieceColors } from '../../utils/game2048Utils'
+import { pieceColors } from "../../utils/game2048Utils";
 
 const BaseGrid = ({ gridSize }) => {
-  const baseGrid = Array.from(
-    { length: gridSize }, _ => Array.from({ length: gridSize }, _ => 0)
-  )
+  const baseGrid = Array.from({ length: gridSize }, (_) =>
+    Array.from({ length: gridSize }, (_) => 0)
+  );
 
   return (
     <div className="grid-2048">
@@ -14,14 +14,15 @@ const BaseGrid = ({ gridSize }) => {
               id={`cell-${rowIndex}-${colIndex}`}
               key={colIndex}
               className="game-cell"
-              style={pieceColors[cell]}>
+              style={pieceColors[cell]}
+            >
               {cell}
             </div>
           ))}
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default BaseGrid
+export default BaseGrid;

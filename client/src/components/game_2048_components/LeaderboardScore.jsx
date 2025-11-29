@@ -1,6 +1,6 @@
 const LeaderboardScore = ({ score, index, id, highlightId }) => {
-  let cName = ''
-  id === highlightId ? cName = 'score' : ''
+  let cName = "";
+  id === highlightId ? (cName = "score") : "";
 
   return (
     <tr className={cName} id={id}>
@@ -8,7 +8,7 @@ const LeaderboardScore = ({ score, index, id, highlightId }) => {
       <td>{score.name}</td>
       <td>{score.score}</td>
     </tr>
-  )
-}
+  );
+};
 
-export default LeaderboardScore
+export default LeaderboardScore;

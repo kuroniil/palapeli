@@ -1,13 +1,9 @@
 const MenuButton = ({ handleMenuClick, setLeaderboardVisible }) => {
   const handleClick = () => {
-    handleMenuClick()
-    setLeaderboardVisible(false)
-  }
-  return (
-    <button onClick={handleClick}>
-      Menu
-    </button>
-  )
-}
+    handleMenuClick();
+    setLeaderboardVisible(false);
+  };
+  return <button onClick={handleClick}>Menu</button>;
+};
 
-export default MenuButton
+export default MenuButton;

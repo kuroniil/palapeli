@@ -29,6 +29,7 @@ const pieceColors = {
   512: { background: '#a40af7' },
   1024: { background: '#49089e' },
   2048: { background: '#39c7cc' },
+  4096: { background: '#00ff2f' },
   'G': { background: '#39c7cc' },
   'A': { background: '#39c7cc' },
   'M': { background: '#39c7cc' },

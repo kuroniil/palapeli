@@ -12,12 +12,6 @@ const Snake = ({ changeAppState, setNotification }) => {
   const [gridSize, setGridSize] = useState([20, 20]);
   const [point, setPoint] = useState([10, 10]);
   const [snakeGrid, setSnakeGrid] = useState(copyArray(defaultGrid));
-  const [playerPosition, setPlayerPosition] = useState([5, 5]);
-  const [tailPosition, setTailPosition] = useState([
-    [3, 5],
-    [4, 5],
-    [5, 5],
-  ]);
   const [direction, setDirection] = useState("D");
   const [lastMovePos, setLastMovePos] = useState([5, 5]);
   const [pointCount, setPointCount] = useState(0);
@@ -29,6 +23,12 @@ const Snake = ({ changeAppState, setNotification }) => {
   const [charactersMenuVisible, setCharactersMenuVisible] = useState(false);
   const [highlightId, setHighlightId] = useState(-1);
   const [leaderboardState, setLeaderboardState] = useState("all");
+  const [playerPosition, setPlayerPosition] = useState([5, 5]);
+  const [tailPosition, setTailPosition] = useState([
+    [3, 5],
+    [4, 5],
+    [5, 5],
+  ]);
 
   const collectPoint = () => {
     const newPointCount = pointCount + 1;
@@ -167,20 +167,20 @@ const Snake = ({ changeAppState, setNotification }) => {
   return (
     <div className="snake">
       <h1 className="main-header">mato_peli</h1>
-      <div>
-        <div className="main-buttons">
-          <MenuButton
-            handleMenuClick={handleMenuClick}
-            setLeaderboardVisible={setLeaderboardVisible}
-          />
-          <LeaderboardButton
-            leaderboardVisible={leaderboardVisible}
-            handleMenuClick={handleMenuClick}
-            setLeaderboardVisible={setLeaderboardVisible}
-            setMenuVisible={setMenuVisible}
-          />
-          <SnakeScore pointCount={pointCount} />
-        </div>
+      <div className="main-buttons">
+        <MenuButton
+          handleMenuClick={handleMenuClick}
+          setLeaderboardVisible={setLeaderboardVisible}
+        />
+        <LeaderboardButton
+          leaderboardVisible={leaderboardVisible}
+          handleMenuClick={handleMenuClick}
+          setLeaderboardVisible={setLeaderboardVisible}
+          setMenuVisible={setMenuVisible}
+        />
+        <SnakeScore pointCount={pointCount} />
+      </div>
+      <div className="main-container">
         <Menu
           menuVisible={menuVisible}
           setMenuVisible={setMenuVisible}
@@ -207,22 +207,22 @@ const Snake = ({ changeAppState, setNotification }) => {
           leaderboardState={leaderboardState}
           setLeaderboardState={setLeaderboardState}
         />
+        {gameOver ? (
+          <GameOver
+            pointCount={pointCount}
+            characterSkin={characterSkin}
+            setHighlightId={setHighlightId}
+            setLeaderboardState={setLeaderboardState}
+            setLeaderboardVisible={setLeaderboardVisible}
+          />
+        ) : (
+          <SnakeGrid
+            snakeGrid={snakeGrid}
+            playerPosition={playerPosition}
+            characterSkin={characterSkin}
+          />
+        )}
       </div>
-      {gameOver ? (
-        <GameOver
-          pointCount={pointCount}
-          characterSkin={characterSkin}
-          setHighlightId={setHighlightId}
-          setLeaderboardState={setLeaderboardState}
-          setLeaderboardVisible={setLeaderboardVisible}
-        />
-      ) : (
-        <SnakeGrid
-          snakeGrid={snakeGrid}
-          playerPosition={playerPosition}
-          characterSkin={characterSkin}
-        />
-      )}
     </div>
   );
 };

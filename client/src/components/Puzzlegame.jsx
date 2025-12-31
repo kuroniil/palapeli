@@ -89,63 +89,65 @@ const PuzzleGame = ({ changeAppState }) => {
           <Timer time={time} setTime={setTime} startTime={startTime} />
         )}
       </div>
-      <Menu
-        setGrid={setGrid}
-        setGridComplete={setGridComplete}
-        setTotalMoves={setTotalMoves}
-        setStartTime={setStartTime}
-        setGridSize={setGridSize}
-        gridSize={gridSize}
-        handleMenuClick={handleMenuClick}
-        setGuideVisible={setGuideVisible}
-        modesTabVisible={modesTabVisible}
-        guideVisible={guideVisible}
-        menuVisible={menuVisible}
-        setModesTabVisible={setModesTabVisible}
-        empty={empty}
-        setEmpty={setEmpty}
-        setTimerId={setTimerId}
-        changeAppState={changeAppState}
-      />
-      <div
-        className={`leaderboard-wrapper ${
-          leaderboardVisible ? "visible" : "hidden"
-        }`}
-      >
-        <Leaderboard
-          scores={scores}
-          leaderboardMode={leaderboardMode}
-          updateLeaderboardMode={updateLeaderboardMode}
-          setLeaderboardVisible={setLeaderboardVisible}
-          highlightId={highlightId}
-        />
-      </div>
-      {!gridComplete ? (
-        <Grid
-          grid={grid}
+      <div className="main-container">
+        <Menu
           setGrid={setGrid}
-          gridSize={gridSize}
-          empty={empty}
           setGridComplete={setGridComplete}
-          setFinishTime={setFinishTime}
-          setEmpty={setEmpty}
-          time={time}
-          setTimerVisible={setTimerVisible}
-          totalMoves={totalMoves}
           setTotalMoves={setTotalMoves}
-          timerId={timerId}
-        />
-      ) : (
-        <GridFinished
-          finishTime={finishTime}
+          setStartTime={setStartTime}
+          setGridSize={setGridSize}
           gridSize={gridSize}
-          totalMoves={totalMoves}
-          updateLeaderboardMode={updateLeaderboardMode}
-          setLeaderboardVisible={setLeaderboardVisible}
-          setHighlightId={setHighlightId}
-          highlightId={highlightId}
+          handleMenuClick={handleMenuClick}
+          setGuideVisible={setGuideVisible}
+          modesTabVisible={modesTabVisible}
+          guideVisible={guideVisible}
+          menuVisible={menuVisible}
+          setModesTabVisible={setModesTabVisible}
+          empty={empty}
+          setEmpty={setEmpty}
+          setTimerId={setTimerId}
+          changeAppState={changeAppState}
         />
-      )}
+        <div
+          className={`leaderboard-wrapper ${
+            leaderboardVisible ? "visible" : "hidden"
+          }`}
+        >
+          <Leaderboard
+            scores={scores}
+            leaderboardMode={leaderboardMode}
+            updateLeaderboardMode={updateLeaderboardMode}
+            setLeaderboardVisible={setLeaderboardVisible}
+            highlightId={highlightId}
+          />
+        </div>
+        {!gridComplete ? (
+          <Grid
+            grid={grid}
+            setGrid={setGrid}
+            gridSize={gridSize}
+            empty={empty}
+            setGridComplete={setGridComplete}
+            setFinishTime={setFinishTime}
+            setEmpty={setEmpty}
+            time={time}
+            setTimerVisible={setTimerVisible}
+            totalMoves={totalMoves}
+            setTotalMoves={setTotalMoves}
+            timerId={timerId}
+          />
+        ) : (
+          <GridFinished
+            finishTime={finishTime}
+            gridSize={gridSize}
+            totalMoves={totalMoves}
+            updateLeaderboardMode={updateLeaderboardMode}
+            setLeaderboardVisible={setLeaderboardVisible}
+            setHighlightId={setHighlightId}
+            highlightId={highlightId}
+          />
+        )}
+      </div>
     </div>
   );
 };

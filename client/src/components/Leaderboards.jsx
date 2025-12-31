@@ -45,7 +45,7 @@ const Leaderboards = ({ changeAppState }) => {
   }, [currLeaderboard, currGameMode]);
 
   return (
-    <div>
+    <div className="leaderboards">
       <Header title="Leaderboards" />
       <select
         onChange={(event) => setCurrLeaderboard(event.target.value)}
